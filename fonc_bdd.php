@@ -1,7 +1,7 @@
 <?php
 $session="librairie4.0";
 $usr="root";
-$mdp="root";
+$mdp="";
 function OuvrirConnexion($session,$usr,$mdp)
 {
     try {
