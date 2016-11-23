@@ -58,8 +58,6 @@ Après plus de 10 ans d’existence, les Éditions du Chameau ouvrent une librai
 Créées en 1993, les Éditions du Chameau sont spécialisées dans la micro-édition de livres d’art et de poésie. Les Éditions du Chameau ont été officiellement lancées en 2002 lors de la parution d’un recueil d’aphorismes de Pierre Lebigre.</br> </br> 
 Les Éditions du Chameau ont pour objectif d’éditer des œuvres en un nombre d’exemplaires volontairement restreint, de réaliser des œuvres à un prix de vente accessible, aussi bien pour la fabrication que pour les éventuels acquéreurs, tout en étant de belle qualité.</br> </br> 
 Les Éditions du Chameau ont déjà 78 titres à notre catalogue et 5 titres dans la collection « l’unique ».
-
-	TEST GIT
 	</br> </br>
 
 </blockquote>  
