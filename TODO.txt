@@ -1,0 +1,12 @@
+- Rassembler CSS.
+- Modifier/améliorer le design.
+
+- Améliorer le footer Ajout de flèche "retour en haut".
+- Demander Nom, prénom, @mail, @postale, Téléphone etc. lors de la création
+d'utilisateur.
+- Création de comptes gérants.
+
+- Identifier les fonctionnalités : lister.
+	- Couvert / non couvert / A terminer.
+	- Proposer un calendrier qui prend en compte les fonctionnalités implémentées et les lots / rendre compte.
+- Penser à un petit fichier texte expliquant comment installer les fichiers.
