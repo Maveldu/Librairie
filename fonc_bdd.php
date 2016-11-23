@@ -12,6 +12,7 @@ function OuvrirConnexion($session,$usr,$mdp)
                 }
                 echo "<br/>";*/
 //		echo $conn->getAttribute(constant("PDO::ATTR_CONNECTION_STATUS")) . "\n";
+// test
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
         echo "<br>Votre nom d'utilisateur ou votre mot de passe est &eacute;ronn&eacute;e, veuillez vous reconnecter...<br>";
