@@ -57,7 +57,10 @@ require_once('menu.php'); ?>
 Après plus de 10 ans d’existence, les Éditions du Chameau ouvrent une librairie associative regroupant uniquement des micros-éditions à caractère artistique et littéraire. Située à Dozulé (14), cette librairie a pour but de regrouper et travailler avec des éditeurs, mais également de faire connaître des petits auteurs français et francophones. Enfin, cette librairie permet de diffuser et de garder la trace de réalisations artistiques, mais aussi d'associer dans cette aventure des personnes qui écrivent, favorisant la proximité artistique et les rencontres.</br></br> 
 Créées en 1993, les Éditions du Chameau sont spécialisées dans la micro-édition de livres d’art et de poésie. Les Éditions du Chameau ont été officiellement lancées en 2002 lors de la parution d’un recueil d’aphorismes de Pierre Lebigre.</br> </br> 
 Les Éditions du Chameau ont pour objectif d’éditer des œuvres en un nombre d’exemplaires volontairement restreint, de réaliser des œuvres à un prix de vente accessible, aussi bien pour la fabrication que pour les éventuels acquéreurs, tout en étant de belle qualité.</br> </br> 
-Les Éditions du Chameau ont déjà 78 titres à notre catalogue et 5 titres dans la collection « l’unique ».</br> </br> 
+Les Éditions du Chameau ont déjà 78 titres à notre catalogue et 5 titres dans la collection « l’unique ».
+
+	TEST GIT
+	</br> </br>
 
 </blockquote>  
 
