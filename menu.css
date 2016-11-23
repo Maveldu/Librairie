@@ -1,0 +1,43 @@
+
+
+
+
+/*<style>
+
+body{
+    background-color:black;
+    background-attachment:fixed;
+
+}
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.li {
+    float: left;
+}
+.menu:link, .menu:visited {
+    display: block;
+    width: 150px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #98bf21;
+    text-align: center;
+    padding: 4px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.menu:hover, .menu:active {
+    background-color: red;
+}
+.center {
+		background-color: #f00;
+		left: 20%;
+}
+.vitrine {
+        top: 100px;
+        width: 500px;
+        border-radius: 1px;
+        height: 200px;
+}
