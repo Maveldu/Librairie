@@ -83,19 +83,19 @@ include('band.html');
 
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
-        <span class="glyphicon glyphicon-chevron-up"></span>
-    </a><br><br>
+        <div class="glyphicon glyphicon-chevron-up"></div>
+    </a><br/>
+	<span>
     <a class="up-arrow" href="a_propos.php" data-toggle="tooltip" title="A propos">
-        <a class="up-arrow" href="a_propos.php" data-toggle="tooltip" title="A propos">
-            <a class="up-arrow" href="a_propos.php" data-toggle="tooltip" title="A propos">
-                <div>
-                    <p align="center"><?php echo "<u>À Propos</u>";?></p>
-                </div>
-            </a>
-            <p align="center">Nous Contacter</p>
-            <p align="center"><span class="glyphicon glyphicon-map-marker"></span> <?php echo "Adresse : Dozulé, FR";?></p>
-            <p align="center"><span class="glyphicon glyphicon-phone"></span> <?php echo "Téléphone :";?> </p>
-            <p align="center"><span class="glyphicon glyphicon-envelope"></span> Email : </p>
+        <span align="center">
+            À Propos | 
+        </span>
+    </a>
+    <span align="center">Nous Contacter | </span>
+    <span align="center"><div class="glyphicon glyphicon-map-marker"></div> Adresse : Dozulé, FR |</span>
+    <span align="center"><div class="glyphicon glyphicon-phone"></div> Téléphone : | </span>
+    <span align="center"><div class="glyphicon glyphicon-envelope"></div> Email :</span>
+	</span>
 </footer>
 
 <script>
