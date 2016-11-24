@@ -6,7 +6,7 @@ $titre="Librairie"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
 ?>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    
+    <br/><br/><br/>
     <div class="carousel-inner" role="listbox">
 
         <?php
@@ -86,11 +86,15 @@ include('band.html');
         <div class="glyphicon glyphicon-chevron-up"></div>
     </a><br/>
 	<span>
+
     <a class="up-arrow" href="a_propos.php" data-toggle="tooltip" title="A propos">
         <span align="center">
-            À Propos | 
+
+            À Propos |
+             
         </span>
     </a>
+
     <span align="center">Nous Contacter | </span>
     <span align="center"><div class="glyphicon glyphicon-map-marker"></div> Adresse : Dozulé, FR |</span>
     <span align="center"><div class="glyphicon glyphicon-phone"></div> Téléphone : | </span>
