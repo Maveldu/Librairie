@@ -3,28 +3,35 @@
 <link rel="stylesheet" href="Style.css" />
 </html>
 <?php
-
 session_start();
 require_once 'fonc_bdd.php';
 $bdd=OuvrirConnexion($session, $usr, $mdp);
 $titre="Librairie"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
 
-
 $auteurs = $bdd->query('SELECT NOM_AUTEUR, PRENOM_AUTEUR, ID_AUTEUR FROM auteur');
 $editeurs = $bdd->query('SELECT NOM, ID_EDITEUR FROM editeur');
 ?>
+<style>
+		#gauche {
+    		float:left;
+    		width:60%;
+		}
 
+		#droite {
+    		margin-left:60%;
+		}
+
+		.btn-default {
+  			width:150px;
+		}
+</style>
 
 <br/><br/>
 <br/><br/>
-
-    <fieldset>
-		
-
 	<form class="form-group" method="post">
-
-		<p>
+		<fieldset>
+		<div>
 			<div id="gauche" class="form-group">
 
 				<div  class="form-group">
@@ -36,8 +43,6 @@ $editeurs = $bdd->query('SELECT NOM, ID_EDITEUR FROM editeur');
 				<label class="col-md-2 control-label" for="Titre">Titre:</label>	
 				<input required type="text" name="titre" placeholder="Titre" pattern="/^[\p{L}-. ]*$/u"/><br /><br />
 				</div>
-
-			
 
 				<div  class="form-group">
 				<label class="col-md-2 control-label" for="Quantité en stock">Quantité en stock:</label>	
@@ -56,7 +61,6 @@ $editeurs = $bdd->query('SELECT NOM, ID_EDITEUR FROM editeur');
 					</datalist> <br /><br />
 				</div>
 
-
 				<div  class="form-group">
 				<label class="col-md-2 control-label" for="Collection">Collection:</label>	
 				<input type="text" name="collection" placeholder="Collection" pattern="/^[\p{L}-. ]*$/u"/><br /><br />
@@ -73,18 +77,14 @@ $editeurs = $bdd->query('SELECT NOM, ID_EDITEUR FROM editeur');
 				</div>
 
 			</div>
-		
-
-
+			
 			<div id="droite" class="form-group">
-
+			
 				<div  class="form-group">
 				<label class="col-md-2 control-label" for="Edition">Édition:</label>	
 				<input type="text" name="edition" placeholder="Edition" pattern="[a-Z]"/><br /><br />
 				</div>
-
 				
-
 				<div  class="form-group">
 				<label class="col-md-2 control-label" for="Auteur">Nom de l'auteur:</label>  
 				<input required name="auteur" placeholder="Nom auteur" type="text" list="auteur" autocomplete="off"/><br /><br />
@@ -95,11 +95,10 @@ $editeurs = $bdd->query('SELECT NOM, ID_EDITEUR FROM editeur');
 						} ?>
 					</datalist> 
 				</div>
-
-
+				
 				<div  class="form-group">
 				<label class="col-md-2 control-label" for="Prix">Prix:</label>		
-				<input require  type="text" name="prix" placeholder="Prix" pattern="[0-9]{1,}[.,]{0,1}[0-9]{0,2}"/>  <br /><br />
+				<input type="text" name="prix" placeholder="Prix" pattern="[0-9]{1,}[.,]{0,1}[0-9]{0,2}"/>  <br /><br />
 				</div>
 
 				<div  class="form-group">
@@ -114,26 +113,17 @@ $editeurs = $bdd->query('SELECT NOM, ID_EDITEUR FROM editeur');
 
 				<div  class="form-group">
 				<label class="col-md-2 control-label" for="Support">Support:</label>  
-					<select name="support"><option value="papier">papier</option><option value="choix2">numerique</option></select><br /><br />
+				<select name="support">
+					<option value="papier">papier</option>
+					<option value="choix2">numerique</option>
+				</select><br /><br />
 				</div>
-
 			</div>
-
-		
-
-   		</p>
-
-   	
+   		</div>
    		<p align="center"><input class="btn btn-default" type="submit" name="valider" value="Valider" /></p>
-   	
-
 	</fieldset>
 	<br /><br />
-	
-
 	</form>
-
-
 </html>
 
 <?php
