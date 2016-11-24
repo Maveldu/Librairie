@@ -6,42 +6,7 @@
 		<title>Librairie</title>
 		<link rel="icon" href="logo.gif">
         <meta charset="utf-8" />
-
-        <style>
-
-		.aucentre {
-			text-align: center;
-		}
-
-		label {
-			display: block;
-			width: 150px;
-			float: left;
-		}
-
-		body #maincontent {
-			width: 90%;
-			min-height: 400px;
-		}
-
-		#maincontent {
-    		padding: 32px 16px;
-    		max-width: 894px;
-    		min-width: 320px;
-		}
-
-		body #maincontent, body .pageSectionContainer, body #c_content {
-    		margin: 1 auto;
-   			margin-top: 0px;
-   			margin-right: auto;
-    		margin-bottom: 0px;
-    		margin-left: 400px;
-		}
-
-
-		</style>
-
-       
+       <link rel="stylesheet" href="Style.css" />
 	</head>
 <?php
 require_once('menu.php'); ?>

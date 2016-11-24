@@ -1,6 +1,11 @@
 <script type="text/javascript" src="\js\jquery-latest.js"></script>
+<head>
 
+        <meta charset="utf-8" />
 
+        <link rel="stylesheet" href="Style.css" />
+
+</head>
 <?php
 
 require_once 'fonc_bdd.php';
@@ -69,13 +74,4 @@ function safe($var)
 }
 ?>
 
-<style type="text/css"> 
-.resume {
-width:500px;
-overflow:auto;
-height:auto;
-line-height:20px;
-border:dotted;
-border-width:1px;
-}​
-</style>
+
