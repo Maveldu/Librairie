@@ -1,16 +1,16 @@
-<html>
-<link rel="icon" type="image/png" href="favicon.png"/>
 <?php
 session_start();
 if (isset($_POST['valider'])) {
-    session_destroy();
     header('Location: index.php');
+    session_destroy();
 }
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Librairie"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
 ?>
+<html>
+<link rel="icon" type="image/png" href="favicon.png"/>
 <style>
 
     .aucentre {
@@ -58,7 +58,7 @@ require_once 'menu.php';
                 if (isset($_SESSION['id'])) {
                     echo "<p> Voulez vous vraiment vous déconnecter " . $_SESSION['id'] . " ? </p>";
                     ?>
-                    <input class="btn btn-default" type="submit" name="valider" value="se déconnecter"/>
+                    <input class="btn btn-default" type="submit" name="valider" value="Se déconnecter"/>
                     <input class="btn btn-default" type="button" name="Accueil" value="Accueil"
                            onclick="self.location.href='index.php'">
                     <?php
