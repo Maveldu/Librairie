@@ -2,6 +2,10 @@
 <link rel="icon" type="image/png" href="favicon.png"/>
 <?php
 session_start();
+if(isset($_POST['valider'])){
+	session_destroy();
+	header('Location: index.php');
+}
 require_once 'fonc_bdd.php';
 $bdd=OuvrirConnexion($session, $usr, $mdp);
 $titre="Librairie"; //Titre ‡ changer sur chaque page
@@ -71,12 +75,3 @@ require_once 'menu.php';
 </body>
 </html>
 
-<?php
-	if(isset($_POST['valider'])){
-		session_destroy();
-		echo "Vous vous êtes bien déconnecté !";
-        header('Location: http://www.example.com/');
-
-	}
-
-?>

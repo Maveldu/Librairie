@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(isset($_POST['valider'])){
+	header('Location: index.php');
+}
 require_once 'fonc_bdd.php';
 $bdd=OuvrirConnexion($session, $usr, $mdp);
 $titre="Librairie"; //Titre ‡ changer sur chaque page
@@ -93,8 +96,8 @@ require_once 'menu.php';
 			    $_SESSION['mail'] = $donnee['ADRESSE_MAIL'];
 			    $text = "Vous êtes bien connecté, bienvenue ".$_SESSION['id'].".
 			    		<br /> Pour rappel, votre mail: ".$_SESSION['mail']."";
-
-if(isset($_SESSION['id'])){
+			    header('Location: index.php');
+	if(isset($_SESSION['id'])){
 
         }
 
