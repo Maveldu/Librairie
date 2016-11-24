@@ -2,8 +2,6 @@
 
 
 <?php
-
-
 require_once 'fonc_bdd.php';
 $bdd=OuvrirConnexion($session, $usr, $mdp);
 $titre="Librairie"; //Titre ‡ changer sur chaque page
@@ -118,7 +116,7 @@ else
               if($post['COLLECTION'] != ''){
               ?><p class="collection">Collection: <?php echo $post['COLLECTION'].", ";}
               if($post['NUMERO_COLLECTION'] != '0'){
-                ?> numero: <?php echo $post['NUMER O_COLLECTION'].", ";}
+                ?> numero: <?php echo $post['NUMERO_COLLECTION'].", ";}
               if($post['SUPPORT'] != ''){
                 ?> version <?php echo $post['SUPPORT'];}?></p>
               

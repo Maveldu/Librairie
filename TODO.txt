@@ -1,7 +1,6 @@
 - Rassembler CSS.
 - Modifier/améliorer le design.
 
-- Améliorer le footer Ajout de flèche "retour en haut".
 - Demander Nom, prénom, @mail, @postale, Téléphone etc. lors de la création
 d'utilisateur.
 - Création de comptes gérants.
