@@ -1,15 +1,15 @@
-/* Add a dark background color with a little bit see-through */ 
+/* Add a dark background color with a little bit see-through */
 .navbar {
     margin-bottom: 0;
     background-color: #2d2d30;
     border: 0;
     font-size: 11px !important;
     letter-spacing: 4px;
-    opacity:0.9;
+    opacity: 0.9;
 }
 
 /* Add a gray color to all navbar links */
-.navbar li a, .navbar .navbar-brand { 
+.navbar li a, .navbar .navbar-brand {
     color: #d5d5d5 !important;
 }
 
@@ -21,7 +21,7 @@
 /* The active link */
 .navbar-nav li.active a {
     color: #fff !important;
-    background-color:#29292c !important;
+    background-color: #29292c !important;
 }
 
 /* Remove border color from the collapsible button */
@@ -31,7 +31,7 @@
 
 /* Dropdown */
 .open .dropdown-toggle {
-    color: #fff ;
+    color: #fff;
     background-color: #555 !important;
 }
 

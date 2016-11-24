@@ -1,40 +1,42 @@
-		aucentre {
-			text-align: center;
-		}
+aucentre {
+    text-align: center;
+}
 
-		label {
-			display: block;
-			width: 150px;
-			float: left;
-		}
+label {
+    display: block;
+    width: 150px;
+    float: left;
+}
 
-		body #maincontent {
-			width: 90%;
-			min-height: 400px;
-		}
+body #maincontent {
+    width: 90%;
+    min-height: 400px;
+}
 
-		#maincontent {
-    		padding: 32px 16px;
-    		max-width: 894px;
-    		min-width: 320px;
-		}
+#maincontent {
+    padding: 32px 16px;
+    max-width: 894px;
+    min-width: 320px;
+}
 
-		body #maincontent, body .pageSectionContainer, body #c_content {
-    		margin: 1 auto;
-   			margin-top: 0px;
-   			margin-right: auto;
-    		margin-bottom: 0px;
-    		margin-left: 400px;
-		}
-		
-		resume {
-			width:500px;
-			overflow:auto;
-			height:auto;
-			line-height:20px;
-			border:dotted;
-			border-width:1px;
-		}​
+body #maincontent, body .pageSectionContainer, body #c_content {
+    margin: 1 auto;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: 400px;
+}
+
+resume {
+    width: 500px;
+    overflow: auto;
+    height: auto;
+    line-height: 20px;
+    border: dotted;
+    border-width: 1px;
+}
+
+​
 		
 
 

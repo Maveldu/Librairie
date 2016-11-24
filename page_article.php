@@ -1,40 +1,38 @@
 <?php
 session_start();
 require_once 'fonc_bdd.php';
-$bdd=OuvrirConnexion($session, $usr, $mdp);
-$titre="Librairie"; //Titre ‡ changer sur chaque page
+$bdd = OuvrirConnexion($session, $usr, $mdp);
+$titre = "Librairie"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
 
-$isbn=$_POST['isbn'];
+$isbn = $_POST['isbn'];
 ?>
 <br/><br/>
 <br/><br/>
 <?php
 
 
-
-$result = $bdd->query( 'SELECT TITRE , COUVERTURE , DATE_PARUTION , RESUME, ISBN_ISSN, QUANTITE_STOCK, PRIX, NOM_EDITEUR, COLLECTION, NUMERO_COLLECTION, SUPPORT, NOTE_GERANT, MOTCLES
+$result = $bdd->query('SELECT TITRE , COUVERTURE , DATE_PARUTION , RESUME, ISBN_ISSN, QUANTITE_STOCK, PRIX, NOM_EDITEUR, COLLECTION, NUMERO_COLLECTION, SUPPORT, NOTE_GERANT, MOTCLES
                              FROM article
-                             WHERE  ISBN_ISSN LIKE '.$isbn.'');
+                             WHERE  ISBN_ISSN LIKE ' . $isbn . '');
 
-$post = $result->fetch() ;
-        $titre = $post['TITRE'];
+$post = $result->fetch();
+$titre = $post['TITRE'];
 
-        $isbn = $post['ISBN_ISSN'];
+$isbn = $post['ISBN_ISSN'];
 
-        $imgname = './couverture/'.$isbn.'.jpg';
+$imgname = './couverture/' . $isbn . '.jpg';
 
-        if (file_exists($imgname)) {
-          $img = $isbn.".jpg";
-        } 
-        else {
-           $img = "sans-image.jpg";
-        }
+if (file_exists($imgname)) {
+    $img = $isbn . ".jpg";
+} else {
+    $img = "sans-image.jpg";
+}
 
 
 ?>
-<?php echo '<img src="./couverture/'.$img.'" style="width:400px;height:400px;padding:0px;border:1px;"/>'; ?>
-<?php echo '<h1 style="">'.$titre.'</h1>';?>
+<?php echo '<img src="./couverture/' . $img . '" style="width:400px;height:400px;padding:0px;border:1px;"/>'; ?>
+<?php echo '<h1 style="">' . $titre . '</h1>'; ?>
 <?php
 echo "Date parution : ";
 echo($post['DATE_PARUTION']);

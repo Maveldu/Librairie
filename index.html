@@ -2,17 +2,15 @@
 
 <html>
 <head>
-  <title>Accueil</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="index.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <title>Accueil</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 </head>
-
-
 
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -25,104 +23,102 @@ else{
 ?>
 
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="index.php">Accueil</a>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.php">Accueil</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">AJOUTER
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="form_ajouter_article.php">Article</a></li>
+                        <li><a href="form_ajouter_editeur.php">Éditeur</a></li>
+                        <li><a href="form_ajouter_auteur.php">Auteur</a></li>
+                        <li><a href="form_csvImport.php">CSV</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">AFFICHER
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="form_afficher_article.php">Article</a></li>
+                        <li><a href="afficher_editeur.php">Éditeur</a></li>
+                        <li><a href="afficher_auteur.php">Auteur</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">MON COMPTE
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="form_inscription.php"> S'inscrire</a></li>
+                        <li><a href="form_connexion.php"> Se connecter</a></li>
+                        <li><a href="form_deconnexion.php"> Se déconnecter</a></li>
+
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="mon_panier.php">MON PANNIER</a>
+                </li>
+
+                <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+            </ul>
+        </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">AJOUTER
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="form_ajouter_article.php">Article</a></li>
-            <li><a href="form_ajouter_editeur.php">Éditeur</a></li>
-            <li><a href="form_ajouter_auteur.php">Auteur</a></li>
-            <li><a href="form_csvImport.php">CSV</a></li> 
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">AFFICHER
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="form_afficher_article.php">Article</a></li>
-            <li><a href="afficher_editeur.php">Éditeur</a></li>
-            <li><a href="afficher_auteur.php">Auteur</a></li> 
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">MON COMPTE
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="form_inscription.php"> S'inscrire</a></li>
-            <li><a href="form_connexion.php"> Se connecter</a></li>
-            <li><a href="form_deconnexion.php"> Se déconnecter</a></li>
-            
-          </ul>
-        </li>
-		<li class="dropdown">
-		 <a href="mon_panier.php">MON PANNIER</a> 
-		 </li>
-		 
-        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
-      </ul>
-    </div>
-  </div>
 </nav>
 
 <br/><br/>
 
 
-
-
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="f451.jpg" alt="451" style ="width:500px; height:400px; align:right"/>
-        <div class="carousel-caption">
-          <!--<h3>Fahrenheit 451</h3>
-          <p>ce livre est trop bien</p>-->
-        </div>      
-      </div>
+        <div class="item active">
+            <img src="f451.jpg" alt="451" style="width:500px; height:400px; align:right"/>
+            <div class="carousel-caption">
+                <!--<h3>Fahrenheit 451</h3>
+                <p>ce livre est trop bien</p>-->
+            </div>
+        </div>
 
-      <div class="item">
-        <img src="mars.jpg" alt="Mars" style ="width:500px; height:400px; align:right"/>
-        <div class="carousel-caption">
-          <!--<h3>Mars</h3>
-          <p>Pas mal</p>-->
-        </div>      
-      </div>
-    
-      <div class="item">
-        <img src="hobbit.jpg" alt="Hobbit" style ="width:500px; height:400px; align:right"/>
-        <div class="carousel-caption">
-          <!--<h3>Hobbit</h3>
-          <p>Génial</p>-->
-        </div>      
-      </div>
+        <div class="item">
+            <img src="mars.jpg" alt="Mars" style="width:500px; height:400px; align:right"/>
+            <div class="carousel-caption">
+                <!--<h3>Mars</h3>
+                <p>Pas mal</p>-->
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="hobbit.jpg" alt="Hobbit" style="width:500px; height:400px; align:right"/>
+            <div class="carousel-caption">
+                <!--<h3>Hobbit</h3>
+                <p>Génial</p>-->
+            </div>
+        </div>
     </div>
 
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
     </a>
     <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
     </a>
 </div>
 
@@ -133,47 +129,47 @@ else{
 <!-- Add Google Maps -->
 <script src="http://maps.googleapis.com/maps/api/js"></script>
 <script>
-var myCenter = new google.maps.LatLng(49.230711, -0.047355);
+    var myCenter = new google.maps.LatLng(49.230711, -0.047355);
 
-function initialize() {
-var mapProp = {
-center:myCenter,
-zoom:12,
-scrollwheel:false,
-draggable:false,
-mapTypeId:google.maps.MapTypeId.ROADMAP
-};
+    function initialize() {
+        var mapProp = {
+            center: myCenter,
+            zoom: 12,
+            scrollwheel: false,
+            draggable: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
 
-var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-var marker = new google.maps.Marker({
-position:myCenter,
-});
+        var marker = new google.maps.Marker({
+            position: myCenter,
+        });
 
-marker.setMap(map);
-}
+        marker.setMap(map);
+    }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
 </body>
 
 
 <footer class="text-center">
-  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
-    <span class="glyphicon glyphicon-chevron-up"></span>
-  </a><br><br>
-	<p align="center">Nous Contacter</p>
-	<p align="center"><span class="glyphicon glyphicon-map-marker"></span>Dozulé, FR</p>
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a><br><br>
+    <p align="center">Nous Contacter</p>
+    <p align="center"><span class="glyphicon glyphicon-map-marker"></span>Dozulé, FR</p>
     <p align="center"><span class="glyphicon glyphicon-phone"></span>Phone: </p>
-    <p align="center"><span class="glyphicon glyphicon-envelope"></span>Email: </p> 
+    <p align="center"><span class="glyphicon glyphicon-envelope"></span>Email: </p>
 </footer>
 
 <script>
-$(document).ready(function(){
-    // Initialize Tooltip
-    $('[data-toggle="tooltip"]').tooltip(); 
-})
+    $(document).ready(function () {
+        // Initialize Tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+    })
 </script>
 
 
