@@ -84,13 +84,13 @@ include('band.html');
 <footer class="text-center">
     <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
         <div class="glyphicon glyphicon-chevron-up"></div>
-    </a>
+    </a><br/>
 	<span>
 
     <a class="up-arrow" href="a_propos.php" data-toggle="tooltip" title="A propos">
         <span align="center">
 
-            À Propos |
+           <u> À Propos</u> |
              
         </span>
     </a>
@@ -100,9 +100,6 @@ include('band.html');
     <span align="center"><div class="glyphicon glyphicon-phone"></div> Téléphone : | </span>
     <span align="center"><div class="glyphicon glyphicon-envelope"></div> Email :</span>
 	</span>
-    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
-        <div class="glyphicon glyphicon-chevron-up"></div>
-    </a>
 </footer>
 
 <script>

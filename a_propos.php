@@ -9,16 +9,15 @@
     <link rel="stylesheet" href="Style.css"/>
 </head>
 <?php
+session_start();
 require_once('menu.php'); ?>
 
-<br/><br/>
-<br/><br/>
 
 <body>
 
 <blockquote style="margin-left:100px;margin-right:100px;">
-
-    <h2>La librairie du Chameau ouvre ses portes à Dozulé à l’initiative des Éditions du Chameau.</h2></br></br>
+    <br/>
+    <h2>La librairie du Chameau ouvre ses portes à Dozulé à l’initiative des Éditions du Chameau.</h2></br>
     Après plus de 10 ans d’existence, les Éditions du Chameau ouvrent une librairie associative regroupant uniquement
     des micros-éditions à caractère artistique et littéraire. Située à Dozulé (14), cette librairie a pour but de
     regrouper et travailler avec des éditeurs, mais également de faire connaître des petits auteurs français et
@@ -36,8 +35,6 @@ require_once('menu.php'); ?>
 
 </blockquote>
 
-
-<br/></br></br></br>
 
 <h2 style="margin-left:300px;">Où sommes nous ?</h2>
 <div class="container">
@@ -76,7 +73,6 @@ require_once('menu.php'); ?>
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
-</br></br>
 
 </body>
 </html>

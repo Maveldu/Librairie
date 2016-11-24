@@ -94,12 +94,10 @@ require_once 'menu.php';
 </body>
 </html>
 
-
 <!--VERIFICATION DU FORMULAIRE-->
 <?php
 if (isset($_POST['valider'])) {
     $i = 1;
-
 
     if ((empty($_POST['pseudo']))) {
         $i = 0;
@@ -111,7 +109,7 @@ if (isset($_POST['valider'])) {
     }
     if ((empty($_POST['prenom']))) {
         $i = 0;
-        $text = "Veuillez rentrer un prenom";
+        $text = "Veuillez rentrer un prénom";
     }
     if ((empty($_POST['adresse']))) {
         $i = 0;
@@ -127,12 +125,17 @@ if (isset($_POST['valider'])) {
     }
     if ((empty($_POST['numero']))) {
         $i = 0;
-        $text = "Veuillez rentrer un numero de telephone";
-    } else {
+        $text = "Veuillez rentrer un numéro de téléphone";
+    }
+    if ((empty($_POST['numero']))&&(empty($_POST['ville']))&&(empty($_POST['postale']))&&(empty($_POST['adresse']))&&(empty($_POST['prenom']))&&(empty($_POST['nom']))&&(empty($_POST['pseudo']))) {
+        $i = 0;
+        $text = "Veuillez remplir le formulaire";
+    }
+    else {
         $nbligne = $bdd->query('SELECT IDENTIFIANT FROM compte WHERE IDENTIFIANT = \'' . $_POST['pseudo'] . '\' ');
         $nbligne = $nbligne->rowCount();
         if ($nbligne != 0) {
-            $text = "le nom de compte existe déjà";
+            $text = "Le nom de compte existe déjà";
         }
 
     }
@@ -144,7 +147,7 @@ if (isset($_POST['valider'])) {
         }
     } else if ($i == 1) {
         $i = 0;
-        $text = "merci de rentrer un mot de passe";
+        $text = "mMrci de rentrer un mot de passe";
     }
 
 
@@ -152,12 +155,13 @@ if (isset($_POST['valider'])) {
 
         $nb = $bdd->query('SELECT max(NUMERO_COMPTE) as max FROM compte');
         $nb = $nb->fetch();
-        $bdd->exec('INSERT INTO compte(NUMERO_COMPTE, IDENTIFIANT, MOT_DE_PASSE, ADRESSE_MAIL, ADRESSE, CODE_POSTALE, VILLE) 
+        $bdd->exec('INSERT INTO compte(NUMERO_COMPTE, IDENTIFIANT, MOT_DE_PASSE, ADRESSE_MAIL, NUMERO_TELEPHONE, ADRESSE, CODE_POSTALE, VILLE) 
 					VALUES(
 					 \'' . strip_tags($nb['max'] + 1) . '\',
 					 \'' . strip_tags($_POST['pseudo']) . '\',
 					 \'' . strip_tags(md5($_POST['passe'])) . '\',
 					 \'' . strip_tags($_POST['email']) . '\',
+					 \'' . strip_tags($_POST['numero']) . '\',
 					 \'' . strip_tags($_POST['adresse']) . '\',
 					 \'' . strip_tags($_POST['postale']) . '\',
 					 \'' . strip_tags($_POST['ville']) . '\')');
@@ -170,7 +174,7 @@ if (isset($_POST['valider'])) {
         echo "<p> Vous êtes bien inscris ! </p>";
 
     } else {
-        echo "<p>" . $text . "</p>";
+        echo '<script type="text/javascript">window.alert("'.$text.'");</script>';
     }
 }
 
