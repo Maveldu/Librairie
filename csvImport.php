@@ -5,8 +5,6 @@
 
         <meta charset="utf-8" />
         <title>Ajout d'un fichier csv</title>
-        <link rel="stylesheet" href="ajouter_article2.css" />
-
     </head>
 
     <?php
@@ -23,7 +21,7 @@ $fichier = $_FILES['fichier']['name'];
     }
     else{ // fichier inconnu
         echo "Fichier introuvable !<br>Importation stoppe.";?>
-       <br /><br /> <a href="http://localhost/librairie/menu.php" class="bouton">Retour au menu</a><br /><br />
+       <br /><br /> <a href="menu.php" class="bouton">Retour au menu</a><br /><br />
        <?php
         exit();
     }
@@ -136,12 +134,12 @@ $fichier = $_FILES['fichier']['name'];
     if ($i == $count)
     {
         echo "Ajout dans la base de données effectué avec succès";?>
-        <a href="http://localhost/librairie/menu.php" class="bouton">Retour au menu</a><br /><br /> <?php
+        <a href="menu.php" class="bouton">Retour au menu</a><br /><br /> <?php
     }
     else
     {
         echo "Echec dans l'ajout dans la base de données";?>
-        <a href="http://localhost/librairie/menu.php" class="bouton">Retour au menu</a><br /><br /><?php
+        <a href="menu.php" class="bouton">Retour au menu</a><br /><br /><?php
     }
    ?>
     </html>

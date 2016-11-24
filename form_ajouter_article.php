@@ -1,5 +1,6 @@
 ﻿<html>
 <link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="stylesheet" href="Style.css" />
 </html>
 <?php
 
@@ -14,30 +15,6 @@ $auteurs = $bdd->query('SELECT NOM_AUTEUR, PRENOM_AUTEUR, ID_AUTEUR FROM auteur'
 $editeurs = $bdd->query('SELECT NOM, ID_EDITEUR FROM editeur');
 ?>
 
-
-		<style>
-
-		#gauche {
-    		float:left;
-    		width:60%;
-		}
-
-		#droite {
-    		margin-left:60%   
-		}
-
-		.btn-default {
-  			width:150px;
-  			
-		}
-
-
-
-
-
-
-
-		</style>
 
 <br/><br/>
 <br/><br/>

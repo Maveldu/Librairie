@@ -36,3 +36,21 @@
 			border-width:1px;
 		}​
 		
+		#gauche {
+    		float:left;
+    		width:60%;
+		}
+
+		#droite {
+    		margin-left:60%   
+		}
+
+		.btn-default {
+  			width:150px;
+  			
+		}
+
+
+
+
+
