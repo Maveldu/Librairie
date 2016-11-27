@@ -1,4 +1,13 @@
 ﻿<!DOCTYPE html>
+
+<?php
+
+require_once 'fonc_bdd.php';
+$bdd = OuvrirConnexion($session, $usr, $mdp);
+require_once 'f_compte.php';
+
+?>
+
 <html lang="en">
 <link rel="icon" type="image/png" href="favicon.png"/>
 <head>
@@ -213,7 +222,7 @@
                         <li><a href="afficher_auteur.php">Auteur</a></li>
                     </ul>
                 </li>
-                <?php if (isset($_SESSION['id'])) { ?>
+					<?php if (f_compte($bdd)=="admin") { ?>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">AJOUTER
                             <span class="caret"></span></a>
@@ -225,6 +234,19 @@
                             <li><a href="photo.php">Photo vitrine</a></li>
                         </ul>
                     </li>
+					
+					 <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">COMPTE
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="form_creer_admin.php">Admin</a></li>
+                            <li><a href="form_creer_Cl_Pro.php">Client pro</a></li>
+                            <li><a href="form_creer_fourniseur.php">Fournisseur</a></li>
+                        </ul>
+                    </li>
+					
+					 <?php } ?>
+					<?php if (isset($_SESSION['id'])) { ?>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown"
                            href="#"><?php echo strtoupper($_SESSION['id']); ?>
