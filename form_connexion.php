@@ -1,12 +1,11 @@
 <?php
 session_start();
-if (isset($_POST['valider'])) {
-    header('Location: index.php');
-}
+
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Librairie"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
+$co;
 ?>
 
 
@@ -92,11 +91,12 @@ if (isset($_POST['valider'])) {
 	        FROM compte WHERE IDENTIFIANT LIKE  \'' . $_POST['pseudo'] . '\'');
             $donnee = $req->fetch();
             if ($donnee['MOT_DE_PASSE'] == md5($_POST['passe'])) {
+                $co = 1;
                 $_SESSION['id'] = $donnee['IDENTIFIANT'];
                 $_SESSION['mail'] = $donnee['ADRESSE_MAIL'];
                 $text = "Vous êtes bien connecté, bienvenue " . $_SESSION['id'] . ".
 			    		<br /> Pour rappel, votre mail: " . $_SESSION['mail'] . "";
-                header('Location: index.php');
+
                 if (isset($_SESSION['id'])) {
 
                 }
@@ -104,7 +104,7 @@ if (isset($_POST['valider'])) {
 
             } else {
                 $i = 1;
-                $text = "Mot de passe incorrect";
+                $text = "Nom de compte ou mot de passe incorrect";
             }
 
         } else if ($i == 0) {
@@ -116,4 +116,14 @@ if (isset($_POST['valider'])) {
 
 }
 
+?>
+<?php
+
+if ($co == 1) {
+    echo "je suis rentré"; ?>
+    <script language="javascript">
+    setTimeout("location.href = 'index.php'",1);
+</script>
+<?php
+}
 ?>
