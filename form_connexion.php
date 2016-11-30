@@ -5,7 +5,7 @@ require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Librairie"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
-$co;
+$co=null;
 ?>
 
 
