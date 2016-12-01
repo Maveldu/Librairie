@@ -57,33 +57,33 @@ require_once 'menu.php';
                 <fieldset>
                     <legend> Identifiants :</legend>
                     <label class="text-base" for="pseudo">Pseudonyme: *</label>
-                    <input type="text" name="pseudo" pattern="[a-zA-Z0-9]{4,}$"/><br/><br/>
+                    <input type="text" name="pseudo" placeholder="Entrez un pseudo" pattern="[a-zA-Z0-9]{4,}$"/><br/><br/>
                     <label for="passe">Mot de passe: *</label>
-                    <input type="password" name="passe" pattern="[a-zA-Z0-9]{4,}$"/><br/><br/>
+                    <input type="password" name="passe" placeholder="Entrez un mot de passe" pattern="[a-zA-Z0-9]{4,}$"/><br/><br/>
                     <label>Confirmation du mot de passe: *</label>
-                    <input type="password" name="passe2"/><br/><br/>
+                    <input type="password" name="passe2" placeholder="Confirmez mot de passe" /><br/><br/>
                 </fieldset>
 
                 <fieldset>
                     <legend>Adresse Postale:</legend>
                     <label class="text-base" for="rue">Adresse: *</label>
-                    <input type="text" name="adresse" pattern="([a-zA-Z0-9](\s){,1}){4,}$"/><br/><br/>
+                    <input type="text" name="adresse" placeholder="Entrez votre adresse" pattern="([a-zA-Z0-9](\s){,1}){4,}$"/><br/><br/>
                     <label class="text-base" for="postale">Code Postale: *</label>
-                    <input type="text" name="postale" pattern="[0-9]{5,5}$"/><br/><br/>
+                    <input type="text" name="postale" placeholder="Entrez code postale" pattern="[0-9]{5,5}$"/><br/><br/>
                     <label class="text-base" for="ville">Ville: *</label>
-                    <input type="text" name="ville" pattern="[a-zA-Z]{2,}$"/><br/><br/>
+                    <input type="text" name="ville" placeholder="Entrez votre ville" pattern="[a-zA-Z]{2,}$"/><br/><br/>
                 </fieldset>
 
                 <fieldset>
                     <legend>Coordonnées</legend>
                     <label class="text-base" for="nom">Nom: *</label>
-                    <input type="text" name="nom" pattern="[a-zA-Z]{2,}$"/><br/><br/>
+                    <input type="text" name="nom" placeholder="Entrez votre nom" pattern="[a-zA-Z]{2,}$"/><br/><br/>
                     <label class="text-base" for="prenom">Prenom: *</label>
-                    <input type="text" name="prenom" pattern="[a-zA-Z]{2,}$"/><br/><br/>
+                    <input type="text" name="prenom" placeholder="Entrez votre prenom" pattern="[a-zA-Z]{2,}$"/><br/><br/>
                     <label>Adresse e-mail: *</label>
-                    <input type="text" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/><br/><br/>
+                    <input type="text" name="email" placeholder="Entrez adresse mail" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/><br/><br/>
                     <label class="text-base" for="numero">Numero de téléphone: *</label>
-                    <input type="text" name="numero" pattern="[0-9]{10,12}"/><br/><br/>
+                    <input type="text" name="numero" placeholder="Entrez numéro de tél" pattern="[0-9]{10,12}"/><br/><br/>
                 </fieldset>
                 <br/>
                 <input class="btn btn-default" type="submit" name="valider" value="S'inscrire"/>
