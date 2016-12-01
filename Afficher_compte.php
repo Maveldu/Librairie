@@ -4,25 +4,16 @@ require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
 require_once 'menu.php';
 ?>
-
-<head> 
-<meta charset="utf-8" />
-
-	
+<html>
+<head><TITLE>test</TITLE>
+	<meta charset="utf-8">
 </head>
 <body>
-<br>
-<br>
-<br>
-
-
-            <?php 
-                  $sql = "select IDENTIFIANT, NUMERO_COMPTE, ADRESSE, CODE_POSTALE, VILLE from compte";
-                  $tab = AfficherTabCompte($sql, $bdd); 
-                         
-            ?>  
-</body>
+<br/><br/><br/>
 <?php
+$sql = "select IDENTIFIANT, NUMERO_COMPTE, ADRESSE, CODE_POSTALE, VILLE from compte";
+$tab = AfficherTabCompte($sql, $bdd);
+
    function AfficherTabCompte($sql, $bdd){
 	   
 	 
@@ -51,3 +42,5 @@ require_once 'menu.php';
  
 
 ?>
+</body>
+</html>

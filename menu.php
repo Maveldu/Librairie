@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <link rel="icon" type="image/png" href="favicon.png"/>
-</html>
+
 
 <?php
 
@@ -11,11 +11,8 @@ require_once 'f_compte.php';
 
 ?>
 
-<html lang="en">
 <head>
-
-
-    <title><?php echo $titre; ?></title>
+    <title>Librairie</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
