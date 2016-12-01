@@ -63,8 +63,8 @@ require_once('f_compte.php');
 <body>
 <fieldset>
     <div id ="maincontent"> 
-    <?php if(f_compte($bdd)!="admin") {
-        echo "Vous devez être administrateur pour acceder à cette fonctionnalité";
+    <?php if(f_compte($bdd)!="clientpro") {
+        echo "Vous devez être client pro pour acceder à cette fonctionnalité";
 		echo "<br/>";
 		echo "<br/>";
     }
