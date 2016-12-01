@@ -1,8 +1,13 @@
+<html>
+<link rel="icon" type="image/png" href="favicon.png"/>
+</html>
 <?php
 session_start();
 if (isset($_POST['valider'])) {
-    header('Location: index.php');
-    session_destroy();
+    session_destroy();?>
+    <script language="javascript">
+        setTimeout("location.href = 'index.php'",1);
+</script><?php
 }
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);

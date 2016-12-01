@@ -39,7 +39,7 @@ if (count($result) == 0) {
             <h3><p><?php echo($post['NOM_AUTEUR'] . " " . $post['PRENOM_AUTEUR']); ?></p>
             </h3>
             <?php
-            if (isset($_SESSION['id'])) {
+            if (f_compte($bdd)=="admin") {
                 echo "<form method='post'>
               <input action='afficher_auteur.php' type='image' src='delete.png'   name='delete'   align='right' width='32' height='32' value='" . $id_auteur . "' />
               </h3>

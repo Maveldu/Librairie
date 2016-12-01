@@ -39,7 +39,7 @@ if (count($result) == 0) {
             <h3><p><?php echo($post['NOM']); ?></p>
             </h3>
             <?php
-            if (isset($_SESSION['id'])) {
+            if (f_compte($bdd)=="admin") {
                 echo "<form method='post' action='afficher_editeur.php'>
               <input  type='image' src='delete.png'   name='delete'   align='right' width='32' height='32' value='" . $id_editeur . "' />
               </h3>

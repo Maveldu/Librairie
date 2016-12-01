@@ -1,3 +1,6 @@
+<html>
+<link rel="icon" type="image/png" href="favicon.png"/>
+</html>
 <?php
 session_start();
 
@@ -59,7 +62,7 @@ $co=null;
                 <form method="post">
                     <p>
                     <div>
-                        <label for="pseudo">Pseudonyme: </label><input type="text" name="pseudo"
+                        <label for="pseudo">Pseudonyme: </label><input type="text" name="pseudo" <?php if(isset($_POST['pseudo'])){echo ('value ="'.$_POST['pseudo'].'"') ;} ?>
                                                                        pattern="[a-z0-9]{4,}$"/><br/><br/>
                         <label for="passe">Mot de passe: </label><input type="password" name="passe"
                                                                         pattern="[a-z0-9]{4,}$"/><br/><br/>
@@ -120,7 +123,7 @@ if (isset($_POST['valider'])) {
 <?php
 
 if ($co == 1) {
-    echo "je suis rentré"; ?>
+     ?>
     <script language="javascript">
     setTimeout("location.href = 'index.php'",1);
 </script>

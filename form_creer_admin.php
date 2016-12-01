@@ -1,4 +1,7 @@
-﻿<?php
+﻿<html>
+<link rel="icon" type="image/png" href="favicon.png"/>
+</html>
+<?php
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
@@ -58,7 +61,7 @@ require_once 'menu.php';
                 </fieldset>
 
                 <input class="btn btn-default" type="submit" name="valider" value="S'inscrire"/>
-				<input class="btn btn-default" type="submit" name="compte_aleatoire" value="compte aleatoire"/>
+				<input class="btn btn-default" type="submit" name="compte_aleatoire" value="Compte Aleatoire"/>
                 <input class="btn btn-default" type="button" name="Retour" value="Retour"
                        onclick="self.location.href='index.php'">
                 </p>

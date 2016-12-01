@@ -1,3 +1,6 @@
+<html>
+<link rel="icon" type="image/png" href="favicon.png"/>
+</html>
 <?php
 session_start();
 require_once 'fonc_bdd.php';
