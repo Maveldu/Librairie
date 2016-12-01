@@ -200,6 +200,7 @@ require_once 'f_compte.php';
     <div style="float:left; width:70px;">
         <a href="index.php">
             <img src="logo.png" alt="logo" title="Accueil" id="logo" width="60" height="60"/>
+        </a>
     </div>
     <div class="container-fluid">
         <div class="navbar-header">
