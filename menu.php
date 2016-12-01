@@ -1,4 +1,7 @@
 ﻿<!DOCTYPE html>
+<html>
+<link rel="icon" type="image/png" href="favicon.png"/>
+</html>
 
 <?php
 
@@ -9,8 +12,8 @@ require_once 'f_compte.php';
 ?>
 
 <html lang="en">
-<link rel="icon" type="image/png" href="favicon.png"/>
 <head>
+
 
     <title><?php echo $titre; ?></title>
     <meta charset="utf-8">

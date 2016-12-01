@@ -11,3 +11,13 @@ require_once 'menu.php';
 
 
 ?>
+<br/><br/>
+<br/><br/>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">Mon Panier</div>
+  </div>
+  <div class="panel-body">
+    Panel content
+  </div>
+</div>
