@@ -85,6 +85,35 @@ require_once 'menu.php';
                     <label class="text-base" for="numero">Numero de téléphone: *</label>
                     <input type="text" name="numero" placeholder="Entrez numéro de tél" pattern="[0-9]{10,12}"/><br/><br/>
                 </fieldset>
+				 <fieldset>
+					<legend>Profesionel</legend>
+					<label class="text-base" for="Editeur">Je suis un editeur : *</label>
+					<input type="checkbox" name="Editeur" onclick="document.getElementById('formcache_Editeur').style.display = (this.checked? 'block':'none');" value = "Je suis un editeur"/>
+
+						<br/>	<br/>
+						
+					<div id="formcache_Editeur" style="display: none">
+					<label class="col-md-2 control-label" for="idEditeur">Id éditeur:</label>
+					<input required type="text" name="idEditeur" placeholder="Identifiant" pattern="[0-9]{4,6}"><br/><br/>
+					<label class="col-md-2 control-label" for="nomEditeur">Nom éditeur:</label>
+					<input required type="text" name="nomEditeur" placeholder="Nom" pattern="[A-Za-z]{1,}"><br/><br/>
+					</div>
+						
+					<input type="checkbox" name="Client_Pro" onclick="document.getElementById('formcache_ClienPro').style.display = (this.checked? 'block':'none');" value = "Je suis un client professionel"/>
+					<label class="text-base" for="Client_Pro">Je suis un client professionel : *</label>
+					
+								<br/>	<br/>	<br/>	
+						
+
+					
+					<div id="formcache_ClienPro" style="display: none">
+					<label class="col-md-2 control-label" for="siret">N° Siret :</label>
+					<input required type="text" name="siret" placeholder="Identifiant" pattern="[0-9]{14}"><br/><br/>
+
+					</div>
+									
+				
+				 </fieldset>
                 <br/>
                 <input class="btn btn-default" type="submit" name="valider" value="S'inscrire"/>
                 <input class="btn btn-default" type="button" name="Retour" value="Retour"
@@ -96,6 +125,10 @@ require_once 'menu.php';
 </fieldset>
 </body>
 </html>
+
+
+
+
 
 <!--VERIFICATION DU FORMULAIRE-->
 <?php
@@ -150,10 +183,43 @@ if (isset($_POST['valider'])) {
         }
     } else if ($i == 1) {
         $i = 0;
-        $text = "mMrci de rentrer un mot de passe";
+        $text = "Merci de rentrer un mot de passe";
     }
+	
+	
+	if (isset($_POST['Editeur'])) {
+			if (empty($_POST['idEditeur']))
+		    {
+		  
+		         $i = 0;
+				$text = "Veuillez entrer votre identifiant d'éditeur";
+			}
+			
+	      if (empty($_POST['nomEditeur']))
+		    {
+		  
+		         $i = 0;
+				$text = "Veuillez entrer votre nom d'éditeur";
+			}
+		
+	}
 
+	if (isset($_POST['Client_Pro'])) {
+		  if (empty($_POST['siret']))
+		    {
+		  
+		         $i = 0;
+				$text = "Veuillez entrer votre Siret";
+			}
+	}
+	
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	
+	
+	
+	
     if ($i == 1) {
 
         $nb = $bdd->query('SELECT max(NUMERO_COMPTE) as max FROM compte');
