@@ -123,6 +123,16 @@ if (count($result) == 0) {
               <input  type='image' src='ajouter.png' name='vitrineadd' align='right' width='20' height='20' value='" . $isbn . "'/></h3>
             </form>";
             }
+            if (f_compte($bdd)=="client") {
+                echo "
+                  
+              <form  action='form_ajouter_article_panier.php'  method='post'>      
+             
+              <input  type='texte' name='ajouter article' style ='float: right' size='5' value='1'/>
+               <input  type='image' src='addart.png' name='ajouter article' align='right' width='32' height='32' value='" . $isbn . "'/>
+            </form>";
+             
+            }
             ?>
             <p class="prixqte"><?php echo "prix:" . $post['PRIX'] . "€ Qté:";
                 if ($post['QUANTITE_STOCK'] != '') {

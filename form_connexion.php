@@ -9,6 +9,7 @@ $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Librairie"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
 $co=null;
+$motif="^('{0,1}((([[:alpha:]]{1,})|[àâçèéêîôùû]){1,}'{0,1}){1,}(-'{0,1}((([[:alpha:]]{1,})|[àâçèéêîôùû]){1,}'{0,1}){1,})*)([[:space:]]'{0,1}((([[:alpha:]]{1,})|[àâçèéêîôùû]){1,}'{0,1}){1,}(-'{0,1}((([[:alpha:]]{1,})|[àâçèéêîôùû]){1,}'{0,1}){1,})*)*$";
 ?>
 
 
@@ -63,9 +64,9 @@ $co=null;
                 <p>
                 <div>
                     <label for="pseudo">Pseudonyme: </label><input type="text" name="pseudo" placeholder="Entrez votre pseudo"<?php if(isset($_POST['pseudo'])){echo ('value ="'.$_POST['pseudo'].'"') ;} ?>
-                                                                   pattern="[a-z0-9]{4,}$"/><br/><br/>
+                                                                   pattern="[a-zA-Z0-9]{4,}$"/><br/><br/>
                     <label for="passe">Mot de passe: </label><input type="password" name="passe" placeholder="Entrez mot de passe"
-                                                                    pattern="[a-z0-9]{4,}$"/><br/><br/>
+                                                                    pattern="[a-zA-Z0-9]{4,}$"/><br/><br/>
                     <br/><br/>
                     <input class="btn btn-default" type="submit" name="valider" value="Se connecter"/>
                     <input class="btn btn-default" type="button" name="Accueil" value="Accueil"

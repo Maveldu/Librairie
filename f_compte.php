@@ -4,7 +4,7 @@ function f_compte($bdd, $charset = 'utf-8')
 {
 
     if (isset($_SESSION['id'])) {
-        $count = $bdd->prepare("SELECT COUNT(*) AS nbr FROM compte_client WHERE NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '" . $_SESSION['id'] . "')");
+        $count = $bdd->prepare("SELECT COUNT(*) AS nbr FROM client WHERE NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '" . $_SESSION['id'] . "')");
         $count->execute(array($_SESSION['id']));
         $req = $count->fetch(PDO::FETCH_ASSOC);
         if ($req['nbr'] != 0) {
