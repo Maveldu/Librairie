@@ -250,6 +250,7 @@ require_once 'f_compte.php';
                            href="#"><?php echo strtoupper($_SESSION['id']); ?>
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+							<li><a href="form_deconnexion.php">Mon Compte</a></li>
                             <li><a href="form_deconnexion.php">Se déconnecter</a></li>
                         </ul>
                     </li>

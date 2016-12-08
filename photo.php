@@ -54,7 +54,7 @@ require_once 'menu.php';
 
 // Constantes
 
-define('TARGET', "C:\wamp\www\lib\Vitrine\\");    // Repertoire cible
+define('TARGET', "C:\wamp\www\librairie\Vitrine\\");    // Repertoire cible
 define('MAX_SIZE', 100000);    // Taille max en octets du fichier
 define('WIDTH_MAX', 800);    // Largeur max de l'image en pixels
 define('HEIGHT_MAX', 800);    // Hauteur max de l'image en pixels
