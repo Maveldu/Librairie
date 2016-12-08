@@ -1,9 +1,7 @@
 ﻿<?php
-
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
 require_once 'f_compte.php';
-
 ?>
 <!DOCTYPE html>
 <html>

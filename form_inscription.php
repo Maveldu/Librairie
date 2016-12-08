@@ -87,8 +87,8 @@ require_once 'menu.php';
                 </fieldset>
 
 				 <fieldset>
-					<legend>Profesionel</legend>
-					<label class="text-base" for="Editeur">Je suis un editeur : *</label>
+					<legend>Professionnel</legend>
+					<label class="text-base" for="Editeur">Je suis un éditeur : *</label>
 					<input type="checkbox" name="Editeur" onclick="document.getElementById('formcache_Editeur').style.display = (this.checked? 'block':'none');" value = "Je suis un editeur"/>
 
 						<br/>	<br/>
@@ -101,7 +101,7 @@ require_once 'menu.php';
 					</div>
 
 					<input type="checkbox" name="Client_Pro" onclick="document.getElementById('formcache_ClienPro').style.display = (this.checked? 'block':'none');" value = "Je suis un client professionel"/>
-					<label class="text-base" for="Client_Pro">Je suis un client professionel : *</label>
+					<label class="text-base" for="Client_Pro">Je suis un client professionnel : *</label>
 
 								<br/>	<br/>	<br/>
 
