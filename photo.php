@@ -55,7 +55,6 @@ require_once 'menu.php';
 // Constantes
 
 define('TARGET', "Vitrine\\");    // Repertoire cible
->>>>>>> origin/master
 define('MAX_SIZE', 100000);    // Taille max en octets du fichier
 define('WIDTH_MAX', 800);    // Largeur max de l'image en pixels
 define('HEIGHT_MAX', 800);    // Hauteur max de l'image en pixels
