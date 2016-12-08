@@ -85,39 +85,39 @@ require_once 'menu.php';
                     <label class="text-base" for="numero">Numero de téléphone: *</label>
                     <input type="text" name="numero" placeholder="Entrez numéro de tél" pattern="[0-9]{10,12}"/><br/><br/>
                 </fieldset>
+
 				 <fieldset>
 					<legend>Profesionel</legend>
 					<label class="text-base" for="Editeur">Je suis un editeur : *</label>
 					<input type="checkbox" name="Editeur" onclick="document.getElementById('formcache_Editeur').style.display = (this.checked? 'block':'none');" value = "Je suis un editeur"/>
 
 						<br/>	<br/>
-						
+
 					<div id="formcache_Editeur" style="display: none">
 					<label class="col-md-2 control-label" for="idEditeur">Id éditeur:</label>
-					<input required type="text" name="idEditeur" placeholder="Identifiant" pattern="[0-9]{4,6}"><br/><br/>
+					<input  type="text" name="idEditeur" placeholder="Identifiant" pattern="[0-9]{4,6}"/><br/><br/>
 					<label class="col-md-2 control-label" for="nomEditeur">Nom éditeur:</label>
-					<input required type="text" name="nomEditeur" placeholder="Nom" pattern="[A-Za-z]{1,}"><br/><br/>
+					<input  type="text" name="nomEditeur" placeholder="Nom" pattern="[A-Za-z]{1,}"/><br/><br/>
 					</div>
-						
+
 					<input type="checkbox" name="Client_Pro" onclick="document.getElementById('formcache_ClienPro').style.display = (this.checked? 'block':'none');" value = "Je suis un client professionel"/>
 					<label class="text-base" for="Client_Pro">Je suis un client professionel : *</label>
-					
-								<br/>	<br/>	<br/>	
-						
 
-					
+								<br/>	<br/>	<br/>
+
+
+
 					<div id="formcache_ClienPro" style="display: none">
 					<label class="col-md-2 control-label" for="siret">N° Siret :</label>
-					<input required type="text" name="siret" placeholder="Identifiant" pattern="[0-9]{14}"><br/><br/>
+					<input  type="text" name="siret" placeholder="Identifiant" pattern="[0-9]{14}"/><br/><br/>
 
 					</div>
-									
-				
+
+
 				 </fieldset>
                 <br/>
                 <input class="btn btn-default" type="submit" name="valider" value="S'inscrire"/>
-                <input class="btn btn-default" type="button" name="Retour" value="Retour"
-                       onclick="self.location.href='index.php'">
+                <input class="btn btn-default" type="button" name="Retour" value="Retour" onclick="self.location.href='index.php'"/>
                 </p>
             </form>
         <?php } ?>
@@ -185,45 +185,47 @@ if (isset($_POST['valider'])) {
         $i = 0;
         $text = "Merci de rentrer un mot de passe";
     }
-	
-	
+
+
 	if (isset($_POST['Editeur'])) {
 			if (empty($_POST['idEditeur']))
 		    {
-		  
+
 		         $i = 0;
 				$text = "Veuillez entrer votre identifiant d'éditeur";
 			}
-			
+
 	      if (empty($_POST['nomEditeur']))
 		    {
-		  
+
 		         $i = 0;
 				$text = "Veuillez entrer votre nom d'éditeur";
 			}
-		
+
 	}
 
 	if (isset($_POST['Client_Pro'])) {
 		  if (empty($_POST['siret']))
 		    {
-		  
+
 		         $i = 0;
 				$text = "Veuillez entrer votre Siret";
 			}
 	}
-	
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	
-	
-	
+
+
+
 	
     if ($i == 1) {
 
         $nb = $bdd->query('SELECT max(NUMERO_COMPTE) as max FROM compte');
+        $nbcom = $bdd->query('SELECT max(NUMERO_COMMANDE) as max FROM commande');
         $nb = $nb->fetch();
+        $nbcom = $nbcom->fetch();
         $bdd->exec('INSERT INTO compte(NUMERO_COMPTE, IDENTIFIANT, MOT_DE_PASSE, ADRESSE_MAIL, NUMERO_TELEPHONE, ADRESSE, CODE_POSTALE, VILLE) 
 					VALUES(
 					 \'' . strip_tags($nb['max'] + 1) . '\',
@@ -239,6 +241,24 @@ if (isset($_POST['valider'])) {
 					 \'' . strip_tags($nb['max'] + 1) . '\',
 					 \'' . strip_tags($_POST['nom']) . '\',
 					 \'' . strip_tags($_POST['prenom']) . '\')');
+        $bdd->exec('INSERT INTO commande(NUMERO_COMPTE, NUMERO_COMMANDE) 
+					VALUES(
+					 \'' . strip_tags($nb['max'] + 1) . '\',
+					 \'' . strip_tags($nbcom['max']+1) . '\')');
+
+        if (isset($_POST['Client_Pro'])) {
+            $bdd->exec('INSERT INTO compte_client_pro(NUMERO_COMPTE, NUMERO_PRO) 
+					VALUES(
+					 \'' . strip_tags($nb['max'] + 1) . '\',
+					 \'' . strip_tags($_POST['siret']) . '\')');
+        }
+        if (isset($_POST['Editeur'])) {
+            $bdd->exec('INSERT INTO editeur(N_COMPTE, ID_EDITEUR, NOM) 
+					VALUES(
+					 \'' . strip_tags($nb['max'] + 1) . '\',
+					 \'' . strip_tags($_POST['idEditeur'] + 1) . '\',
+					 \'' . strip_tags($_POST['nomEditeur']) . '\')');
+        }
 
         echo "<p> Vous êtes bien inscris ! </p>";
 
