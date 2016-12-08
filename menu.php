@@ -1,15 +1,14 @@
-﻿<!DOCTYPE html>
-<html>
-<link rel="icon" type="image/png" href="favicon.png"/>
-
-
-<?php
+﻿<?php
 
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
 require_once 'f_compte.php';
 
 ?>
+<!DOCTYPE html>
+<html>
+<link rel="icon" type="image/png" href="favicon.png"/>
+
 
 <head>
     <title>Librairie</title>

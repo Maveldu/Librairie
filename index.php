@@ -1,6 +1,3 @@
-<html>
-<link rel="icon" type="image/png" href="favicon.png"/>
-</html>
 <?php
 session_start();
 require_once 'fonc_bdd.php';
@@ -8,6 +5,9 @@ $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Librairie"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
 ?>
+<html>
+<link rel="icon" type="image/png" href="favicon.png"/>
+</html>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <br/><br/><br/>
     <div class="carousel-inner" role="listbox">

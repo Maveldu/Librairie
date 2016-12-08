@@ -219,7 +219,7 @@ if (isset($_POST['valider'])) {
 
 
 
-	
+
     if ($i == 1) {
 
         $nb = $bdd->query('SELECT max(NUMERO_COMPTE) as max FROM compte');
