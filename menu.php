@@ -239,7 +239,7 @@ require_once 'f_compte.php';
                         <ul class="dropdown-menu">
                             <li><a href="form_creer_admin.php">Admin</a></li>
                             <li><a href="form_compte_client_pro.php">Client pro</a></li>
-                            <li><a href="form_compte_fourniseur.php">Fournisseur</a></li>
+                            <li><a href="form_compte_fournisseur.php">Fournisseur</a></li>
                         </ul>
                     </li>
 					
