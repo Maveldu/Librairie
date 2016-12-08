@@ -11,7 +11,7 @@ require_once 'menu.php';
 <body>
 <br/><br/><br/>
 <?php
-$sql = "select IDENTIFIANT, NUMERO_COMPTE, ADRESSE, CODE_POSTALE, VILLE , ID_EDITEUR, NOM from compte join editeur using (NUMERO_COMPTE) where NUMERO_PRO is not null and VALIDE not in (select VALIDE from editeur where VALIDE = 0) ";
+$sql = "select IDENTIFIANT, NUMERO_COMPTE, ADRESSE, CODE_POSTALE, VILLE , ID_EDITEUR, NOM from compte join editeur using (NUMERO_COMPTE) where ID_EDITEUR is not null and VALIDE not in (select VALIDE from editeur where VALIDE = 0) ";
 $tab = AfficherTabCompte($sql, $bdd);
 
    function AfficherTabCompte($sql, $bdd){
@@ -35,8 +35,6 @@ $tab = AfficherTabCompte($sql, $bdd);
 		echo'</tr>';
     }
   echo '</table>';
-  
-
 	}
   }
 ?>
