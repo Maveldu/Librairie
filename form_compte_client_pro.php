@@ -11,7 +11,7 @@ require_once 'menu.php';
 <body>
 <br/><br/><br/>
 <?php
-$sql = "select IDENTIFIANT, NUMERO_COMPTE, ADRESSE, CODE_POSTALE, VILLE , NUMERO_PRO from compte join compte_client_pro using (NUMERO_COMPTE) where NUMERO_PRO is not null and VALIDE not in (select VALIDE from compte_client_pro where VALIDE = 0) ";
+$sql = "select IDENTIFIANT, NUMERO_COMPTE, ADRESSE, CODE_POSTALE, VILLE , NUMERO_PRO from compte join compte_client_pro using (NUMERO_COMPTE) where VALIDE = 0 ";
 $tab = AfficherTabCompte($sql, $bdd);
 
    function AfficherTabCompte($sql, $bdd){
@@ -22,9 +22,10 @@ $tab = AfficherTabCompte($sql, $bdd);
 	 {
 		 
 	echo '<table border="1">';
-	echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTALE</td><td>VILLE</td><td>NUMERO_PRO</td></tr>';
+	echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTALE</td><td>VILLE</td><td>NUMERO_PRO</td><td>VALIDE</td><td>REFUSE</td></tr>';
 	foreach($tab as $key => $ligne){
 		echo '<tr>';
+		
 			foreach($ligne as $cle =>$valeur){
 				echo '<td>';
 				echo "$cle : ";
@@ -32,6 +33,17 @@ $tab = AfficherTabCompte($sql, $bdd);
 				echo $valeur."\t";
 				echo'</td>';
       }
+				?>		
+				 <td>
+				<input class="btn btn-default" type="submit" name="valider" value="Valider"/>
+				 </td>
+				<?php
+				?>
+				 <td>
+                <input class="btn btn-default" type="button" name="refuser" value="Refuser"/>
+				 </td>
+				<?php
+			
 		echo'</tr>';
     }
   echo '</table>';
