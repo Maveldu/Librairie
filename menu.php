@@ -230,6 +230,7 @@ require_once 'f_compte.php';
                             <li><a href="form_ajouter_auteur.php">Auteur</a></li>
                             <li><a href="form_csvImport.php">CSV</a></li>
                             <li><a href="photo.php">Photo vitrine</a></li>
+							<li><a href="Note.php">Note</a></li>
                         </ul>
                     </li>
 					
