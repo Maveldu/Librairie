@@ -20,7 +20,9 @@ $tab = AfficherTabCompte($sql, $bdd);
     $tab = $bdd->query($sql,PDO::FETCH_ASSOC);
 	 while ($test = $tab->fetch())
 	 {
-		 
+		
+
+		
 	echo '<table border="1">';
 	echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTALE</td><td>VILLE</td><td>NUMERO_PRO</td><td>VALIDE</td><td>SUPPRIMER</td></tr>';
 	foreach($tab as $key => $ligne){
@@ -31,6 +33,7 @@ $tab = AfficherTabCompte($sql, $bdd);
 				echo "$cle : ";
 				$valeur = utf8_encode($valeur);
 				echo $valeur."\t";
+					
 				echo'</td>';
       }
 				?>		
@@ -63,5 +66,10 @@ if (isset($_POST['supprimer'])) :
     echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
 endif;
 ?>
+
+
+
+
+
 </body>
 </html>
