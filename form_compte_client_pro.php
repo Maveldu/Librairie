@@ -65,6 +65,8 @@ if (isset($_POST['supprimer'])) :
     $bdd->exec('DELETE FROM compte WHERE NUMERO_COMPTE in (select NUMERO_COMPTE from compte_client_pro where NUMERO_PRO= "' . $_POST['delete'] . '"');
     echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
 endif;
+echo "<br/>";
+echo "PAGE NON TERMINÉ";
 ?>
 
 
