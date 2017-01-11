@@ -7,9 +7,11 @@ require_once 'menu.php';
 <html>
 <head><TITLE>test</TITLE>
 	<meta charset="utf-8">
+	<script type="text/javascript" src="script_compte_pro.js"></script>
 </head>
 <body>
 <br/><br/><br/>
+<form method="post">
 <?php
 $sql = "select IDENTIFIANT, NUMERO_COMPTE, ADRESSE, CODE_POSTALE, VILLE , NUMERO_PRO from compte join compte_client_pro using (NUMERO_COMPTE) where VALIDE = 0 ";
 $tab = AfficherTabCompte($sql, $bdd);
@@ -18,6 +20,8 @@ $tab = AfficherTabCompte($sql, $bdd);
 	   
 	 
     $tab = $bdd->query($sql,PDO::FETCH_ASSOC);
+	
+	/*
 	 while ($test = $tab->fetch())
 	 {
 		
@@ -51,14 +55,30 @@ $tab = AfficherTabCompte($sql, $bdd);
     }
   echo '</table>';
 	}
+	*/
+	echo '<table border="1">';
+	echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTALE</td><td>VILLE</td><td>NUMERO_PRO</td><td>VALIDE</td><td>SUPPRIMER</td></tr>';
+	foreach($tab as $utilisateur){
+		
+          echo "<tr>
+                  <td>",$utilisateur['IDENTIFIANT'],"</td>
+                  <td>",$utilisateur['NUMERO_COMPTE'],"</td>
+                  <td>",$utilisateur['ADRESSE'],"</td>
+                  <td>",$utilisateur['CODE_POSTALE'],"</td>
+                  <td>",$utilisateur['VILLE'],"</td>
+                  <td>",$utilisateur['NUMERO_PRO'],"</td>
+                  <td><input class='btn btn-default' type='submit' name='valider_",$utilisateur['NUMERO_COMPTE'],"' value='Valider' id='val' onClick=\"getname(this)\"/></td>
+				  <td><input class='btn btn-default' type='submit' name='supprimer_",$utilisateur['NUMERO_COMPTE'],"' value='Supprimer' id='suppr' onClick=\"getname(this)\"/></td>
+                </tr>";
+          }
+		    echo '</table>';
   }
 ?>
 
 <?php
 
 if (isset($_POST['valider'])) :
-    $bdd->exec('UPDATE compte_client_pro set VALIDE = 1 where NUMERO_COMPTE= ');
-    echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
+ 
 endif;
 if (isset($_POST['supprimer'])) :
     $bdd->exec('DELETE FROM compte_client_pro WHERE NUMERO_PRO="' . $_POST['delete'] . '"');
@@ -70,8 +90,27 @@ echo "PAGE NON TERMINÉ";
 ?>
 
 
-
-
+<input type="checkbox" name="hidd" id="hid" value="" hidden>
+<?php 
+if(isset($_POST['hidd'])){
+	$explode = explode("_",$_POST['hidd']);
+    $id_user = $explode[1];
+	echo $id_user;
+	if($explode[0] == "valider"){
+		$sql = "UPDATE compte_client_pro set VALIDE = 1 where NUMERO_COMPTE=".$id_user;
+		$bdd->exec($sql);
+		echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
+	}	
+	else if($explode[0] == "supprimer"){
+		$sql1 = "DELETE FROM compte_client_pro WHERE NUMERO_COMPTE=".$id_user;
+		$bdd->exec($sql1);
+		echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
+		echo "supprimer";
+	}
+	
+	}
+?>
+</form>
 
 </body>
 </html>
