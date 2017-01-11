@@ -127,7 +127,24 @@ require_once 'f_compte.php';
             width: 100%;
             height: 400px;
         }
-
+		
+		
+		#monlogo  img{
+		-webkit-transition:-webkit-transform .9s; // Chrome Safari
+		-moz-transition:-moz-transform .9s;       // Mozilla
+		-o-transition:-o-transform .9s;           // Opéra
+		-ms-transition:-ms-transform .9s;         // IE
+		transition:transform .9s;
+		}
+ 
+		#monlogo  img:hover{
+		-webkit-transform:rotate(720deg); 
+		-moz-transform:rotate(720deg);
+		-o-transform:rotate(720deg); 
+		-ms-transform:rotate(720deg); 
+		transform:rotate(720deg);
+		}
+		
         .navbar {
             font-family: Montserrat, sans-serif;
             margin-bottom: 0;
@@ -196,7 +213,10 @@ require_once 'f_compte.php';
 <nav class="navbar navbar-default navbar-fixed-top">
     <div style="float:left; width:70px;">
         <a href="index.php">
+		
+			<div id="monlogo"> 
             <img src="logo.png" alt="logo" title="Accueil" id="logo" width="60" height="60"/>
+			</div>
         </a>
     </div>
     <div class="container-fluid">
@@ -218,6 +238,9 @@ require_once 'f_compte.php';
                         <li><a href="form_afficher_article.php">Article</a></li>
                         <li><a href="afficher_editeur.php">Éditeur</a></li>
                         <li><a href="afficher_auteur.php">Auteur</a></li>
+						<?php if (f_compte($bdd)=="admin") { ?>
+						<li><a href="afficher_auteur.php">Vitrine</a></li>
+						<?php } ?>
                     </ul>
                 </li>
 					<?php if (f_compte($bdd)=="admin") { ?>
