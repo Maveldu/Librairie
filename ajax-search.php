@@ -125,13 +125,10 @@ if (count($result) == 0) {
             }
             if (f_compte($bdd)=="client") {
                 echo "
-                  
-              <form  action='form_ajouter_article_panier.php'  method='post'>      
-             
-              <input  type='texte' name='ajouter article' style ='float: right' size='5' value='1'/>
-               <input  type='image' src='addart.png' name='ajouter article' align='right' width='32' height='32' value='" . $isbn . "'/>
-            </form>";
-             
+                <form  action='#'  method='post'>
+                	<input type='texte' name='add_nb_".$isbn."' style ='float: right' size='5' value='1'/>
+                	<input type='image' src='addart.png' name='add_isbn' alt='Submit' align='right' width='32' height='32' value='".$isbn."'/>
+                </form>";
             }
             ?>
             <p class="prixqte"><?php echo "prix:" . $post['PRIX'] . "€ Qté:";
@@ -153,6 +150,47 @@ if (count($result) == 0) {
         <hr/>
         <?php
     }
+}
+
+
+if(isset($_POST["add_isbn"])){
+	$req="SELECT NUMERO_COMMANDE FROM commande WHERE upper(ETAT_COMMANDE) = 'EN COURS' and NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '" . $_SESSION['id'] . "')";
+	$TabNumCommande=LireDonneesPDO1($bdd, $req);
+	$N_Commande=$TabNumCommande['0']['NUMERO_COMMANDE'];
+	
+	$qte_add=$_POST["add_nb_".$_POST["add_isbn"]];
+	if($qte_add<1){$qte_add=1;}
+	
+	$req="SELECT quantite_stock from article where isbn_issn=".$_POST['add_isbn'];
+	$tab_qte_stock=LireDonneesPDO1($bdd, $req);
+	$qte_stock=$tab_qte_stock['0']['quantite_stock'];
+	
+	$req="SELECT qte_cmdee FROM lig_cde WHERE numero_commande=".$N_Commande." and isbn_issn=".$_POST['add_isbn']."";
+	$tab_qte_cmdee=LireDonneesPDO1($bdd, $req);
+	if(isset($tab_qte_cmdee)){
+		$qte_cmdee=$tab_qte_cmdee['0']['qte_cmdee'];
+	}else{
+		$qte_cmdee=0;
+	}
+	
+	if($qte_add+$qte_cmdee<=$qte_stock-1){
+		$qte_finale=$qte_add+$qte_cmdee;
+	}else if($qte_stock>1){
+		$qte_finale=$qte_stock-1;
+	}else{
+		$qte_finale=0;
+	}
+	
+	if($qte_cmdee>0 && $qte_finale>0){
+		$req="UPDATE lig_cde SET qte_cmdee = ".$qte_finale." WHERE numero_commande=".$N_Commande." and isbn_issn=".$_POST['add_isbn']."";
+		$res=ExecuterRequete($bdd, $req);
+	}else if($qte_finale>0){
+		$req="SELECT prix from article where isbn_issn=".$_POST['add_isbn'];
+		$tab_prix=LireDonneesPDO1($bdd, $req);
+		$prix=$tab_prix['0']['prix'];
+		$req="INSERT INTO lig_cde VALUES(".$N_Commande.",".$_POST['add_isbn'].",".$qte_finale.",".$prix.");";
+		$res=ExecuterRequete($bdd, $req);
+	}
 }
 
 // <?php $post['TITRE'] ? >

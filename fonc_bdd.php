@@ -39,7 +39,11 @@ function LireDonneesPDO1($conn, $req)
     foreach ($conn->query($req, PDO::FETCH_ASSOC) as $ligne) {
         $tab[$i++] = $ligne;
     }
-    return $tab;
+    if(isset($tab)){
+   		return $tab;
+    }else{
+    	return null;
+    }
 }
 
 //---------------------------------------------------------------------------------------------
