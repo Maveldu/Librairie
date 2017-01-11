@@ -27,7 +27,7 @@ require_once 'menu.php';
             <label for="q">Rechercher un article</label><input type="text" name="q" id="q"/>
         </p>
     </form>
-    <div id="results" style="min-width:300px;"><?php include 'ajax-search.php' ?></div>
+    <div id="results" style="min-width:300px;"><?php include 'ajax-search-vitrine.php' ?></div>
 </fieldset>
 
 
@@ -63,7 +63,7 @@ endif;
 
             $.ajax({
                 type: 'POST', // envoi des données en GET ou POST
-                url: 'ajax-search.php', // url du fichier de traitement
+                url: 'ajax-search-vitrine.php', // url du fichier de traitement
                 data: {q: $(this).val(), radio: j}, // données à envoyer en  GET ou POST
                 beforeSend: function () { // traitements JS à faire AVANT l'envoi
                     $field.after('<img src="ajax-loader.gif" alt="loader" id="ajax-loader" />'); // ajout d'un loader pour signifier l'action
