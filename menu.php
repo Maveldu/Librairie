@@ -239,7 +239,7 @@ require_once 'f_compte.php';
                         <li><a href="afficher_editeur.php">Éditeur</a></li>
                         <li><a href="afficher_auteur.php">Auteur</a></li>
 						<?php if (f_compte($bdd)=="admin") { ?>
-						<li><a href="afficher_auteur.php">Vitrine</a></li>
+						<li><a href="afficher_vitrine.php">Vitrine</a></li>
 						<?php } ?>
                     </ul>
                 </li>
