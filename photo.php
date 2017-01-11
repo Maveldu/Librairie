@@ -13,17 +13,21 @@ require_once 'menu.php';
     <br/><br/>
     <body>
 
-
     <!-- Debut du formulaire -->
     <form enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
         <fieldset>
             <legend>Formulaire</legend>
-            <p>
+            <div>
                 <label for="fichier_a_uploader" title="Recherchez le fichier à uploader !">Envoyer le fichier :</label>
 
                 <input name="fichier" type="file" id="fichier_a_uploader"/>
                 <input type="submit" name="submit" value="Uploader"/>
-            </p>
+            </div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="ISBN">ISBN:</label>
+				<input required type="text" name="isbn" placeholder="ISBN"/><br/>
+				<br/>
+			</div>
         </fieldset>
     </form>
     <!-- Fin du formulaire -->
@@ -54,7 +58,7 @@ require_once 'menu.php';
 
 // Constantes
 
-define('TARGET', "Vitrine\\");    // Repertoire cible
+define('TARGET', "couverture\\");    // Repertoire cible
 define('MAX_SIZE', 100000);    // Taille max en octets du fichier
 define('WIDTH_MAX', 800);    // Largeur max de l'image en pixels
 define('HEIGHT_MAX', 800);    // Hauteur max de l'image en pixels
@@ -67,7 +71,11 @@ $infosImg = array();
 $extension = '';
 $message = '';
 $nomImage = '';
-
+$isbn = ''; 
+if(isset($_POST['isbn']))
+{
+	$isbn = $_POST['isbn'];
+}
 /************************************************************
  * Creation du repertoire cible si inexistant
  *************************************************************/
@@ -112,6 +120,14 @@ if (!empty($_POST))
                             echo '7';
                             // Sinon on affiche une erreur systeme
                             $message = 'Problème lors de l\'upload !';
+                        }
+						if (rename(TARGET.$_FILES['fichier']['name'], TARGET.$isbn.".jpg")) {
+                            $message = 'renommage réussi !';
+                        } else {
+                            echo $_FILES['fichier']['name'];           
+							echo $isbn;
+                            // Sinon on affiche une erreur systeme
+                            $message = 'Problème lors du renommage !';
                         }
                     } else {
                         $message = 'Une erreur interne a empêché l\'uplaod de l\'image';

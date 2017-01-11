@@ -1,11 +1,12 @@
 <?php
 $session = "librairie4.0";
 $usr = "root";
-$mdp = "root";
+$mdp = "";
 function OuvrirConnexion($session, $usr, $mdp)
 {
     try {
         $conn = new PDO("mysql:host=localhost;dbname=$session", $usr, $mdp);
+		$conn->exec("SET CHARACTER SET utf8");
         /*		foreach($conn->query($req) as $row) {
                     print_r($row);
 
