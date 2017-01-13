@@ -282,6 +282,10 @@ require_once 'f_compte.php';
                         <ul class="dropdown-menu">
 							<li><a href="MonCompte.php">Mon Compte</a></li>
                             <li><a href="form_deconnexion.php">Se déconnecter</a></li>
+							<?php if (f_compte($bdd)=="admin") { ?>
+							<li><a href="afficher_vitrine.php">Message</a></li>
+							<li><a href="afficher_vitrine.php">Gestion de compte</a></li>
+							<?php } ?>
                         </ul>
                     </li>
                     <li class="dropdown">
