@@ -154,7 +154,7 @@ if (count($result) == 0) {
 
 
 if(isset($_POST["add_isbn"])){
-	$req="SELECT NUMERO_COMMANDE FROM commande WHERE upper(ETAT_COMMANDE) = 'EN COURS' and NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '" . $_SESSION['id'] . "')";
+	$req="SELECT NUMERO_COMMANDE FROM commande WHERE upper(ETAT_COMMANDE)='EN COURS' and NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT ='".$_SESSION['id']."')";
 	$TabNumCommande=LireDonneesPDO1($bdd, $req);
 	$N_Commande=$TabNumCommande['0']['NUMERO_COMMANDE'];
 	

@@ -11,18 +11,13 @@ $titre = "Mon Panier"; //Titre à changer sur chaque page
 require_once 'menu.php';
 
 if(isset($_POST["valider"])){
-	print("coucou");
 	$req="UPDATE commande SET etat_commande='EN ATTENTE DE VALIDATION' WHERE etat_commande='EN COURS' and NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '".$_SESSION['id']."')";
 	$res=ExecuterRequete($bdd, $req);
-	print($res);
 	$req="SELECT max(NUMERO_COMMANDE) as max FROM commande";
 	$TabMaxCmdee=LireDonneesPDO1($bdd, $req);
 	$MaxCmdee=$TabMaxCmdee['0']['max']+1;
 	$req="INSERT INTO commande(NUMERO_COMPTE, NUMERO_COMMANDE) VALUES((SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '".$_SESSION['id']."'),".$MaxCmdee.")";
 	$res=ExecuterRequete($bdd, $req);
-	print("-".$res);
-	print("coucou");
-	//valider
 }else{
 	$req="SELECT NUMERO_COMMANDE FROM commande WHERE upper(ETAT_COMMANDE) = 'EN COURS' and NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '" . $_SESSION['id'] . "')";
 	$TabNumCommande=LireDonneesPDO1($bdd, $req);
