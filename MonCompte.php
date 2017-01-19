@@ -17,7 +17,7 @@ require_once 'menu.php';
 <body>
 <fieldset>
 <center>
-    <div id ="maincontent"> 
+
 	
 		<fieldset>
 		<legend>Compte</legend>
@@ -109,72 +109,91 @@ require_once 'menu.php';
 					}	
 				?>
 		</fieldset>
-		<fieldset>
-			<legend>Mes commandes : </legend>
-
-			<label class="text-base" for="rue">Numero Commande :</label>
-			<?php
-			$count = $bdd->prepare("SELECT NUMERO_COMMANDE FROM compte join commande using(NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
-			$count->execute(array($_SESSION['id']));
-			$req = $count->fetch(PDO::FETCH_ASSOC);
-
-			foreach ($req as $test) {
-				echo $test;
-			}
-			?>
-			<br/>
-			<label class="text-base" for="rue">Date Commande :</label>
-			<?php
-			$count = $bdd->prepare("SELECT DATE_COMMANDE FROM compte join commande using(NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
-			$count->execute(array($_SESSION['id']));
-			$req = $count->fetch(PDO::FETCH_ASSOC);
-
-			foreach ($req as $test) {
-				echo $test;
-			}
-			?>
-			<br/>
-			<label class="text-base" for="rue">Etat Commande :</label>
-			<?php
-			$count = $bdd->prepare("SELECT ETAT_COMMANDE FROM compte join commande using(NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
-			$count->execute(array($_SESSION['id']));
-			$req = $count->fetch(PDO::FETCH_ASSOC);
-
-			foreach ($req as $test) {
-				if ($test=="EN COURS") {
-					echo "<p><font color =\"blue\">";
-					echo $test;
-					echo "</font></p>";
-				}
-				if ($test=="EN ATTENTE DE VALIDATION") {
-					echo "<p><font color =\"orange\">";
-					echo $test;
-					echo "</font></p>";
-				}
-				else if ($test=="VALIDE") {
-					echo "<p><font color =\"green\">";
-					echo $test;
-					echo "<br/>";
-					echo "Votre commande est prête à être enlevée.";
-					echo "</font></p>";
-
-				}
-				if ($test=="REFUSE") {
-					echo "<p><font color =\"red\">";
-					echo $test;
-					echo "<br/>";
-					echo "Votre commande a été refusée. Allez voir votre boîte mail pour plus d'informations.";
-					echo "</font></p>";
-
-				}
-
-			}
-
-
-			?>
-
-		</fieldset>
 	</center>
+<center>
+<fieldset>
+	<legend>Mes commandes :</legend>
+<?php
+$sql = "select NUMERO_COMMANDE, NUMERO_COMPTE, DATE_COMMANDE, ETAT_COMMANDE from commande join compte using(NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'";
+$tab = AfficherTabCompte($sql, $bdd);
+
+function AfficherTabCompte($sql, $bdd){
+
+
+	$tab = $bdd->query($sql,PDO::FETCH_ASSOC);
+
+
+
+	foreach($tab as $utilisateur){
+		          echo "<fieldset>";
+		          echo "Numero de commande : ";
+                  echo $utilisateur['NUMERO_COMMANDE'];
+		          echo "<br/>";
+		          echo "Date de la commande : ";
+		          if ($utilisateur['DATE_COMMANDE'] == null) {
+			      echo "Non définie";
+		          }
+				  else {
+
+					  echo $utilisateur['DATE_COMMANDE'];
+				  }
+		          echo "<br/>";
+		          echo "Etat de la commande : ";
+
+
+		if ($utilisateur['ETAT_COMMANDE']=="EN COURS") {
+			echo "<p><font color =\"blue\">";
+			echo "Prêt à ajouter des articles";
+			echo "</font></p>";
+		}
+		if ($utilisateur['ETAT_COMMANDE']=="EN ATTENTE DE VALIDATION") {
+			echo "<p><font color =\"orange\">";
+			echo "En attente de validation";
+			echo "</font></p>";
+		}
+		else if ($utilisateur['ETAT_COMMANDE']=="VALIDE") {
+			echo "<p><font color =\"green\">";
+			echo "Validé";
+			echo "<br/>";
+			echo "Votre commande est prête à être enlevée.";
+			echo "</font></p>";
+			$commande=$utilisateur['NUMERO_COMMANDE'];
+			echo "<input class=\"btn btn-default\" type=\"button\" name=\"Accueil\" value=\"Supprimer la commande\"
+                           onclick=\"self.location.href='supprimer_commande.php?com=$commande'\">";
+			echo "<br/>";
+
+		}
+		if ($utilisateur['ETAT_COMMANDE']=="REFUSE") {
+			echo "<p><font color =\"red\">";
+			echo "Refusé";
+			echo "<br/>";
+			echo "Votre commande a été refusée. Allez voir votre boîte mail pour plus d'informations.";
+			echo "</font></p>";
+			$commande=$utilisateur['NUMERO_COMMANDE'];
+			echo "<input class=\"btn btn-default\" type=\"button\" name=\"Accueil\" value=\"Supprimer la commande\"
+                           onclick=\"self.location.href='supprimer_commande.php?com=$commande'\">";
+			echo "<br/>";
+		}
+		echo "____________________________";
+		echo "</fieldset>";
+
+	}
+
+}
+?>
+
+<?php
+
+if (isset($_POST['valider'])) :
+echo "test";
+endif;
+if (isset($_POST['supprimer'])) :
+
+	echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
+endif;
+?>
+	</fieldset>
+</center>
 </body>
 </html>
 
