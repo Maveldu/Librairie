@@ -1,4 +1,6 @@
-
+<html>
+<link rel="icon" type="image/png" href="favicon.png"/>
+</html>
 <?php
 session_start();
 require_once 'fonc_bdd.php';
@@ -106,6 +108,76 @@ require_once 'menu.php';
 						echo $test;
 					}	
 				?>
-		</fieldset>			
+		</fieldset>
+		<fieldset>
+			<legend>Mes commandes : </legend>
+
+			<label class="text-base" for="rue">Numero Commande :</label>
+			<?php
+			$count = $bdd->prepare("SELECT NUMERO_COMMANDE FROM compte join commande using(NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
+			$count->execute(array($_SESSION['id']));
+			$req = $count->fetch(PDO::FETCH_ASSOC);
+
+			foreach ($req as $test) {
+				echo $test;
+			}
+			?>
+			<br/>
+			<label class="text-base" for="rue">Date Commande :</label>
+			<?php
+			$count = $bdd->prepare("SELECT DATE_COMMANDE FROM compte join commande using(NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
+			$count->execute(array($_SESSION['id']));
+			$req = $count->fetch(PDO::FETCH_ASSOC);
+
+			foreach ($req as $test) {
+				echo $test;
+			}
+			?>
+			<br/>
+			<label class="text-base" for="rue">Etat Commande :</label>
+			<?php
+			$count = $bdd->prepare("SELECT ETAT_COMMANDE FROM compte join commande using(NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
+			$count->execute(array($_SESSION['id']));
+			$req = $count->fetch(PDO::FETCH_ASSOC);
+
+			foreach ($req as $test) {
+				if ($test=="EN COURS") {
+					echo "<p><font color =\"blue\">";
+					echo $test;
+					echo "</font></p>";
+				}
+				if ($test=="EN ATTENTE DE VALIDATION") {
+					echo "<p><font color =\"orange\">";
+					echo $test;
+					echo "</font></p>";
+				}
+				else if ($test=="VALIDE") {
+					echo "<p><font color =\"green\">";
+					echo $test;
+					echo "<br/>";
+					echo "Votre commande est prête à être enlevée.";
+					echo "</font></p>";
+
+				}
+				if ($test=="REFUSE") {
+					echo "<p><font color =\"red\">";
+					echo $test;
+					echo "<br/>";
+					echo "Votre commande a été refusée. Allez voir votre boîte mail pour plus d'informations.";
+					echo "</font></p>";
+
+				}
+
+			}
+
+
+			?>
+
+		</fieldset>
 	</center>
 </body>
+</html>
+
+
+
+

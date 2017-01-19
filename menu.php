@@ -285,6 +285,7 @@ require_once 'f_compte.php';
 							<?php if (f_compte($bdd)=="admin") { ?>
 							<li><a href="afficher_vitrine.php">Message</a></li>
 							<li><a href="afficher_vitrine.php">Gestion de compte</a></li>
+                                <li><a href="form_commande.php">Gestion des commandes</a></li>
 							<?php } ?>
                         </ul>
                     </li>

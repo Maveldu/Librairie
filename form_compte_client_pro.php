@@ -1,3 +1,6 @@
+<html>
+<link rel="icon" type="image/png" href="favicon.png"/>
+</html>
 <?php
 session_start();
 require_once 'fonc_bdd.php';
@@ -5,7 +8,7 @@ $bdd = OuvrirConnexion($session, $usr, $mdp);
 require_once 'menu.php';
 ?>
 <html>
-<head><TITLE>test</TITLE>
+<head>
 	<meta charset="utf-8">
 	<script type="text/javascript" src="script_compte_pro.js"></script>
 </head>

@@ -11,13 +11,26 @@ $titre = "Mon Panier"; //Titre à changer sur chaque page
 require_once 'menu.php';
 
 if(isset($_POST["valider"])){
-	$req="UPDATE commande SET etat_commande='EN ATTENTE DE VALIDATION' WHERE etat_commande='EN COURS' and NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '".$_SESSION['id']."')";
+	echo "<br/><br/>&nbsp&nbsp&nbsp";
+	echo "Votre commande a été validée par nos services. Vous pourrez récuperer vos articles à la librairie une fois celle-ci accepté.";
+	echo "<br/><br/><b>&nbsp&nbsp&nbsp";
+	echo "Pour plus d'informations rendez-vous dans la page \"Mon Compte\" pour voir son statut.";
+	echo "</b>";
+	$date = date("d-m-Y");
+	$req="UPDATE commande SET etat_commande='EN ATTENTE DE VALIDATION', date_commande = '".$date."' WHERE etat_commande='EN COURS' and NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '".$_SESSION['id']."')";
 	$res=ExecuterRequete($bdd, $req);
 	$req="SELECT max(NUMERO_COMMANDE) as max FROM commande";
 	$TabMaxCmdee=LireDonneesPDO1($bdd, $req);
 	$MaxCmdee=$TabMaxCmdee['0']['max']+1;
 	$req="INSERT INTO commande(NUMERO_COMPTE, NUMERO_COMMANDE) VALUES((SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '".$_SESSION['id']."'),".$MaxCmdee.")";
 	$res=ExecuterRequete($bdd, $req);
+	?>
+	<br/><br/>
+	<input class="btn btn-default" type="button" name="Retour à l'accueil" value="Retour à l'accueil"
+		   onclick="self.location.href='index.php'">
+	<input class="btn btn-default" type="button" name="Mon Compte" value="Mon Compte"
+		   onclick="self.location.href='MonCompte.php'">
+	<?php
 }else{
 	$req="SELECT NUMERO_COMMANDE FROM commande WHERE upper(ETAT_COMMANDE) = 'EN COURS' and NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '" . $_SESSION['id'] . "')";
 	$TabNumCommande=LireDonneesPDO1($bdd, $req);
@@ -148,7 +161,8 @@ if(isset($_POST["valider"])){
 		</div>
 		<div style="text-align:right;padding-right:15px;">
 	    	<input class="btn btn-primary" type="submit" name="valider" value="Valider la commande" />
-		</div>	
+		</div>
+
 	</form>
 <?php
 	    }
