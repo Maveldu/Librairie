@@ -86,7 +86,7 @@ if (isset($_POST['supprimer'])) :
     echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
 endif;
 echo "<br/>";
-echo "PAGE NON TERMINÉ";
+
 ?>
 
 
