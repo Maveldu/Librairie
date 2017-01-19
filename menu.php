@@ -13,9 +13,15 @@ require_once 'f_compte.php';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css.map">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js""></script>
+	<script type="text/javascript" src="bootstrap/js/npm.js""></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
+	
     <style>
         body {
             font: 400 15px/1.8 Lato, sans-serif;
@@ -239,7 +245,7 @@ require_once 'f_compte.php';
                         <li><a href="afficher_editeur.php">Éditeur</a></li>
                         <li><a href="afficher_auteur.php">Auteur</a></li>
 						<?php if (f_compte($bdd)=="admin") { ?>
-						<li><a href="afficher_auteur.php">Vitrine</a></li>
+						<li><a href="afficher_vitrine.php">Vitrine</a></li>
 						<?php } ?>
                     </ul>
                 </li>
@@ -276,6 +282,10 @@ require_once 'f_compte.php';
                         <ul class="dropdown-menu">
 							<li><a href="MonCompte.php">Mon Compte</a></li>
                             <li><a href="form_deconnexion.php">Se déconnecter</a></li>
+							<?php if (f_compte($bdd)=="admin") { ?>
+							<li><a href="afficher_vitrine.php">Message</a></li>
+							<li><a href="afficher_vitrine.php">Gestion de compte</a></li>
+							<?php } ?>
                         </ul>
                     </li>
                     <li class="dropdown">
