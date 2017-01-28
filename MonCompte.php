@@ -12,7 +12,7 @@ require_once 'menu.php';
 
 	
 <br/><br/>
-<br/><br/>
+<br/>
 
 <body>
 <fieldset>

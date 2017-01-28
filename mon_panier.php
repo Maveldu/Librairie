@@ -9,8 +9,12 @@ require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Mon Panier"; //Titre à changer sur chaque page
 require_once 'menu.php';
-
 if(isset($_POST["valider"])){
+
+	//$sql = "UPDATE article set QUANTITE_STOCK = QUANTITE_STOCK-1 where ISBN_ISSN =";
+	//$bdd->exec($sql);
+
+
 	echo "<br/><br/>&nbsp&nbsp&nbsp";
 	echo "Votre commande a été validée par nos services. Vous pourrez récuperer vos articles à la librairie une fois celle-ci accepté.";
 	echo "<br/><br/><b>&nbsp&nbsp&nbsp";
@@ -37,8 +41,9 @@ if(isset($_POST["valider"])){
 		foreach ($tab as $utilisateur) {
 			$mail = $utilisateur['ADRESSE_MAIL'];
 		}
-	echo $mail;
-}else{
+	echo $e['ISBN_ISSN'];
+}
+else{
 	$req="SELECT NUMERO_COMMANDE FROM commande WHERE upper(ETAT_COMMANDE) = 'EN COURS' and NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '" . $_SESSION['id'] . "')";
 	$TabNumCommande=LireDonneesPDO1($bdd, $req);
 	$N_Commande=$TabNumCommande['0']['NUMERO_COMMANDE'];
@@ -74,6 +79,7 @@ if(isset($_POST["valider"])){
 		$infosArticle[$e['ISBN_ISSN']]['QTE_CMDEE']=$e['QTE_CMDEE'];
 		$infosArticle[$e['ISBN_ISSN']]['PRIX_UNIT']=$e['PRIX_UNIT'];
 	}
+
 	?>
 	<form method="post" action="#">
 		<div class="panel panel-default">
@@ -120,10 +126,11 @@ if(isset($_POST["valider"])){
 		    	<?php
 		    	$total=0;
 		    	foreach ($infosArticle as $isbn=>$infos){
+
 		    		echo "<tr>";
 		    		echo "<td>";
 		    		echo $isbn;
-		    		echo "</td>";
+					echo "</td>";
 		    		echo "<td>";
 		    		echo "<img src=".$infos['LIEN_COUV']." style='height:150px;'>";
 		    		echo "</td>";
@@ -152,6 +159,8 @@ if(isset($_POST["valider"])){
 		    		echo "</tr>";
 		    		$total+=$infos['PRIX_UNIT']*$infos['QTE_CMDEE'];
 		    	}
+
+
 		    	?>
 		    	<tr>
 		    		<td colspan='6'>
@@ -175,3 +184,4 @@ if(isset($_POST["valider"])){
 	    }
 }
 ?>
+

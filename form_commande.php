@@ -18,7 +18,7 @@ require_once 'menu.php';
 <center>
     <form method="post">
         <?php
-            $sql = "select NUMERO_COMMANDE, NUMERO_COMPTE, DATE_COMMANDE, ETAT_COMMANDE from commande where ETAT_COMMANDE = \"EN ATTENTE DE VALIDATION\" ";
+            $sql = "select NOM, PRENOM, NUMERO_COMMANDE, NUMERO_COMPTE, DATE_COMMANDE, ETAT_COMMANDE from commande join client using (NUMERO_COMPTE) where ETAT_COMMANDE = \"EN ATTENTE DE VALIDATION\" ";
             $tab = AfficherTabCompte($sql, $bdd);
 
             function AfficherTabCompte($sql, $bdd)
@@ -26,12 +26,16 @@ require_once 'menu.php';
                 $tab = $bdd->query($sql, PDO::FETCH_ASSOC);
                 echo '<table border="1">';
                 echo '<h1>Commandes en attentes :</h1>';
-                echo '<tr> <td> NUMERO_COMMANDE</td> <td> NUMERO_COMPTE</td> <td> DATE_COMMANDE</td><td>ETAT_COMMANDE</td><td>VALIDE</td><td>REFUSE</td></tr>';
+                echo '<tr> <td>NOM</td> <td>PRENOM</td><td>NUMERO_COMPTE</td> <td>NUMERO_COMMANDE</td> <td>DATE_COMMANDE</td><td>ETAT_COMMANDE</td><td>VALIDE</td><td>REFUSE</td></tr>';
                 foreach ($tab as $utilisateur) {
-
+                $numcom=$utilisateur['NUMERO_COMMANDE'];
                     echo "<tr>
-                  <td>", $utilisateur['NUMERO_COMMANDE'], "</td>
+                  <td>", $utilisateur['NOM'], "</td>
+                  <td>", $utilisateur['PRENOM'], "</td>
                   <td>", $utilisateur['NUMERO_COMPTE'], "</td>
+                  <td>", $utilisateur['NUMERO_COMMANDE'],"
+                  <input class=\"btn btn-default\" type=\"button\" name=\"Accueil\" value=\"Voir\" onclick=\"self.location.href = 'voir_commande.php?num=$numcom'\"/>
+</td>
                   <td>", $utilisateur['DATE_COMMANDE'], "</td>
                   <td>", $utilisateur['ETAT_COMMANDE'], "</td>
                   <td><input class='btn btn-default' type='submit' name='valider_", $utilisateur['NUMERO_COMMANDE'], "' value='Valider' id='val' onClick=\"getname(this)\"/></td>

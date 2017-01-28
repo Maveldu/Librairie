@@ -16,10 +16,15 @@ echo "<br/>";
 $commande = $_GET['com'];
 $test = $_GET['sup'];
 if ($test == 1) {
+    //Commande annulé
     $sql = "UPDATE commande set ETAT_COMMANDE =\"ANNULE\" where NUMERO_COMPTE = (select NUMERO_COMPTE from compte WHERE IDENTIFIANT = '" . $_SESSION['id'] . "') and NUMERO_COMMANDE ='" . $commande . "'";
+    $bdd->exec($sql);
+
+    $sql = "DELETE from lig_cde where NUMERO_COMMANDE ='" . $commande . "'";
     $bdd->exec($sql);
 }
 else {
+    //Commande supprimer de l'historique
     $sql = "UPDATE commande set ETAT_COMMANDE =\"TERMINE\" where NUMERO_COMPTE = (select NUMERO_COMPTE from compte WHERE IDENTIFIANT = '" . $_SESSION['id'] . "') and NUMERO_COMMANDE ='" . $commande . "'";
     $bdd->exec($sql);
 }
