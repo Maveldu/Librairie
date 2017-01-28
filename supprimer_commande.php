@@ -14,12 +14,16 @@ echo "<br/>";
 echo "<br/>";
 echo "<br/>";
 $commande = $_GET['com'];
-
-$sql = "DELETE FROM commande where NUMERO_COMPTE = (select NUMERO_COMPTE from compte WHERE IDENTIFIANT = '".$_SESSION['id']."') and NUMERO_COMMANDE ='".$commande."'";
-$bdd->exec($sql);
-
+$test = $_GET['sup'];
+if ($test == 1) {
+    $sql = "UPDATE commande set ETAT_COMMANDE =\"ANNULE\" where NUMERO_COMPTE = (select NUMERO_COMPTE from compte WHERE IDENTIFIANT = '" . $_SESSION['id'] . "') and NUMERO_COMMANDE ='" . $commande . "'";
+    $bdd->exec($sql);
+}
+else {
+    $sql = "UPDATE commande set ETAT_COMMANDE =\"TERMINE\" where NUMERO_COMPTE = (select NUMERO_COMPTE from compte WHERE IDENTIFIANT = '" . $_SESSION['id'] . "') and NUMERO_COMMANDE ='" . $commande . "'";
+    $bdd->exec($sql);
+}
 ?>
 <script language="javascript">
     setTimeout("location.href = 'MonCompte.php'",0);
 </script>
-

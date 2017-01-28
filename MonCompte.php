@@ -116,7 +116,7 @@ require_once 'menu.php';
 <?php
 $sql = "select NUMERO_COMMANDE, NUMERO_COMPTE, DATE_COMMANDE, ETAT_COMMANDE from commande join compte using(NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'";
 $tab = AfficherTabCompte($sql, $bdd);
-
+$cancel = 0;
 function AfficherTabCompte($sql, $bdd){
 
 
@@ -125,58 +125,72 @@ function AfficherTabCompte($sql, $bdd){
 
 
 	foreach($tab as $utilisateur){
-		          echo "<fieldset>";
-		          echo "Numero de commande : ";
-                  echo $utilisateur['NUMERO_COMMANDE'];
-		          echo "<br/>";
-		          echo "Date de la commande : ";
-		          if ($utilisateur['DATE_COMMANDE'] == null) {
-			      echo "Non définie";
-		          }
-				  else {
-
-					  echo $utilisateur['DATE_COMMANDE'];
-				  }
-		          echo "<br/>";
-		          echo "Etat de la commande : ";
-
-
-		if ($utilisateur['ETAT_COMMANDE']=="EN COURS") {
-			echo "<p><font color =\"blue\">";
-			echo "Prêt à ajouter des articles";
-			echo "</font></p>";
-		}
-		if ($utilisateur['ETAT_COMMANDE']=="EN ATTENTE DE VALIDATION") {
-			echo "<p><font color =\"orange\">";
-			echo "En attente de validation";
-			echo "</font></p>";
-		}
-		else if ($utilisateur['ETAT_COMMANDE']=="VALIDE") {
-			echo "<p><font color =\"green\">";
-			echo "Validé";
+		if ($utilisateur['ETAT_COMMANDE']=="EN COURS" or $utilisateur['ETAT_COMMANDE']=="EN ATTENTE DE VALIDATION" or $utilisateur['ETAT_COMMANDE']=="VALIDE" or $utilisateur['ETAT_COMMANDE']=="REFUSE") {
+			echo "<fieldset>";
+			echo "Numero : ";
+			echo "<b>";
+			echo $utilisateur['NUMERO_COMMANDE'];
+			echo "</b>";
+			echo "&nbsp";
+			echo "Date : ";
+			if ($utilisateur['DATE_COMMANDE'] == null) {
+				echo "<b>";
+				echo "Non définie";
+				echo "</b>";
+			} else {
+				echo "<b>";
+				echo $utilisateur['DATE_COMMANDE'];
+				echo "</b>";
+			}
 			echo "<br/>";
-			echo "Votre commande est prête à être enlevée.";
-			echo "</font></p>";
-			$commande=$utilisateur['NUMERO_COMMANDE'];
-			echo "<input class=\"btn btn-default\" type=\"button\" name=\"Accueil\" value=\"Supprimer la commande\"
-                           onclick=\"self.location.href='supprimer_commande.php?com=$commande'\">";
-			echo "<br/>";
+			echo "Etat : ";
 
-		}
-		if ($utilisateur['ETAT_COMMANDE']=="REFUSE") {
-			echo "<p><font color =\"red\">";
-			echo "Refusé";
-			echo "<br/>";
-			echo "Votre commande a été refusée. Allez voir votre boîte mail pour plus d'informations.";
-			echo "</font></p>";
-			$commande=$utilisateur['NUMERO_COMMANDE'];
-			echo "<input class=\"btn btn-default\" type=\"button\" name=\"Accueil\" value=\"Supprimer la commande\"
-                           onclick=\"self.location.href='supprimer_commande.php?com=$commande'\">";
-			echo "<br/>";
-		}
-		echo "____________________________";
-		echo "</fieldset>";
+			if ($utilisateur['ETAT_COMMANDE'] == "EN COURS") {
+				echo "<font color =\"blue\">";
+				echo "Prêt à ajouter des articles";
+				echo "</font>";
+				echo "<br/>";
+			}
+			if ($utilisateur['ETAT_COMMANDE'] == "EN ATTENTE DE VALIDATION") {
+				echo "<font color =\"orange\">";
+				echo "En attente de validation";
+				echo "</font>";
+				echo "<br/>";
+				$commande = $utilisateur['NUMERO_COMMANDE'];
+				$cancel = 1;
+				echo "<input class=\"btn btn-default\" type=\"button\" name=\"Accueil\" value=\"Annuler la commande\"
+                           onclick=\"self.location.href='supprimer_commande.php?com=$commande&amp;sup=$cancel'\">";
+				echo "</br>";
+			} else if ($utilisateur['ETAT_COMMANDE'] == "VALIDE") {
+				echo "<font color =\"green\">";
+				echo "Validé";
+				echo "<br/>";
+				echo "Votre commande est prête à être enlevée.";
+				echo "</font>";
+				echo "<br/>";
+				$commande = $utilisateur['NUMERO_COMMANDE'];
+				$cancel = 0;
+				echo "<input class=\"btn btn-default\" type=\"button\" name=\"Accueil\" value=\"Retirer de l'historique\"
+                           onclick=\"self.location.href='supprimer_commande.php?com=$commande&amp;sup=$cancel'\">";
+				echo "<br/>";
 
+			}
+			if ($utilisateur['ETAT_COMMANDE'] == "REFUSE") {
+				echo "<font color =\"red\">";
+				echo "Refusé";
+				echo "<br/>";
+				echo "Votre commande a été refusée. Allez voir votre boîte mail pour plus d'informations.";
+				echo "</font>";
+				echo "<br/>";
+				$commande = $utilisateur['NUMERO_COMMANDE'];
+				$cancel = 0;
+				echo "<input class=\"btn btn-default\" type=\"button\" name=\"Accueil\" value=\"Retirer de l'historique\"
+                           onclick=\"self.location.href='supprimer_commande.php?com=$commande&amp;sup=$cancel'\">";
+				echo "<br/>";
+			}
+			echo "____________________________";
+			echo "</fieldset>";
+		}
 	}
 
 }

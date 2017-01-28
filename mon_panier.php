@@ -31,6 +31,13 @@ if(isset($_POST["valider"])){
 	<input class="btn btn-default" type="button" name="Mon Compte" value="Mon Compte"
 		   onclick="self.location.href='MonCompte.php'">
 	<?php
+	$sql = "select ADRESSE_MAIL from compte join compte_gerantp using (NUMERO_COMPTE)";
+	$tab = LireDonneesPDO1($bdd, $sql);
+		$tab = $bdd->query($sql, PDO::FETCH_ASSOC);
+		foreach ($tab as $utilisateur) {
+			$mail = $utilisateur['ADRESSE_MAIL'];
+		}
+	echo $mail;
 }else{
 	$req="SELECT NUMERO_COMMANDE FROM commande WHERE upper(ETAT_COMMANDE) = 'EN COURS' and NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '" . $_SESSION['id'] . "')";
 	$TabNumCommande=LireDonneesPDO1($bdd, $req);
