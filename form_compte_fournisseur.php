@@ -39,20 +39,6 @@ $sql = "select IDENTIFIANT, NUMERO_COMPTE, ADRESSE, CODE_POSTALE, VILLE , ID_EDI
   }
 ?>
 
-<?php
-
-if (isset($_POST['valider'])) :
- 
-endif;
-if (isset($_POST['supprimer'])) :
-    $bdd->exec('DELETE FROM editeur WHERE NUMERO_PRO="' . $_POST['delete'] . '"');
-    $bdd->exec('DELETE FROM compte WHERE NUMERO_COMPTE in (select NUMERO_COMPTE from editeur where ID_EDITEUR= "' . $_POST['delete'] . '"');
-    echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
-endif;
-echo "<br/>";
-?>
-
-
 <input type="checkbox" name="hidd" id="hid" value="" hidden>
 <?php 
 if(isset($_POST['hidd'])){
@@ -60,7 +46,7 @@ if(isset($_POST['hidd'])){
     $id_user = $explode[1];
 	echo $id_user;
 	if($explode[0] == "valider"){
-		$sql = "UPDATE editeur set VALIDE = 1 where NUMERO_COMPTE=".$id_user;
+		$sql = "UPDATE compte_client_pro set valide  = 1 where NUMERO_COMPTE=".$id_user;
 		$bdd->exec($sql);
 		echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
 	}	
@@ -73,10 +59,8 @@ if(isset($_POST['hidd'])){
 	
 	}
 ?>
-</form>
 <br><br>
 
-<form method="post">
 <?php 
 $sq2 = "select IDENTIFIANT, NUMERO_COMPTE, ADRESSE, CODE_POSTALE, VILLE , NUMERO_PRO, VALIDE from compte join editeur using (NUMERO_COMPTE) where VALIDE = 1 ";
 $tab = AfficherTabCompte2($sq2, $bdd);
@@ -98,23 +82,25 @@ function AfficherTabCompte2($sq2, $bdd){
                   <td>",$utilisateur['VILLE'],"</td>
                   <td>",$utilisateur['NUMERO_PRO'],"</td>
 				  <td>",$utilisateur['VALIDE'],"</td>
-				  <td><input class='btn btn-default' type='submit' name='attente_",$utilisateur['NUMERO_COMPTE'],"' value='ANNULE' id='val' onClick=\"getname(this)\"/></td>
+				  <td><input class='btn btn-default' type='submit' name='annuler_",$utilisateur['NUMERO_COMPTE'],"' value='Annuler' id='ann' onClick=\"getname2(this)\"/></td>
                 </tr>";
           }
 		    echo '</table>';
   }
 ?>
 
-<input type="checkbox" name="hidd" id="hid" value="" hidden>
+<input type="checkbox" name="hidde" id="hide" value="" hidden>
 <?php 
-if(isset($_POST['hidd'])){
-	$explode = explode("_",$_POST['hidd']);
+if(isset($_POST['hidde'])){
+	$explode = explode("_",$_POST['hidde']);
     $id_user = $explode[1];
 	echo $id_user;
-	if($explode[0] == "ANNULE"){
-		$sq3 = "UPDATE compte_client_pro set VALIDE = 0 where NUMERO_COMPTE=".$id_user;
-		$bdd->exec($sq3);
+	echo "<p> essaie </p>";
+	if($explode[0] == "annuler"){
+		$sq2 = "UPDATE compte_client_pro set valide = 0 where NUMERO_COMPTE=".$id_user;
+		$bdd->exec($sq2);
 		echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
+		echo "<p> essaie </p>";
 	}	
 	
 	}
