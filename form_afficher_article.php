@@ -10,7 +10,7 @@ require_once 'menu.php';
 ?>
 <br/><br/>
 <br/><br/>
-<fieldset>
+<fieldset width=90%>
     <legend>Liste des articles</legend>
     <p> Faire une recherche par: </p>
     <form method="post">

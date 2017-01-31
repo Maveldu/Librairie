@@ -14,6 +14,20 @@ require_once 'menu.php';
 </head>
 <body>
 <br/><br/><br/>
+
+<div class="box">
+
+	<a class="button" href="#popup1">Information sur la page</a>
+</div> 
+<div id="popup1" class="overlay">
+	<div class="popup">
+		<h2>Gestion compte client pro </h2>
+		<a class="close" href="#">×</a>
+		<div class="content">
+			Ici, c'est la page de validation des compte client pro. En validant, le compte client pro sera acitf.
+		</div>
+	</div>
+</div>
 <center>
 <form method="post">
 <?php
