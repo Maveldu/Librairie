@@ -8,7 +8,6 @@ require_once 'menu.php';
 $isbn = $_POST['isbn'];
 ?>
 <br/><br/>
-<br/><br/>
 <?php
 
 
@@ -31,42 +30,55 @@ if (file_exists($imgname)) {
 
 
 ?>
-<?php echo '<img src="./couverture/' . $img . '" style="width:400px;height:400px;padding:0px;border:1px;"/>'; ?>
+<center><table width=90%><td align=center>
 <?php echo '<h1 style="">' . $titre . '</h1>'; ?>
+<?php echo '<img src="./couverture/' . $img . '" style="width:400px;height:400px;padding:0px;border:1px;"/>'; ?>
+</center>
+</td>
+<td  width=400%>
+<center>
 <?php
-echo "Date parution : ";
+echo '<table border="1" width=60%>';
+	echo '<tr> <td align=center> <h5>INFORMATION </h5></td> <td align=center><h5>RESUME</h5></td></tr>';
+echo "<tr>";
+echo "<td width=35%><b>Date parution : </b>";
 echo($post['DATE_PARUTION']);
 echo "<br/>";
-echo "N°ISBN_ISSN : ";
+echo "<b>N°ISBN_ISSN : </b>";
 echo($post['ISBN_ISSN']);
 echo "<br/>";
-echo "Résumé : ";
-echo($post['RESUME']);
-echo "<br/>";
-echo "Quantité : ";
+echo "<b>Quantité : </b>";
 echo($post['QUANTITE_STOCK']);
 echo "<br/>";
-echo "Prix : ";
+echo "<b>Prix : </b>";
 echo($post['PRIX']);
 echo "<br/>";
-echo "Nom éditeur : ";
+echo "<b>Nom éditeur : </b>";
 echo($post['NOM_EDITEUR']);
 echo "<br/>";
-echo "N° Collection : ";
+echo "<b>N° Collection : </b>";
 echo($post['NUMERO_COLLECTION']);
 echo "<br/>";
-echo "Collection : ";
+echo "<b>Collection : </b>";
 echo($post['COLLECTION']);
 echo "<br/>";
-echo "Support : ";
+echo "<b>Support : </b>";
 echo($post['SUPPORT']);
 echo "<br/>";
-echo "Note gérant: ";
+echo "<b>Note gérant: </b>";
 echo($post['NOTE_GERANT']);
 echo "<br/>";
-echo "Mot clés ";
+echo "<b> Mot clés </b>";
 echo($post['MOTCLES']);
-echo "<br/>";
+echo "</td><br/>";
+echo "<td><b>Résumé : </b>";
+echo($post['RESUME']);
+echo "<br/></td></tr>";
+echo "<table>";
+echo "</center>";
 ?>
+</td>
+<br>
+<br>
 
 
