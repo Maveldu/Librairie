@@ -98,7 +98,7 @@ function AfficherTabCompte2($sq2, $bdd){
 
 <input type="checkbox" name="hidde" id="hide" value="" hidden>
 <?php 
-if(isset($_POST['hidde'])){
+if(isset($_POST['hidde'])){				
 	$explode = explode("_",$_POST['hidde']);
     $id_user = $explode[1];
 	echo $id_user;
