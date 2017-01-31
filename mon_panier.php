@@ -28,6 +28,31 @@ if(isset($_POST["valider"])){
 	$MaxCmdee=$TabMaxCmdee['0']['max']+1;
 	$req="INSERT INTO commande(NUMERO_COMPTE, NUMERO_COMMANDE) VALUES((SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '".$_SESSION['id']."'),".$MaxCmdee.")";
 	$res=ExecuterRequete($bdd, $req);
+	//nom client
+	$req="SELECT NOM as nomclient FROM client where NUMERO_COMPTE =(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '".$_SESSION['id']."')";
+	$nom=LireDonneesPDO1($bdd, $req);
+	$nomcli=$nom['0']['nomclient'];
+	//prenom client
+	$req="SELECT PRENOM as prenomclient FROM client where NUMERO_COMPTE =(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '".$_SESSION['id']."')";
+	$prenom=LireDonneesPDO1($bdd, $req);
+	$prenomcli=$prenom['0']['prenomclient'];
+	//numeroclient
+	$req="SELECT NUMERO_COMPTE as numcompte FROM client where NUMERO_COMPTE =(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '".$_SESSION['id']."')";
+	$numerocompte=LireDonneesPDO1($bdd, $req);
+	$numecompte=$numerocompte['0']['numcompte'];
+	//contenu de la commande
+	$MaxCmdee=$MaxCmdee-1;
+	$sql = "select Couverture, NUMERO_COMMANDE, ISBN_ISSN, QTE_CMDEE, PRIX_UNIT from lig_cde join article using (ISBN_ISSN) WHERE NUMERO_COMMANDE = '$MaxCmdee'";
+	$tab = LireDonneesPDO1($bdd, $sql);
+	   $tab = $bdd->query($sql, PDO::FETCH_ASSOC);
+	foreach ($tab as $article) {
+		$couverture = $article['Couverture'];
+		$img = $article['ISBN_ISSN']. ".jpg";
+		 $numero_commande = $article['NUMERO_COMMANDE'];
+		 $isbn_issn = $article['ISBN_ISSN'];
+		 $qte_cmdee = $article['QTE_CMDEE'];
+		 $prix_unit = $article['PRIX_UNIT'];
+	}
 	?>
 	<br/><br/>
 	<input class="btn btn-default" type="button" name="Retour à l'accueil" value="Retour à l'accueil"
@@ -41,7 +66,15 @@ if(isset($_POST["valider"])){
 		foreach ($tab as $utilisateur) {
 			$mail = $utilisateur['ADRESSE_MAIL'];
 		}
-	echo $e['ISBN_ISSN'];
+	//mail
+	$to      = $mail; //mail de l'administrateur
+	$subject = 'Commmande d\'article(s) n°'.$MaxCmdee.'.';
+	$message = 'Bonjour, le client '.$nomcli.' '.$prenomcli.' n°'.$numecompte.' souhaiterai commander le(s) article(s) suivant(s) : 
+	Couverture : '.$couverture.'
+	Numero commande : '.$numero_commande.' ISBN : '.$isbn_issn. ' Quantité commandée : '.$qte_cmdee.' Prix : '.$prix_unit.'.';
+	$headers = 'From: LibrairieAssociative175@ne-pas-repondre.fr';
+
+	mail($to, $subject, $message, $headers);
 }
 else{
 	$req="SELECT NUMERO_COMMANDE FROM commande WHERE upper(ETAT_COMMANDE) = 'EN COURS' and NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '" . $_SESSION['id'] . "')";

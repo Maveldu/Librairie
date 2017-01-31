@@ -14,7 +14,7 @@ require_once 'menu.php';
 
 echo "<br/>";
 echo "<br/>";
-echo "<br/>";
+
 echo "<h1>";
 echo "<b>";
 echo "Contenu de la commande : ";
@@ -51,4 +51,6 @@ foreach($tab as $contenu) {
 ?>
 <input class="btn btn-default" type="button" name="Retour" value="Retour"
                                 onclick="self.location.href='form_commande.php'"></div>
+<br/>
+<br/>
 </html>
