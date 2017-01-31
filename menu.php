@@ -26,8 +26,14 @@ require_once 'f_compte.php';
         body {
             font: 400 15px/1.8 Lato, sans-serif;
             color: #777;
-        }
-
+			background-color:white;
+			background-image:url(fond.jpg);
+			background-repeat:no-repeat;
+			background-attachment:fixed;
+			center top no-repeat;
+			position: relative;
+		}
+		
         h3, h4 {
             margin: 10px 0 30px 0;
             letter-spacing: 10px;
@@ -216,6 +222,7 @@ require_once 'f_compte.php';
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+<div id="background">
 <nav class="navbar navbar-default navbar-fixed-top">
     <div style="float:left; width:70px;">
         <a href="index.php">
