@@ -126,10 +126,6 @@ require_once 'menu.php';
 </body>
 </html>
 
-
-
-
-
 <!--VERIFICATION DU FORMULAIRE-->
 <?php
 if (isset($_POST['valider'])) {
@@ -213,12 +209,7 @@ if (isset($_POST['valider'])) {
 			}
 	}
 
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
 
     if ($i == 1) {
 
@@ -259,14 +250,18 @@ if (isset($_POST['valider'])) {
 					 \'' . strip_tags($_POST['idEditeur'] + 1) . '\',
 					 \'' . strip_tags($_POST['nomEditeur']) . '\')');
         }
-
-        echo "<p> Vous êtes bien inscris ! </p>";
+        $inscrit = "Vous êtes bien inscrit !";
+        echo '<script type="text/javascript">window.alert("'.$inscrit.'");</script>';
+        ?>
+<script language="javascript">
+    setTimeout("location.href = 'index.php'",1);
+</script>
+<?php
 
     } else {
         echo '<script type="text/javascript">window.alert("'.$text.'");</script>';
     }
 }
-
 ?>
 
 

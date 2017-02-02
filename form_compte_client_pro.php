@@ -1,3 +1,6 @@
+<html>
+<link rel="icon" type="image/png" href="favicon.png"/>
+</html>
 <?php
 session_start();
 require_once 'fonc_bdd.php';
@@ -5,7 +8,7 @@ $bdd = OuvrirConnexion($session, $usr, $mdp);
 require_once 'menu.php';
 ?>
 <html>
-<head><TITLE>test</TITLE>
+<head>
 	<meta charset="utf-8">
 	<script type="text/javascript" src="script_compte_pro.js"></script>
 </head>
@@ -40,20 +43,6 @@ $tab = AfficherTabCompte($sql, $bdd);
 		    echo '</table>';
   }
 ?>
-
-<?php
-
-if (isset($_POST['valider'])) :
- 
-endif;
-if (isset($_POST['supprimer'])) :
-    $bdd->exec('DELETE FROM compte_client_pro WHERE NUMERO_PRO="' . $_POST['delete'] . '"');
-    $bdd->exec('DELETE FROM compte WHERE NUMERO_COMPTE in (select NUMERO_COMPTE from compte_client_pro where NUMERO_PRO= "' . $_POST['delete'] . '"');
-    echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
-endif;
-echo "<br/>";
-?>
-
 
 <input type="checkbox" name="hidd" id="hid" value="" hidden>
 <?php 
@@ -100,27 +89,27 @@ function AfficherTabCompte2($sq2, $bdd){
                   <td>",$utilisateur['VILLE'],"</td>
                   <td>",$utilisateur['NUMERO_PRO'],"</td>
 				  <td>",$utilisateur['VALIDE'],"</td>
-				  <td><input class='btn btn-default' type='submit' name='attente_",$utilisateur['NUMERO_COMPTE'],"' value='ANNULE' id='val' onClick=\"getname(this)\"/></td>
+				  <td><input class='btn btn-default' type='submit' name='attente_",$utilisateur['NUMERO_COMPTE'],"' value='Annuler' id='val' onClick=\"getname2(this)\"/></td>
                 </tr>";
           }
 		    echo '</table>';
   }
 ?>
 
-<input type="checkbox" name="hidd" id="hid" value="" hidden>
+<input type="checkbox" name="hidde" id="hide" value="" hidden>
 <?php 
-if(isset($_POST['hidd'])){
-	$explode = explode("_",$_POST['hidd']);
+if(isset($_POST['hidde'])){				
+	$explode = explode("_",$_POST['hidde']);
     $id_user = $explode[1];
 	echo $id_user;
-	if($explode[0] == "ANNULE"){
-		$sq3 = "UPDATE compte_client_pro set VALIDE = 0 where NUMERO_COMPTE=".$id_user;
-		$bdd->exec($sq3);
+	if($explode[0] == "attente"){
+		$sq2 = "UPDATE compte_client_pro set VALIDE = 0 where NUMERO_COMPTE=".$id_user;
+		$bdd->exec($sq2);
 		echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
 	}	
-	
 	}
 ?>
+</form>
 </center>
 </body>
 </html>

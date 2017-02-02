@@ -85,31 +85,31 @@ if (count($result) == 0) {
                 </form>
 
 
-                <p class="isbn">ISBN/ISSN:<?php echo($isbn); ?></p>
+                <p class="isbn"><b>ISBN/ISSN: </b><?php echo($isbn); ?></p>
             </div>
             </br>
             <?php if (isset($post['DATE_PARUTION'])) {
-                ?><p class="date">Date de
-                parution:<?php echo date("d-m-Y", strtotime($post['DATE_PARUTION'])); ?></p><?php
+                ?><p class="date"><b>Date de
+                parution: </b><?php echo date("d-m-Y", strtotime($post['DATE_PARUTION'])); ?></p><?php
             } ?>
             <?php if (isset($post['NOM_EDITEUR'])) {
-                ?><p class="editeur"><?php echo 'editeur:' . $post['NOM_EDITEUR']; ?></p><?php
+                ?><p class="editeur"><?php echo "<p><b>Editeur: </b></p>" . $post['NOM_EDITEUR']; ?></p><?php
             }
             $result2 = $bdd->query('SELECT NOM_AUTEUR, PRENOM_AUTEUR FROM auteur WHERE ID_AUTEUR = (SELECT ID_AUTEUR FROM ecrire WHERE ISBN_ISSN =' . $isbn . ') ');
             while ($post2 = $result2->fetch()) {
                 if (isset($post2['NOM_AUTEUR'])) {
-                    echo "<p class='auteur'>auteur:" . $post2['NOM_AUTEUR'] . " " . $post2['PRENOM_AUTEUR'] . "</p>";
+                    echo "<p class='auteur'><b>Auteur:</b>" . $post2['NOM_AUTEUR'] . " " . $post2['PRENOM_AUTEUR'] . "</p>";
                 }
             }
 
             if ($post['COLLECTION'] != ''){
-            ?><p class="collection">Collection: <?php echo $post['COLLECTION'] . ", ";
+            ?><p class="collection"><b>Collection: </b> <?php echo $post['COLLECTION'] . ", ";
                 }
                 if ($post['NUMERO_COLLECTION'] != '0') {
-                    ?> numero: <?php echo $post['NUMERO_COLLECTION'] . ", ";
+                    ?> <b>Numéro: </b><?php echo $post['NUMERO_COLLECTION'] . ", ";
                 }
                 if ($post['SUPPORT'] != '') {
-                    ?> version <?php echo $post['SUPPORT'];
+                    ?> <b>Version: </b><?php echo $post['SUPPORT'];
                 } ?></p>
 
             <?php
@@ -131,7 +131,7 @@ if (count($result) == 0) {
                 </form>";
             }
             ?>
-            <p class="prixqte"><?php echo "prix:" . $post['PRIX'] . "€ Qté:";
+            <p class="prixqte"><?php echo "<b> Prix:  </b>" . $post['PRIX'] . "<b> € <br><br> Qantité en stock : </b>";
                 if ($post['QUANTITE_STOCK'] != '') {
                     echo $post['QUANTITE_STOCK'];
                 } else echo '0'; ?></p>
@@ -140,11 +140,11 @@ if (count($result) == 0) {
                 <?php echo $post['RESUME']; ?>
                 </p><?php }
             if ($post['NOTE_GERANT'] != ''){
-            ?><p class="note">Note du gérant: <?php echo $post['NOTE_GERANT'];
+            ?><p class="note"><b>Note du gérant: </b> <?php echo $post['NOTE_GERANT'];
                 } ?></p>
             <?php
             if ($post['MOTCLES'] != ''){
-            ?><p class="motcles">Mots-clés: <?php echo $post['MOTCLES'];
+            ?><p class="motcles"><b>Mots-clés: </b><?php echo $post['MOTCLES'];
                 } ?></p>
         </div>
         <hr/>
@@ -154,7 +154,7 @@ if (count($result) == 0) {
 
 
 if(isset($_POST["add_isbn"])){
-	$req="SELECT NUMERO_COMMANDE FROM commande WHERE upper(ETAT_COMMANDE) = 'EN COURS' and NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '" . $_SESSION['id'] . "')";
+	$req="SELECT NUMERO_COMMANDE FROM commande WHERE upper(ETAT_COMMANDE)='EN COURS' and NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT ='".$_SESSION['id']."')";
 	$TabNumCommande=LireDonneesPDO1($bdd, $req);
 	$N_Commande=$TabNumCommande['0']['NUMERO_COMMANDE'];
 	
