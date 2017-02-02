@@ -50,7 +50,7 @@ Temporary Items
 # Our files
 # =========================
 
-fonc_bdd.php
+/fonc_bdd.php
 /.idea/vcs.xml
 MonCompte.php
 .idea/workspace.xml
