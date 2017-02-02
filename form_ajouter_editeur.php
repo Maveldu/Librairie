@@ -59,7 +59,7 @@ require_once 'menu.php';
 
             <div class="form-group">
                 <label class="col-md-2 control-label" for="nomEditeur">Nom éditeur:</label>
-                <input required type="text" name="nomEditeur" placeholder="Nom" pattern="[A-Za-z]{1,}"><br/>
+                <input required type="text" name="nomEditeur" placeholder="Nom" pattern="[A-Za-z ]{1,}"><br/>
             </div>
 
             </p>

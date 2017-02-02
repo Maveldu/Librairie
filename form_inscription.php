@@ -254,9 +254,9 @@ if (isset($_POST['valider'])) {
         }
         if (isset($_POST['Editeur'])) {
 
-            $nbligne = $bdd->query('SELECT NOM_EDITEUR FROM compte_fournisseur WHERE N_COMPTE = NULL && ID_EDITEUR = \'' . $_POST['idEditeur'] . '\' ');
+            $nbligne = $bdd->query('SELECT NOM_EDITEUR FROM compte_fournisseur WHERE N_COMPTE is NULL && ID_EDITEUR = \'' . $_POST['idEditeur'] . '\' ');
             $nbligne = $nbligne->rowCount();
-            
+
             if ($nbligne != 0) {
                 $bdd->exec('UPDATE compte_fournisseur
 					SET N_COMPTE = 

@@ -10,7 +10,7 @@ $titre = "Librairie"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
 
 $auteurs = $bdd->query('SELECT NOM_AUTEUR, PRENOM_AUTEUR, ID_AUTEUR FROM auteur');
-$editeurs = $bdd->query('SELECT NOM, ID_EDITEUR FROM editeur');
+$editeurs = $bdd->query('SELECT NOM_EDITEUR, ID_EDITEUR FROM compte_fournisseur');
 ?>
 <style>
     #gauche {
@@ -58,7 +58,7 @@ $editeurs = $bdd->query('SELECT NOM, ID_EDITEUR FROM editeur');
                     <datalist id="editeur">
 
                         <?php while ($post = $editeurs->fetch()) {
-                            echo "<option label='" . $post['ID_EDITEUR'] . "'value='" . $post['NOM'] . "' >" . $post['NOM'] . "</option> ";
+                            echo "<option label='" . $post['ID_EDITEUR'] . "'value='" . $post['NOM_EDITEUR'] . "' >" . $post['NOM_EDITEUR'] . "</option> ";
                         } ?>
                     </datalist>
                     <br/><br/>

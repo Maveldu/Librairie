@@ -19,7 +19,7 @@ $isbn_issn = str_replace('-', '', $_POST['isbn']);
 
 $editeur = $_POST['editeur'];
 
-$editeurExist = $bdd->query('SELECT ID_EDITEUR FROM editeur WHERE NOM = "' . $editeur . '"');
+$editeurExist = $bdd->query('SELECT ID_EDITEUR FROM compte_fournisseur WHERE NOM = "' . $editeur . '"');
 $ligneResult = $editeurExist->rowCount();
 
 $isbnExist = $bdd->query('SELECT ISBN_ISSN FROM article WHERE ISBN_ISSN = "' . $isbn_issn . '"');
@@ -37,7 +37,7 @@ if (strlen($isbn_issn) == 10) {
 } else $isbnEditeur = $isbnEditeur[2];
 
 
-$rep = $bdd->query('SELECT ID_EDITEUR AS id FROM editeur WHERE NOM = "' . $editeur . '"');
+$rep = $bdd->query('SELECT ID_EDITEUR AS id FROM compte_fournisseur WHERE NOM = "' . $editeur . '"');
 $donnees = $rep->fetch();
 
 $idEditeur = ($donnees['id']);
