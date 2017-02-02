@@ -10,6 +10,7 @@ $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Mon Panier"; //Titre à changer sur chaque page
 require_once 'menu.php';
 if(isset($_POST["valider"])){
+	
 	$req = "SELECT max(NUMERO_COMMANDE) as max FROM commande";
 	$TabMaxCmdee = LireDonneesPDO1($bdd, $req);
 	$MaxCmdee = $TabMaxCmdee['0']['max'];
@@ -68,6 +69,10 @@ if(isset($_POST["valider"])){
 		$tab = $bdd->query($sql, PDO::FETCH_ASSOC);
 
 		$i = 0;
+		$message0="";
+		$message1="";
+		$message2="";
+		$message3="";
 		foreach ($tab as $article) {
 			$titre = $article['TITRE'];
 			$numero_commande = $article['NUMERO_COMMANDE'];
