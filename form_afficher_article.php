@@ -12,8 +12,8 @@ require_once 'menu.php';
 <br/><br/>
 <fieldset width=90%>
     <legend>Liste des articles</legend>
-    <p> Faire une recherche par: </p>
     <form method="post">
+    	<label> Faire une recherche par : </label>&nbsp;&nbsp;	
         <input id="radio" type="radio" name="radio" value="TITRE" checked> Titre
         <input id="radio" type="radio" name="radio" value="ISBN_ISSN"> ISBN/ISSN
         <input id="radio" type="radio" name="radio" value="NOM_EDITEUR"> Editeur
@@ -21,9 +21,8 @@ require_once 'menu.php';
         <input id="radio" type="radio" name="radio" value="MOTCLES"> Mots-clés
     </form>
     <form class="ajax" method="post" autocomplete="off">
-
         <p>
-            <label for="q">Rechercher un article</label><input type="text" name="q" id="q"/>
+            <label for="q">Rechercher un article</label>&nbsp;&nbsp;<input type="text" name="q" id="q"/>
         </p>
     </form>
     <div id="results" style="min-width:300px;"><?php include 'ajax-search.php' ?></div>
@@ -69,7 +68,7 @@ endif;
                 url: 'ajax-search.php', // url du fichier de traitement
                 data: {q: $(this).val(), radio: j}, // données à envoyer en  GET ou POST
                 beforeSend: function () { // traitements JS à faire AVANT l'envoi
-                    $field.after('<img src="ajax-loader.gif" alt="loader" id="ajax-loader" />'); // ajout d'un loader pour signifier l'action
+                    $field.after('&nbsp;&nbsp;<img src="ajax-loader.gif" alt="loader" id="ajax-loader" />'); // ajout d'un loader pour signifier l'action
                 },
                 success: function (data) { // traitements JS à faire APRES le retour d'ajax-search.php
                     $('#ajax-loader').remove(); // on enleve le loader

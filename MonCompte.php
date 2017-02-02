@@ -1,4 +1,6 @@
-
+<html>
+<link rel="icon" type="image/png" href="favicon.png"/>
+</html>
 <?php
 session_start();
 require_once 'fonc_bdd.php';
@@ -8,111 +10,212 @@ require_once 'menu.php';
 
 <html>
 
-	
+
 <br/><br/>
-<br/><br/>
+<br/>
 
 <body>
 <fieldset>
-<center>
-    <div id ="maincontent"> 
-	
+	<center>
+
+
 		<fieldset>
-		<legend>Compte</legend>
-		<label class="text-base" for="rue">Identifiant :</label>
-		<?php echo($_SESSION['id']); ?> <br/>
+			<legend>Compte</legend>
+			<label class="text-base" for="rue">Identifiant :</label>
+			<?php echo($_SESSION['id']); ?> <br/>
 		</fieldset>
-		
+
 		</br>
-		
+
 		<fieldset>
-		<legend>Coordonnées</legend>
-		<label class="text-base" for="rue">Nom :</label>
-		<?php if (f_compte($bdd)=="admin") { ?>
-		<?-<p> Admin </p>
-		<?php } ?>
-		<?php }else if (f_compt($bdd)=="gerant") ?>		
-		<p> Gérant </p>
-		<?php } ?>
-		
-		<?php else
-				$count = $bdd->prepare("SELECT NOM FROM from compte join compte_client using (NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
-				$count->execute(array($_SESSION['id']));
-				$req = $count->fetch(PDO::FETCH_ASSOC);
-				foreach ($req as $test) {
-						echo $test;
-				}	
-		?><br/>
-				
-		<label class="text-base" for="rue">Prénom :</label>			
-		<?php
-				$count = $bdd->prepare("SELECT PRENOM FROM compte_client join compte using(NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
-				$count->execute(array($_SESSION['id']));
-				$req = $count->fetch(PDO::FETCH_ASSOC);
-				
-					foreach ($req as $test) {
-						echo $test;
-					}	
-				?><br/>
-		
-		
-		<label class="text-base" for="rue">Adresse Mail : </label>			
-		<?php
-				$count = $bdd->prepare("SELECT ADRESSE_MAIL FROM compte WHERE IDENTIFIANT = '".$_SESSION['id']."'");
-				$count->execute(array($_SESSION['id']));
-				$req = $count->fetch(PDO::FETCH_ASSOC);
-				
-					foreach ($req as $test) {
-						echo $test;
-					}	
-				?><br/>
-				
-		<label class="text-base" for="rue">Numéro de télephone :</label>			
-		<?php
-				$count = $bdd->prepare("SELECT NUMERO_TELEPHONE FROM compte WHERE IDENTIFIANT = '".$_SESSION['id']."'");
-				$count->execute(array($_SESSION['id']));
-				$req = $count->fetch(PDO::FETCH_ASSOC);
-				
-					foreach ($req as $test) {
-						echo "0".$test;
-					}	
-				?><br/>
-				
-		</fieldset>		
-		
+			<legend>Coordonnées</legend>
+			<label class="text-base" for="rue">Nom :</label>
+			<?php
+
+			$count = $bdd->prepare("SELECT NOM FROM compte join client using(NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
+			$count = $bdd->prepare("SELECT NOM FROM from compte join compte_client using (NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
+
+			$count = $bdd->prepare("SELECT NOM FROM from compte join compte_client using (NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
+
+			$count->execute(array($_SESSION['id']));
+			$req = $count->fetch(PDO::FETCH_ASSOC);
+			foreach ($req as $test) {
+				echo $test;
+			}
+			?><br/>
+
+			<label class="text-base" for="rue">Prénom :</label>
+			<?php
+
+			$count->execute(array($_SESSION['id']));
+			$req = $count->fetch(PDO::FETCH_ASSOC);
+
+			foreach ($req as $test) {
+				echo $test;
+			}
+			?><br/>
+
+
+			<label class="text-base" for="rue">Adresse Mail : </label>
+			<?php
+			$count = $bdd->prepare("SELECT ADRESSE_MAIL FROM compte WHERE IDENTIFIANT = '".$_SESSION['id']."'");
+			$count->execute(array($_SESSION['id']));
+			$req = $count->fetch(PDO::FETCH_ASSOC);
+
+			foreach ($req as $test) {
+				echo $test;
+			}
+			?><br/>
+
+			<label class="text-base" for="rue">Numéro de télephone :</label>
+			<?php
+			$count = $bdd->prepare("SELECT NUMERO_TELEPHONE FROM compte WHERE IDENTIFIANT = '".$_SESSION['id']."'");
+			$count->execute(array($_SESSION['id']));
+			$req = $count->fetch(PDO::FETCH_ASSOC);
+
+			foreach ($req as $test) {
+				echo "0".$test;
+			}
+			?><br/>
+
+		</fieldset>
+
 		<fieldset>
-		<legend>Adresse Postale </legend>	
-		<label class="text-base" for="rue">Adresse :</label>
-		<?php
-				$count = $bdd->prepare("SELECT ADRESSE FROM compte WHERE IDENTIFIANT = '".$_SESSION['id']."'");
-				$count->execute(array($_SESSION['id']));
-				$req = $count->fetch(PDO::FETCH_ASSOC);
-				
-					foreach ($req as $test) {
-						echo $test;
+			<legend>Adresse Postale </legend>
+			<label class="text-base" for="rue">Adresse :</label>
+			<?php
+			$count = $bdd->prepare("SELECT ADRESSE FROM compte WHERE IDENTIFIANT = '".$_SESSION['id']."'");
+			$count->execute(array($_SESSION['id']));
+			$req = $count->fetch(PDO::FETCH_ASSOC);
+
+			foreach ($req as $test) {
+				echo $test;
+			}
+			?><br/>
+
+			<label class="text-base">Ville :</label>
+			<?php
+			$count = $bdd->prepare("SELECT VILLE FROM compte WHERE IDENTIFIANT = '".$_SESSION['id']."'");
+			$count->execute(array($_SESSION['id']));
+			$req = $count->fetch(PDO::FETCH_ASSOC);
+
+			foreach ($req as $test) {
+				echo $test;
+			}
+			?>	<br/>
+			<label class="text-base">Code Postale :</label>
+			<?php
+			$count = $bdd->prepare("SELECT CODE_POSTALE FROM compte WHERE IDENTIFIANT = '".$_SESSION['id']."'");
+			$count->execute(array($_SESSION['id']));
+			$req = $count->fetch(PDO::FETCH_ASSOC);
+
+			foreach ($req as $test) {
+				echo $test;
+			}
+			?>
+		</fieldset>
+	</center>
+	<center>
+		<fieldset>
+			<legend>Mes commandes :</legend>
+			<?php
+			$sql = "select NUMERO_COMMANDE, NUMERO_COMPTE, DATE_COMMANDE, ETAT_COMMANDE from commande join compte using(NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'";
+			$tab = AfficherTabCompte($sql, $bdd);
+			$cancel = 0;
+			function AfficherTabCompte($sql, $bdd){
+
+
+				$tab = $bdd->query($sql,PDO::FETCH_ASSOC);
+
+
+
+				foreach($tab as $utilisateur){
+					if ($utilisateur['ETAT_COMMANDE']=="EN COURS" or $utilisateur['ETAT_COMMANDE']=="EN ATTENTE DE VALIDATION" or $utilisateur['ETAT_COMMANDE']=="VALIDE" or $utilisateur['ETAT_COMMANDE']=="REFUSE") {
+						echo "<fieldset>";
+						echo "Numero : ";
+						echo "<b>";
+						echo $utilisateur['NUMERO_COMMANDE'];
+						echo "</b>";
+						echo "&nbsp";
+						echo "Date : ";
+						if ($utilisateur['DATE_COMMANDE'] == null) {
+							echo "<b>";
+							echo "Non définie";
+							echo "</b>";
+						} else {
+							echo "<b>";
+							echo $utilisateur['DATE_COMMANDE'];
+							echo "</b>";
+						}
+						echo "<br/>";
+						echo "Etat : ";
+
+						if ($utilisateur['ETAT_COMMANDE'] == "EN COURS") {
+							echo "<font color =\"blue\">";
+							echo "Prêt à ajouter des articles";
+							echo "</font>";
+							echo "<br/>";
+						}
+						if ($utilisateur['ETAT_COMMANDE'] == "EN ATTENTE DE VALIDATION") {
+							echo "<font color =\"orange\">";
+							echo "En attente de validation";
+							echo "</font>";
+							echo "<br/>";
+							$commande = $utilisateur['NUMERO_COMMANDE'];
+							$cancel = 1;
+							echo "<input class=\"btn btn-default\" type=\"button\" name=\"Accueil\" value=\"Annuler la commande\"
+                           onclick=\"self.location.href='supprimer_commande.php?com=$commande&amp;sup=$cancel'\">";
+							echo "</br>";
+						} else if ($utilisateur['ETAT_COMMANDE'] == "VALIDE") {
+							echo "<font color =\"green\">";
+							echo "Validé";
+							echo "<br/>";
+							echo "Votre commande est prête à être enlevée.";
+							echo "</font>";
+							echo "<br/>";
+							$commande = $utilisateur['NUMERO_COMMANDE'];
+							$cancel = 0;
+							echo "<input class=\"btn btn-default\" type=\"button\" name=\"Accueil\" value=\"Retirer de l'historique\"
+                           onclick=\"self.location.href='supprimer_commande.php?com=$commande&amp;sup=$cancel'\">";
+							echo "<br/>";
+
+						}
+						if ($utilisateur['ETAT_COMMANDE'] == "REFUSE") {
+							echo "<font color =\"red\">";
+							echo "Refusé";
+							echo "<br/>";
+							echo "Votre commande a été refusée. Allez voir votre boîte mail pour plus d'informations.";
+							echo "</font>";
+							echo "<br/>";
+							$commande = $utilisateur['NUMERO_COMMANDE'];
+							$cancel = 0;
+							echo "<input class=\"btn btn-default\" type=\"button\" name=\"Accueil\" value=\"Retirer de l'historique\"
+                           onclick=\"self.location.href='supprimer_commande.php?com=$commande&amp;sup=$cancel'\">";
+							echo "<br/>";
+						}
+						echo "____________________________";
+						echo "</fieldset>";
 					}
-					?><br/>
-					
-				<label class="text-base">Ville :</label>	
-				<?php
-				$count = $bdd->prepare("SELECT VILLE FROM compte WHERE IDENTIFIANT = '".$_SESSION['id']."'");
-				$count->execute(array($_SESSION['id']));
-				$req = $count->fetch(PDO::FETCH_ASSOC);
-				
-					foreach ($req as $test) {
-						echo $test;
-					}	
-				?>	<br/>
-				<label class="text-base">Code Postale :</label>	
-				<?php
-				$count = $bdd->prepare("SELECT CODE_POSTALE FROM compte WHERE IDENTIFIANT = '".$_SESSION['id']."'");
-				$count->execute(array($_SESSION['id']));
-				$req = $count->fetch(PDO::FETCH_ASSOC);
-				
-					foreach ($req as $test) {
-						echo $test;
-					}	
-				?>
-		</fieldset>			
+				}
+
+			}
+			?>
+
+			<?php
+
+			if (isset($_POST['valider'])) :
+				echo "test";
+			endif;
+			if (isset($_POST['supprimer'])) :
+
+				echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
+			endif;
+			?>
+		</fieldset>
 	</center>
 </body>
+</html>
+
+
+
+
