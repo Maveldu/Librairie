@@ -76,14 +76,14 @@ require_once 'menu.php';
 <?php
 if (isset($_POST['valider'])) {
     $idEditeur = $_POST['idEditeur'];
-    $idEditeurExist = $bdd->query('SELECT ID_EDITEUR FROM editeur WHERE ID_EDITEUR = "' . $idEditeur . '"');
+    $idEditeurExist = $bdd->query('SELECT ID_EDITEUR FROM compte_fournisseur WHERE ID_EDITEUR = "' . $idEditeur . '"');
     $ligneResult = $idEditeurExist->rowCount();
 
 
     if ($ligneResult == 1) {
         echo 'L\'éditeur que vous essayez de rentrer exise déjà';
     } else {
-        $req = $bdd->prepare('INSERT INTO editeur(ID_EDITEUR, NOM) VALUES(:idEditeur, :nomEditeur)');
+        $req = $bdd->prepare('INSERT INTO compte_fournisseur (ID_EDITEUR, NOM_EDITEUR) VALUES(:idEditeur, :nomEditeur)');
         $req->execute(array(
             'idEditeur' => strip_tags($_POST['idEditeur']),
             'nomEditeur' => strip_tags($_POST['nomEditeur'])));

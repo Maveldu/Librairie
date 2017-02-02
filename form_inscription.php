@@ -191,6 +191,13 @@ if (isset($_POST['valider'])) {
 				$text = "Veuillez entrer votre identifiant d'éditeur";
 			}
 
+            $nbligne = $bdd->query('SELECT NOM_EDITEUR FROM compte_fournisseur WHERE N_COMPTE = NULL && ID_EDITEUR = \'' . $_POST['idEditeur'] . '\' ');
+            $nbligne = $nbligne->rowCount();
+            if ($nbligne != 0) {
+                $i = 0;
+                $text = "Un compte a déjà étais crée avec cette identifiant";
+            }
+
 	      if (empty($_POST['nomEditeur']))
 		    {
 
@@ -208,6 +215,8 @@ if (isset($_POST['valider'])) {
 				$text = "Veuillez entrer votre Siret";
 			}
 	}
+
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -244,11 +253,26 @@ if (isset($_POST['valider'])) {
 					 \'' . strip_tags($_POST['siret']) . '\')');
         }
         if (isset($_POST['Editeur'])) {
-            $bdd->exec('INSERT INTO editeur(N_COMPTE, ID_EDITEUR, NOM) 
+
+            $nbligne = $bdd->query('SELECT NOM_EDITEUR FROM compte_fournisseur WHERE N_COMPTE = NULL && ID_EDITEUR = \'' . $_POST['idEditeur'] . '\' ');
+            $nbligne = $nbligne->rowCount();
+            
+            if ($nbligne != 0) {
+                $bdd->exec('UPDATE compte_fournisseur
+					SET N_COMPTE = 
+					 \'' . strip_tags($nb['max'] + 1) . '\'
+					where ID_EDITEUR = 
+					 \'' . strip_tags($_POST['idEditeur']) . '\'');
+            }
+            else {
+                $bdd->exec('INSERT INTO compte_fournisseur(N_COMPTE, ID_EDITEUR, NOM_EDITEUR) 
 					VALUES(
 					 \'' . strip_tags($nb['max'] + 1) . '\',
-					 \'' . strip_tags($_POST['idEditeur'] + 1) . '\',
+					 \'' . strip_tags($_POST['idEditeur']) . '\',
 					 \'' . strip_tags($_POST['nomEditeur']) . '\')');
+            }
+
+
         }
         $inscrit = "Vous êtes bien inscrit !";
         echo '<script type="text/javascript">window.alert("'.$inscrit.'");</script>';

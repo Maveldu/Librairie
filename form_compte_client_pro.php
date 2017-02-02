@@ -16,7 +16,6 @@ require_once 'menu.php';
 <br/><br/><br/>
 
 <div class="box">
-
 	<a class="button" href="#popup1">Information sur la page</a>
 </div> 
 <div id="popup1" class="overlay">
