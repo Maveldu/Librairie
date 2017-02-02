@@ -5,6 +5,7 @@ $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Librairie"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
 
+if(isset($_POST['isbn'])){
 $isbn = $_POST['isbn'];
 ?>
 <br/><br/>
@@ -39,7 +40,7 @@ if (file_exists($imgname)) {
 <center>
 <?php
 echo '<table border="1" width=60%>';
-	echo '<tr> <td align=center> <h5>INFORMATION </h5></td> <td align=center><h5>RESUME</h5></td></tr>';
+echo '<tr> <td align=center> <h5>INFORMATION </h5></td> <td align=center><h5>RESUME</h5></td></tr>';
 echo "<tr>";
 echo "<td width=35%><b>Date parution : </b>";
 echo($post['DATE_PARUTION']);
@@ -47,8 +48,12 @@ echo "<br/>";
 echo "<b>N°ISBN_ISSN : </b>";
 echo($post['ISBN_ISSN']);
 echo "<br/>";
-echo "<b>Quantité : </b>";
-echo($post['QUANTITE_STOCK']);
+echo "<b> Disponibilité : </b>";
+if ($post['QUANTITE_STOCK']>1){
+	echo "<b style='color:green;'>Disponible</b> (".$post['QUANTITE_STOCK'].")";
+}else{
+	echo "<b style='color:red;'>Consultation sur place uniquement</b>";
+}
 echo "<br/>";
 echo "<b>Prix : </b>";
 echo($post['PRIX']);
@@ -68,7 +73,7 @@ echo "<br/>";
 echo "<b>Note gérant: </b>";
 echo($post['NOTE_GERANT']);
 echo "<br/>";
-echo "<b> Mot clés </b>";
+echo "<b> Mot clés : </b>";
 echo($post['MOTCLES']);
 echo "</td><br/>";
 echo "<td><b>Résumé : </b>";
@@ -80,5 +85,10 @@ echo "</center>";
 </td>
 <br>
 <br>
-
+<a class="btn btn-default" href='form_afficher_article.php'>Retour aux articles</a>
+<?php
+}else{
+	echo "<a class='btn btn-default' href='form_afficher_article.php' style='margin:80px;'>Retour aux articles</a>";
+}
+?>
 

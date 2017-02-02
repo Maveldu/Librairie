@@ -69,7 +69,7 @@ if (count($result) == 0) {
         <?php echo '<form id="page_article" action="page_article.php" method="post">
             <input type="hidden" name="isbn" value="' . $isbn . '"/>
             ';
-        echo $isbn; ?>
+        /*echo $isbn;*/ ?>
 
 
         <div class="article-result">
@@ -85,15 +85,15 @@ if (count($result) == 0) {
                 </form>
 
 
-                <p class="isbn"><b>ISBN/ISSN: </b><?php echo($isbn); ?></p>
+                <p class="isbn"><b>ISBN/ISSN : </b><?php echo($isbn); ?></p>
             </div>
             </br>
             <?php if (isset($post['DATE_PARUTION'])) {
                 ?><p class="date"><b>Date de
-                parution: </b><?php echo date("d-m-Y", strtotime($post['DATE_PARUTION'])); ?></p><?php
+                parution : </b><?php echo date("d-m-Y", strtotime($post['DATE_PARUTION'])); ?></p><?php
             } ?>
             <?php if (isset($post['NOM_EDITEUR'])) {
-                ?><p class="editeur"><?php echo "<p><b>Editeur: </b></p>" . $post['NOM_EDITEUR']; ?></p><?php
+                ?><p class="editeur"><?php echo "<p><b>Editeur : </b></p>" . $post['NOM_EDITEUR']; ?></p><?php
             }
             $result2 = $bdd->query('SELECT NOM_AUTEUR, PRENOM_AUTEUR FROM auteur WHERE ID_AUTEUR = (SELECT ID_AUTEUR FROM ecrire WHERE ISBN_ISSN =' . $isbn . ') ');
             while ($post2 = $result2->fetch()) {
@@ -103,13 +103,13 @@ if (count($result) == 0) {
             }
 
             if ($post['COLLECTION'] != ''){
-            ?><p class="collection"><b>Collection: </b> <?php echo $post['COLLECTION'] . ", ";
+            ?><p class="collection"><b>Collection : </b> <?php echo $post['COLLECTION'] . ", ";
                 }
                 if ($post['NUMERO_COLLECTION'] != '0') {
-                    ?> <b>Numéro: </b><?php echo $post['NUMERO_COLLECTION'] . ", ";
+                    ?> <b>Numéro : </b><?php echo $post['NUMERO_COLLECTION'] . ", ";
                 }
                 if ($post['SUPPORT'] != '') {
-                    ?> <b>Version: </b><?php echo $post['SUPPORT'];
+                    ?> <b>Version : </b><?php echo $post['SUPPORT'];
                 } ?></p>
 
             <?php
@@ -131,10 +131,14 @@ if (count($result) == 0) {
                 </form>";
             }
             ?>
-            <p class="prixqte"><?php echo "<b> Prix:  </b>" . $post['PRIX'] . "<b> € <br><br> Qantité en stock : </b>";
-                if ($post['QUANTITE_STOCK'] != '') {
-                    echo $post['QUANTITE_STOCK'];
-                } else echo '0'; ?></p>
+            <p class="prixqte"><?php echo "<b> Prix :  </b>" . $post['PRIX'] . "<b> €";
+				echo "<br><br> Disponibilité : </b>";
+				if ($post['QUANTITE_STOCK']>1){
+					echo "<b style='color:green;'>Disponible</b> (".$post['QUANTITE_STOCK'].")";
+				}else{
+					echo "<b style='color:red;'>Consultation sur place uniquement</b>";
+				} ?>
+            </p>
             <?php if ($post['RESUME'] != '') {
                 ?><p class="resume">
                 <?php echo $post['RESUME']; ?>
