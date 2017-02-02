@@ -128,12 +128,10 @@ if (count($result) == 0) {
             if (f_compte($bdd)=="client") {
                 echo "
                   
-              <form  action='form_ajouter_article_panier.php'  method='post'>      
-             
-              <input  type='texte' name='ajouter article' style ='float: right' size='5' value='1'/>
-               <input  type='image' src='addart.png' name='ajouter article' align='right' width='32' height='32' value='" . $isbn . "'/>
-            </form>";
-             
+            <form  action='form_ajouter_article_panier.php'  method='post'>           
+            <input  type='texte' name='ajouter article' style ='float: right' size='5' value='1'/>
+            <input  type='image' src='addart.png' name='ajouter article' align='right' width='32' height='32' value='" . $isbn . "'/>
+            </form>";  
             }
             ?>
             <p class="prixqte"><?php echo "prix:" . $post['PRIX'] . "€ Qté:";
