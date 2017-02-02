@@ -27,15 +27,22 @@ require_once 'menu.php';
 		
 		<fieldset>
 		<legend>Coordonnées</legend>
-		<label class="text-base" for="rue">Nom :</label>			
-		<?php
+		<label class="text-base" for="rue">Nom :</label>
+		<?php if (f_compte($bdd)=="admin") { ?>
+		<?-<p> Admin </p>
+		<?php } ?>
+		<?php }else if (f_compt($bdd)=="gerant") ?>		
+		<p> Gérant </p>
+		<?php } ?>
+		
+		<?php else
 				$count = $bdd->prepare("SELECT NOM FROM from compte join compte_client using (NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
 				$count->execute(array($_SESSION['id']));
 				$req = $count->fetch(PDO::FETCH_ASSOC);
 				foreach ($req as $test) {
 						echo $test;
-					}	
-				?><br/>
+				}	
+		?><br/>
 				
 		<label class="text-base" for="rue">Prénom :</label>			
 		<?php
