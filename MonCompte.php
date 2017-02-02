@@ -31,12 +31,8 @@ require_once 'menu.php';
 			<legend>Coordonnées</legend>
 			<label class="text-base" for="rue">Nom :</label>
 			<?php
-
+			$count = $bdd->prepare("SELECT NOM FROM from compte join compte_client using (NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
 			$count = $bdd->prepare("SELECT NOM FROM compte join client using(NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
-			$count = $bdd->prepare("SELECT NOM FROM from compte join compte_client using (NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
-
-			$count = $bdd->prepare("SELECT NOM FROM from compte join compte_client using (NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
-
 			$count->execute(array($_SESSION['id']));
 			$req = $count->fetch(PDO::FETCH_ASSOC);
 			foreach ($req as $test) {
@@ -46,7 +42,8 @@ require_once 'menu.php';
 
 			<label class="text-base" for="rue">Prénom :</label>
 			<?php
-
+			$count = $bdd->prepare("SELECT PRENOM FROM compte_client join compte using(NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
+			$count = $bdd->prepare("SELECT PRENOM FROM compte join client using(NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
 			$count->execute(array($_SESSION['id']));
 			$req = $count->fetch(PDO::FETCH_ASSOC);
 

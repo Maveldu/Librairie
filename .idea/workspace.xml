@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba186c4c-add2-485d-8a21-ce75500efee5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/librairie.iml" afterPath="$PROJECT_DIR$/.idea/librairie.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MonCompte.php" afterPath="$PROJECT_DIR$/MonCompte.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fonc_bdd.php" afterPath="$PROJECT_DIR$/fonc_bdd.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mon_panier.php" afterPath="$PROJECT_DIR$/mon_panier.php" />
     </list>
     <ignored path="librairie.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="mon_panier.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mon_panier.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mon_panier.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7383">
+            <state relative-caret-position="7199">
               <caret line="321" column="0" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
               <folding>
                 <marker date="1486047396000" expanded="true" signature="301:349" ph="SELECT max(N... " />
@@ -146,24 +143,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MonCompte.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MonCompte.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MonCompte.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="800">
-              <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
+            <state relative-caret-position="524">
+              <caret line="52" column="19" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
               <folding>
-                <marker date="1486047337000" expanded="true" signature="553:650" ph="SELECT NOM F... compte" />
-                <marker date="1486047337000" expanded="true" signature="681:791" ph="SELECT NOM F... from" />
-                <marker date="1486047337000" expanded="true" signature="823:933" ph="SELECT NOM F... from" />
-                <marker date="1486047337000" expanded="true" signature="1401:1474" ph="SELECT ADRES... compte" />
-                <marker date="1486047337000" expanded="true" signature="1732:1809" ph="SELECT NUMER... compte" />
-                <marker date="1486047337000" expanded="true" signature="2124:2192" ph="SELECT ADRES... compte" />
-                <marker date="1486047337000" expanded="true" signature="2426:2492" ph="SELECT VILLE... compte" />
-                <marker date="1486047337000" expanded="true" signature="2733:2806" ph="SELECT CODE_... compte" />
-                <marker date="1486047337000" expanded="true" signature="3058:3214" ph="select NUMER... commande" />
-                <marker date="1486047337000" expanded="true" signature="4609:4722" ph="..." />
-                <marker date="1486047337000" expanded="true" signature="5175:5288" ph="..." />
-                <marker date="1486047337000" expanded="true" signature="5784:5897" ph="..." />
+                <marker date="1486048152000" expanded="true" signature="552:662" ph="SELECT NOM F... from" />
+                <marker date="1486048152000" expanded="true" signature="693:790" ph="SELECT NOM F... compte" />
+                <marker date="1486048152000" expanded="true" signature="1034:1141" ph="SELECT PRENO... compte_client" />
+                <marker date="1486048152000" expanded="true" signature="1172:1272" ph="SELECT PRENO... compte" />
+                <marker date="1486048152000" expanded="true" signature="1525:1598" ph="SELECT ADRES... compte" />
+                <marker date="1486048152000" expanded="true" signature="1856:1933" ph="SELECT NUMER... compte" />
+                <marker date="1486048152000" expanded="true" signature="2248:2316" ph="SELECT ADRES... compte" />
+                <marker date="1486048152000" expanded="true" signature="2550:2616" ph="SELECT VILLE... compte" />
+                <marker date="1486048152000" expanded="true" signature="2857:2930" ph="SELECT CODE_... compte" />
+                <marker date="1486048152000" expanded="true" signature="3182:3338" ph="select NUMER... commande" />
+                <marker date="1486048152000" expanded="true" signature="4733:4846" ph="..." />
+                <marker date="1486048152000" expanded="true" signature="5299:5412" ph="..." />
+                <marker date="1486048152000" expanded="true" signature="5908:6021" ph="..." />
               </folding>
             </state>
           </provider>
@@ -221,8 +219,8 @@
         <option value="$PROJECT_DIR$/form_ajouter_editeur.php" />
         <option value="$PROJECT_DIR$/form_inscription.php" />
         <option value="$PROJECT_DIR$/fonc_bdd.php" />
-        <option value="$PROJECT_DIR$/MonCompte.php" />
         <option value="$PROJECT_DIR$/mon_panier.php" />
+        <option value="$PROJECT_DIR$/MonCompte.php" />
       </list>
     </option>
   </component>
@@ -375,12 +373,12 @@
       <workItem from="1478617285381" duration="21000" />
       <workItem from="1479892251694" duration="554000" />
       <workItem from="1486042712805" duration="2362000" />
-      <workItem from="1486046932346" duration="512000" />
+      <workItem from="1486046932346" duration="1108000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29269000" />
+    <option name="totallyTimeSpent" value="29865000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="969" extended-state="6" />
@@ -717,30 +715,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MonCompte.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="800">
-          <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
-          <folding>
-            <marker date="1486047337000" expanded="true" signature="553:650" ph="SELECT NOM F... compte" />
-            <marker date="1486047337000" expanded="true" signature="681:791" ph="SELECT NOM F... from" />
-            <marker date="1486047337000" expanded="true" signature="823:933" ph="SELECT NOM F... from" />
-            <marker date="1486047337000" expanded="true" signature="1401:1474" ph="SELECT ADRES... compte" />
-            <marker date="1486047337000" expanded="true" signature="1732:1809" ph="SELECT NUMER... compte" />
-            <marker date="1486047337000" expanded="true" signature="2124:2192" ph="SELECT ADRES... compte" />
-            <marker date="1486047337000" expanded="true" signature="2426:2492" ph="SELECT VILLE... compte" />
-            <marker date="1486047337000" expanded="true" signature="2733:2806" ph="SELECT CODE_... compte" />
-            <marker date="1486047337000" expanded="true" signature="3058:3214" ph="select NUMER... commande" />
-            <marker date="1486047337000" expanded="true" signature="4609:4722" ph="..." />
-            <marker date="1486047337000" expanded="true" signature="5175:5288" ph="..." />
-            <marker date="1486047337000" expanded="true" signature="5784:5897" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mon_panier.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7383">
+        <state relative-caret-position="7199">
           <caret line="321" column="0" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
           <folding>
             <marker date="1486047396000" expanded="true" signature="301:349" ph="SELECT max(N... " />
@@ -768,6 +745,28 @@
             <marker date="1486047396000" expanded="true" signature="7379:7476" ph="DELETE FROM " />
             <marker date="1486047396000" expanded="true" signature="7551:7643" ph="SELECT ISBN_... lig_cde" />
             <marker date="1486047396000" expanded="true" signature="7748:7839" ph="SELECT TITRE... article" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MonCompte.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="52" column="19" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
+          <folding>
+            <marker date="1486048152000" expanded="true" signature="552:662" ph="SELECT NOM F... from" />
+            <marker date="1486048152000" expanded="true" signature="693:790" ph="SELECT NOM F... compte" />
+            <marker date="1486048152000" expanded="true" signature="1034:1141" ph="SELECT PRENO... compte_client" />
+            <marker date="1486048152000" expanded="true" signature="1172:1272" ph="SELECT PRENO... compte" />
+            <marker date="1486048152000" expanded="true" signature="1525:1598" ph="SELECT ADRES... compte" />
+            <marker date="1486048152000" expanded="true" signature="1856:1933" ph="SELECT NUMER... compte" />
+            <marker date="1486048152000" expanded="true" signature="2248:2316" ph="SELECT ADRES... compte" />
+            <marker date="1486048152000" expanded="true" signature="2550:2616" ph="SELECT VILLE... compte" />
+            <marker date="1486048152000" expanded="true" signature="2857:2930" ph="SELECT CODE_... compte" />
+            <marker date="1486048152000" expanded="true" signature="3182:3338" ph="select NUMER... commande" />
+            <marker date="1486048152000" expanded="true" signature="4733:4846" ph="..." />
+            <marker date="1486048152000" expanded="true" signature="5299:5412" ph="..." />
+            <marker date="1486048152000" expanded="true" signature="5908:6021" ph="..." />
           </folding>
         </state>
       </provider>
