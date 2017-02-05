@@ -20,17 +20,17 @@ require_once 'menu.php';
 </div>
 <div id="popup1" class="overlay">
     <div class="popup">
-        <h2>Gestion compte fournisseur </h2>
+        <h2>Gestion Admin </h2>
         <a class="close" href="#">×</a>
         <div class="content">
-            Ici, c'est la page de validation des comptes fournisseur. En validant, le compte fournisseur sera acitf.
+            Ici, c'est la page de Gestion des comptes Admin. En validant, le compte Admin sera acitf.
         </div>
     </div>
 </div>
 <center>
     <form method="post">
         <?php
-        $sql = "select IDENTIFIANT, NUMERO_COMPTE, ADRESSE, CODE_POSTALE, VILLE , ID_EDITEUR from compte join compte_fournisseur using (NUMERO_COMPTE) where VALIDE = 0 ";
+        $sql = "select IDENTIFIANT, NUMERO_COMPTE, ADRESSE, CODE_POSTALE, VILLE , NUMERO_PRO from compte join compte_client_pro using (NUMERO_COMPTE) where VALIDE = 0 ";
         $tab = AfficherTabCompte($sql, $bdd);
 
         function AfficherTabCompte($sql, $bdd){
@@ -39,7 +39,7 @@ require_once 'menu.php';
             $tab = $bdd->query($sql,PDO::FETCH_ASSOC);
             echo '<table border="1">';
             echo '<h1>Compte en Attente :</h1>';
-            echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTALE</td><td>VILLE</td><td>ID_EDITEUR</td><td>VALIDE</td><td>SUPPRIMER</td></tr>';
+            echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTALE</td><td>VILLE</td><td>NUMERO_PRO</td><td>VALIDE</td><td>SUPPRIMER</td></tr>';
             foreach($tab as $utilisateur){
 
                 echo "<tr>
@@ -48,7 +48,7 @@ require_once 'menu.php';
                   <td>",$utilisateur['ADRESSE'],"</td>
                   <td>",$utilisateur['CODE_POSTALE'],"</td>
                   <td>",$utilisateur['VILLE'],"</td>
-                  <td>",$utilisateur['ID_EDITEUR'],"</td>
+                  <td>",$utilisateur['NUMERO_PRO'],"</td>
                   <td><input class='btn btn-default' type='submit' name='valider_",$utilisateur['NUMERO_COMPTE'],"' value='Valider' id='val' onClick=\"getname(this)\"/></td>
 				  <td><input class='btn btn-default' type='submit' name='supprimer_",$utilisateur['NUMERO_COMPTE'],"' value='Supprimer' id='suppr' onClick=\"getname(this)\"/></td>
                 </tr>";
@@ -64,12 +64,12 @@ require_once 'menu.php';
             $id_user = $explode[1];
             echo $id_user;
             if($explode[0] == "valider"){
-                $sql = "UPDATE compte_fournisseur set VALIDE = 1 where NUMERO_COMPTE=".$id_user;
+                $sql = "UPDATE compte_client_pro set VALIDE = 1 where NUMERO_COMPTE=".$id_user;
                 $bdd->exec($sql);
                 echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
             }
             else if($explode[0] == "supprimer"){
-                $sql1 = "DELETE FROM compte_fournisseur WHERE NUMERO_COMPTE=".$id_user;
+                $sql1 = "DELETE FROM compte_client_pro WHERE NUMERO_COMPTE=".$id_user;
                 $bdd->exec($sql1);
                 echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
                 echo "supprimer";
@@ -81,7 +81,7 @@ require_once 'menu.php';
 
     <form method="post">
         <?php
-        $sq2 = "select IDENTIFIANT, NUMERO_COMPTE, ADRESSE, CODE_POSTALE, VILLE , ID_EDITEUR, VALIDE from compte join compte_fournisseur using (NUMERO_COMPTE) where VALIDE = 1 ";
+        $sq2 = "select IDENTIFIANT, NUMERO_COMPTE, ADRESSE, CODE_POSTALE, VILLE , NUMERO_PRO, VALIDE from compte join compte_client_pro using (NUMERO_COMPTE) where VALIDE = 1 ";
         $tab = AfficherTabCompte2($sq2, $bdd);
 
         function AfficherTabCompte2($sq2, $bdd){
@@ -90,7 +90,7 @@ require_once 'menu.php';
             $tab = $bdd->query($sq2,PDO::FETCH_ASSOC);
             echo '<table border="1">';
             echo'<h1> Compte Valider : <h1>';
-            echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTALE</td><td>VILLE</td><td>ID_EDITEUR</td><td>VALIDE</td><td>ANNULE</td></tr>';
+            echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTALE</td><td>VILLE</td><td>NUMERO_PRO</td><td>VALIDE</td><td>ANNULE</td></tr>';
             foreach($tab as $utilisateur){
 
                 echo "<tr>
@@ -99,7 +99,7 @@ require_once 'menu.php';
                   <td>",$utilisateur['ADRESSE'],"</td>
                   <td>",$utilisateur['CODE_POSTALE'],"</td>
                   <td>",$utilisateur['VILLE'],"</td>
-                  <td>",$utilisateur['ID_EDITEUR'],"</td>
+                  <td>",$utilisateur['NUMERO_PRO'],"</td>
 				  <td>",$utilisateur['VALIDE'],"</td>
 				  <td><input class='btn btn-default' type='submit' name='attente_",$utilisateur['NUMERO_COMPTE'],"' value='Annuler' id='val' onClick=\"getname2(this)\"/></td>
                 </tr>";
@@ -115,7 +115,7 @@ require_once 'menu.php';
             $id_user = $explode[1];
             echo $id_user;
             if($explode[0] == "attente"){
-                $sq2 = "UPDATE compte_fournisseur set VALIDE = 0 where NUMERO_COMPTE=".$id_user;
+                $sq2 = "UPDATE compte_client_pro set VALIDE = 0 where NUMERO_COMPTE=".$id_user;
                 $bdd->exec($sq2);
                 echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
             }
@@ -125,3 +125,9 @@ require_once 'menu.php';
 </center>
 </body>
 </html>
+/**
+ * Created by PhpStorm.
+ * User: gvent
+ * Date: 03/02/2017
+ * Time: 19:29
+ */

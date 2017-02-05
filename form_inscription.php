@@ -52,12 +52,14 @@ require_once 'menu.php';
         if (isset($_SESSION['id'])) {
             echo "<p> Vous êtes connecté, vous ne pouvez pas vous inscrire ! </p>";
         } else { ?>
+            <h3>INSCRIPTION:</h3>
+            <p>Les champs accompagnés d'une étoile sont obligatoire</p>
             <form method="post">
                 <p>
                 <fieldset>
                     <legend> Identifiants :</legend>
                     <label class="text-base" for="pseudo">Pseudonyme: *</label>
-                    <input type="text" name="pseudo" placeholder="Entrez un pseudo" pattern="[a-zA-Z0-9]{4,}$"/><br/><br/>
+                    <input type="text" name="pseudo" placeholder="Entrez un pseudo" pattern="[a-zA-Z0-9]{4,}$"/><p>Pseudo qui sera visible par les autres Utilisateurs</p>
                     <label for="passe">Mot de passe: *</label>
                     <input type="password" name="passe" placeholder="Entrez un mot de passe" pattern="[a-zA-Z0-9]{4,}$"/><br/><br/>
                     <label>Confirmation du mot de passe: *</label>

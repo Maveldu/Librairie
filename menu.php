@@ -30,6 +30,7 @@ require_once 'f_compte.php';
 			background-image:url(fond.jpg);
 			background-repeat:no-repeat;
 			background-attachment:fixed;
+            background-size: cover;
 			center top no-repeat;
 			position: relative;
 		}
@@ -337,12 +338,13 @@ require_once 'f_compte.php';
                     </li>
 					
 					 <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">COMPTE
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">GESTION DES COMPTES
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="form_creer_admin.php">Admin</a></li>
-                            <li><a href="form_compte_client_pro.php">Client pro</a></li>
-                            <li><a href="form_compte_fournisseur.php">Fournisseur</a></li>
+                            <li><a href="form_creer_admin.php">Créer Admin</a></li>
+                            <li><a href="form_compte_admin.php">Gestion Admin</a></li>
+                            <li><a href="form_compte_client_pro.php">Gestion Client pro</a></li>
+                            <li><a href="form_compte_fournisseur.php">Gestion Fournisseur</a></li>
                         </ul>
                     </li>
 					

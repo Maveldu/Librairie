@@ -74,7 +74,6 @@ if(isset($_POST['hidd'])){
 		echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
 		echo "supprimer";
 	}
-	
 	}
 ?>
 </form>
