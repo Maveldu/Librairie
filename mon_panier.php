@@ -10,6 +10,26 @@ $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Mon Panier"; //Titre à changer sur chaque page
 require_once 'menu.php';
 if(isset($_POST["valider"])){
+	//Bloque le rechargement de la page
+	if(!isset($_SESSION['nb_chargements'])) $_SESSION['nb_chargements']=0;
+	elseif(isset($_GET['reset']) && $_GET['reset']==1) $_SESSION['nb_chargements']=0;
+
+	$nb_chargements = intval($_SESSION['nb_chargements']);
+	$_SESSION['nb_chargements'] = ++$nb_chargements;
+
+	if($nb_chargements>1) {
+
+		$chargement = "Impossible de recharger la page";
+		if(isset($_SESSION['nb_chargements'])) $_SESSION['nb_chargements']=0;
+		?>
+		<script language="javascript">
+			setTimeout("location.href = 'MonCompte.php'",1);
+		</script>
+		<?php
+		echo '<script type="text/javascript">window.alert("'.$chargement.'");</script>';
+		die();
+	}
+	//Bloque au maximum à 5 articles différents par commande
 	$req = "SELECT max(NUMERO_COMMANDE) as max FROM commande";
 	$TabMaxCmdee = LireDonneesPDO1($bdd, $req);
 	$MaxCmdee = $TabMaxCmdee['0']['max'];
@@ -31,6 +51,7 @@ if(isset($_POST["valider"])){
 		<?php
 	}
 	else {
+		//Commande validé
 		echo "<br/><br/>&nbsp&nbsp&nbsp";
 		echo "Votre commande a été validée par nos services. Vous pourrez récuperer vos articles à la librairie une fois celle-ci accepté.";
 		echo "<br/><br/><b>&nbsp&nbsp&nbsp";
@@ -62,12 +83,17 @@ if(isset($_POST["valider"])){
 		$req = "SELECT count(ISBN_ISSN) as nbarticle FROM lig_cde join article using (ISBN_ISSN) WHERE NUMERO_COMMANDE = '$MaxCmdee'";
 		$nbart = LireDonneesPDO1($bdd, $req);
 		$art = $nbart['0']['nbarticle'];
-
+		//Récupère les articles dans la commande
 		$sql = "select TITRE, NUMERO_COMMANDE, ISBN_ISSN, QTE_CMDEE, PRIX_UNIT from lig_cde join article using (ISBN_ISSN) WHERE NUMERO_COMMANDE = '$MaxCmdee'";
 		$tab = LireDonneesPDO1($bdd, $sql);
 		$tab = $bdd->query($sql, PDO::FETCH_ASSOC);
 
 		$i = 0;
+		$message0="";
+		$message1="";
+		$message2="";
+		$message3="";
+		//ajoute dans le mail les articles de la commande
 		foreach ($tab as $article) {
 			$titre = $article['TITRE'];
 			$numero_commande = $article['NUMERO_COMMANDE'];
@@ -123,6 +149,7 @@ if(isset($_POST["valider"])){
 		<input class="btn btn-default" type="button" name="Mon Compte" value="Mon Compte"
 			   onclick="self.location.href='MonCompte.php'">
 		<?php
+		//Système de mail
 		$sql = "select ADRESSE_MAIL from compte join compte_gerantp using (NUMERO_COMPTE)";
 		$tab = LireDonneesPDO1($bdd, $sql);
 		$tab = $bdd->query($sql, PDO::FETCH_ASSOC);
@@ -165,12 +192,11 @@ if(isset($_POST["valider"])){
       </body>
      </html>
      ';
-
 		// Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
 		$headers = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
-		// En-têtes additionnels
+		// En-tête additionnel
 		$headers .= 'From: LibrairieAssociative175 <LibrairieAssociative175@ne-pas-repondre.fr>' . "\r\n";
 
 		// Envoi
