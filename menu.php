@@ -284,7 +284,12 @@ require_once 'f_compte.php';
 		.popup .content {
 		max-height: 30%;
 		overflow: auto;
-}
+        }
+        aside{
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+        }
     </style>
 </head>
 
