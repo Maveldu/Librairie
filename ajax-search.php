@@ -113,7 +113,7 @@ if (count($result) == 0) {
                 } ?></p>
 
             <?php
-            if (f_compte($bdd)=="admin") {
+            if (f_comp  te($bdd)=="admin") {
                 echo "<form method='post'>
               <input  type='image' src='delete.png'   name='delete'   align='right' width='32' height='32' value='" . $isbn . "' /></form>
               <form action='form_modifier_article.php' method='post'>
