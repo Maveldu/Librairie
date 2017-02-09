@@ -60,3 +60,5 @@ MonCompte.php
 /.idea/workspace.xml
 >>>>>>> origin/master
 *.xml
+/.idea/librairie.iml
+/angular/*
