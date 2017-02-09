@@ -37,7 +37,7 @@ require_once 'menu.php';
 
 if (isset($_POST['delete'])) :
     $bdd->exec('DELETE FROM article WHERE ID_EDITEUR = "' . $_POST['delete'] . '"');
-    $bdd->exec('DELETE FROM editeur WHERE ID_EDITEUR = "' . $_POST['delete'] . '"');
+    $bdd->exec('DELETE FROM compte_fournisseur WHERE ID_EDITEUR = "' . $_POST['delete'] . '"');
     echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
 endif;
 ?>

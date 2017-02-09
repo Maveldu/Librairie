@@ -14,13 +14,13 @@ $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Librairie"; //Titre ‡ changer sur chaque page
 
 if (isset($_POST['q'])) {
-    $result = $bdd->query('SELECT ID_EDITEUR, NOM
-                             FROM editeur
+    $result = $bdd->query('SELECT ID_EDITEUR, NOM_EDITEUR
+                             FROM compte_fournisseur
                              WHERE  ' . $_POST['radio'] . ' LIKE \'' . safe($_POST['q']) . '%\'
                             LIMIT 0,20');
 } else {
-    $result = $bdd->query('SELECT ID_EDITEUR, NOM
-                             FROM editeur
+    $result = $bdd->query('SELECT ID_EDITEUR, NOM_EDITEUR
+                             FROM compte_fournisseur
                             LIMIT 0,20');
 }
 // affichage d'un message "pas de résultats"
@@ -36,7 +36,7 @@ if (count($result) == 0) {
         ?>
         <div class="article-result">
 
-            <h3><p><?php echo($post['NOM']); ?></p>
+            <h3><p><?php echo($post['NOM_EDITEUR']); ?></p>
             </h3>
             <?php
             if (f_compte($bdd)=="admin") {
