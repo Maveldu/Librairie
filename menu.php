@@ -31,6 +31,7 @@ require_once 'f_compte.php';
 			background-repeat:no-repeat;
 			background-attachment:fixed;
             background-size: cover;
+            background-position: center;
 			center top no-repeat;
 			position: relative;
 		}
