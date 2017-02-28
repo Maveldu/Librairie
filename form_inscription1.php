@@ -53,7 +53,7 @@ require_once 'menu.php';
             echo "<p> Vous êtes connecté, vous ne pouvez pas vous inscrire ! </p>";
         } else { ?>
         <h3>INSCRIPTION:</h3>
-        <p>Les champs accompagnés d'une étoile sont obligatoire</p>
+        <p>Les champs accompagnés d'une étoile sont obligatoires</p>
         <form method="post">
             <p>
             <fieldset>
