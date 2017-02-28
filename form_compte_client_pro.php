@@ -17,7 +17,7 @@ require_once 'menu.php';
 <br/><br/><br/>
 
 <div class="box">
-	<a class="button" href="#popup1">Information sur la page</a>
+	<a class="button" href="#popup1"> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
 </div> 
 <div id="popup1" class="overlay">
 	<div class="popup">
