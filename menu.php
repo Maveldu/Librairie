@@ -25,22 +25,22 @@ require_once 'f_compte.php';
     <style>
 
         table {
-            border:3px solid #6495ed;
+            border:3px solid black;
             border-collapse:collapse;
             width:90%;
             margin:auto;
         }
         thead, tfoot {
             background-color:#D0E3FA;
-            border:1px solid #6495ed;
+            border:2px solid #6495ed;
         }
         tbody {
             background-color:#FFFFFF;
-            border:1px solid #6495ed;
+            border:2px solid #6495ed;
         }
         th {
             font-family:monospace;
-            border:1px dotted #6495ed;
+            border:2px dotted #6495ed;
             padding:5px;
             background-color:#EFF6FF;
             width:25%;
@@ -48,7 +48,7 @@ require_once 'f_compte.php';
         td {
             font-family:sans-serif;
             font-size:80%;
-            border:1px solid #6495ed;
+            border:2px solid #6495ed;
             padding:5px;
             text-align:left;
         }
