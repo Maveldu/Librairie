@@ -1,4 +1,4 @@
-e<?php
+<?php
 $session = "librairie4.0";
 $usr = "root";
 $mdp = "";

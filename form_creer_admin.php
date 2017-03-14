@@ -60,7 +60,7 @@ require_once 'menu.php';
                     <input type="password" name="passe2"/><br/><br/>
                 </fieldset>
 
-                <input class="btn btn-default" type="submit" name="valider" value="S'inscrire"/>
+                <input class="btn btn-default" type="submit" name="valider" value="Créer"/>
 				<input class="btn btn-default" type="submit" name="compte_aleatoire" value="Compte Aleatoire"/>
                 <input class="btn btn-default" type="button" name="Retour" value="Retour"
                        onclick="self.location.href='index.php'">

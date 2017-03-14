@@ -90,7 +90,7 @@ function AfficherTabCompte2($sq2, $bdd){
 	 
     $tab = $bdd->query($sq2,PDO::FETCH_ASSOC);
 	echo '<table border="1">';
-	echo'<h1> Compte Valider : <h1>';
+	echo'<h1> Compte Validé : <h1>';
 	echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTALE</td><td>VILLE</td><td>NUMERO_PRO</td><td>VALIDE</td><td>ANNULE</td></tr>';
 	foreach($tab as $utilisateur){
 		

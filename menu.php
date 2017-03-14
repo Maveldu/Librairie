@@ -5,13 +5,13 @@ require_once 'f_compte.php';
 ?>
 <!DOCTYPE html>
 <html>
-<link rel="icon" type="image/png" href="favicon.png"/>
 
 
 <head>
     <title><?php echo $titre;?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="favicon.png"/>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css.map">
@@ -379,8 +379,8 @@ require_once 'f_compte.php';
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">GESTION DES COMPTES
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="form_creer_admin.php">Créer Admin</a></li>
-                            <li><a href="form_compte_admin.php">Gestion Admin</a></li>
+                            <li><a href="form_creer_admin.php">Créer Gérant</a></li>
+                            <li><a href="form_compte_admin.php">Gestion Gérant</a></li>
                             <li><a href="form_compte_client_pro.php">Gestion Client pro</a></li>
                             <li><a href="form_compte_fournisseur.php">Gestion Fournisseur</a></li>
                         </ul>

@@ -331,6 +331,8 @@ else{
 				<th>
 					<?php echo $total."€";?>
 				</th>
+				<td>
+				</td>
 			</tr>
 		</table>
 		</div>
