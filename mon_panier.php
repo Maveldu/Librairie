@@ -10,6 +10,7 @@ $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Mon Panier"; //Titre à changer sur chaque page
 require_once 'menu.php';
 if(isset($_POST["valider"])){
+
 	//Bloque le rechargement de la page
 	if(!isset($_SESSION['nb_chargements'])) $_SESSION['nb_chargements']=0;
 	elseif(isset($_GET['reset']) && $_GET['reset']==1) $_SESSION['nb_chargements']=0;
@@ -29,6 +30,9 @@ if(isset($_POST["valider"])){
 		echo '<script type="text/javascript">window.alert("'.$chargement.'");</script>';
 		die();
 	}
+
+
+
 	//Bloque au maximum à 5 articles différents par commande
 	$req = "SELECT max(NUMERO_COMMANDE) as max FROM commande";
 	$TabMaxCmdee = LireDonneesPDO1($bdd, $req);
