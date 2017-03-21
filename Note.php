@@ -67,6 +67,5 @@ if (isset($_POST['envoyer'])) {
     $Num_note = $TabNumNote['0']['NUM_NOTE'];
     $req = "INSERT INTO note VALUES(" . $Num_note . "," . $_POST['note'] . ",sysdate,0," . $Num_note . ",);";
     $res = ExecuterRequete($bdd, $req);
-    echo"caca";
 }
 ?>

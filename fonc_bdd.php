@@ -7,13 +7,6 @@ function OuvrirConnexion($session, $usr, $mdp)
     try {
         $conn = new PDO("mysql:host=localhost;dbname=$session", $usr, $mdp);
 		$conn->exec("SET CHARACTER SET utf8");
-        /*		foreach($conn->query($req) as $row) {
-                    print_r($row);
-
-                }
-                echo "<br/>";*/
-//		echo $conn->getAttribute(constant("PDO::ATTR_CONNECTION_STATUS")) . "\n";
-// test
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
         echo "<br>Votre nom d'utilisateur ou votre mot de passe est &eacute;ronn&eacute;e, veuillez vous reconnecter...<br>";

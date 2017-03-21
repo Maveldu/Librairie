@@ -5,13 +5,13 @@ require_once 'f_compte.php';
 ?>
 <!DOCTYPE html>
 <html>
-<link rel="icon" type="image/png" href="favicon.png"/>
 
 
 <head>
-    <title>Librairie</title>
+    <title><?php echo $titre;?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="favicon.png"/>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css.map">
@@ -23,6 +23,38 @@ require_once 'f_compte.php';
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	
     <style>
+
+        table {
+            border:3px solid #6495ed;
+            border-collapse:collapse;
+            width:90%;
+            margin:auto;
+        }
+        thead, tfoot {
+            background-color:#D0E3FA;
+            border:1px solid #6495ed;
+        }
+        tbody {
+            background-color:#FFFFFF;
+            border:1px solid #6495ed;
+        }
+        th {
+            font-family:monospace;
+            border:1px dotted #6495ed;
+            padding:5px;
+            background-color:#EFF6FF;
+            width:25%;
+        }
+        td {
+            font-family:sans-serif;
+            font-size:80%;
+            border:1px solid #6495ed;
+            padding:5px;
+            text-align:left;
+        }
+        caption {
+            font-family:sans-serif;
+        }
         body {
             font: 400 15px/1.8 Lato, sans-serif;
             color: #777;
@@ -31,6 +63,7 @@ require_once 'f_compte.php';
 			background-repeat:no-repeat;
 			background-attachment:fixed;
             background-size: cover;
+            background-position: center;
 			center top no-repeat;
 			position: relative;
 		}
@@ -346,8 +379,8 @@ require_once 'f_compte.php';
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">GESTION DES COMPTES
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="form_creer_admin.php">Créer Admin</a></li>
-                            <li><a href="form_compte_admin.php">Gestion Admin</a></li>
+                            <li><a href="form_creer_admin.php">Créer Gérant</a></li>
+                            <li><a href="form_compte_admin.php">Gestion Gérant</a></li>
                             <li><a href="form_compte_client_pro.php">Gestion Client pro</a></li>
                             <li><a href="form_compte_fournisseur.php">Gestion Fournisseur</a></li>
                         </ul>
