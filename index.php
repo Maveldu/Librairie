@@ -24,7 +24,7 @@ require_once 'menu.php';
 
                 <?php if (f_compte($bdd)=="gerant") { ?>
                     <h4 align="center"> Fonction unique aux gérants :</h4>   <table><td>
-                            <a class="btn btn-primary btn-lg btn-block" href="Note.php">Envoyer une Note</a>
+                                <a class="btn btn-primary btn-lg btn-block" href="Note.php">Envoyer une Note</a>
                     </td></table>
                 <?php } ?>
                 <table><td>
