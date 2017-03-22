@@ -379,6 +379,7 @@ require_once 'f_compte.php';
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">GESTION DES COMPTES
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li><a href="gestion_compte.php">Gestion de compte</a></li>
                             <li><a href="form_creer_admin.php">Créer Gérant</a></li>
                             <li><a href="form_compte_admin.php">Gestion Gérant</a></li>
                             <li><a href="form_compte_client_pro.php">Gestion Client pro</a></li>
@@ -397,7 +398,6 @@ require_once 'f_compte.php';
                             <li><a href="form_deconnexion.php">Se déconnecter</a></li>
 							<?php if (f_compte($bdd)=="admin") { ?>
 							<li><a href="afficher_message.php">Message</a></li>
-							<li><a href="afficher_vitrine.php">Gestion de compte</a></li>
                                 <li><a href="form_commande.php">Gestion des commandes</a></li>
 							<?php } ?>
                         </ul>
