@@ -80,7 +80,6 @@ if (isset($_POST['envoyer'])) {
 					 \'' . strip_tags($Num_compte) . '\',
 					 \'' . strip_tags($Note) . '\',
 					 \'' . strip_tags($Datee['mday'].'/'.$Datee['mon'].'/'.$Datee['year']) . '\')';
-    echo $req;
 
 
     $bdd->exec('INSERT INTO note (NUM_NOTE, NUMERO_COMPTE,TEXT, DATE_NOTE)

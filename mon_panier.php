@@ -9,6 +9,7 @@ require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Mon Panier"; //Titre à changer sur chaque page
 require_once 'menu.php';
+error_reporting(0);
 if(isset($_POST["valider"])){
 
 	//Bloque le rechargement de la page

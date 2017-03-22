@@ -6,14 +6,15 @@ $titre = "Librairie"; //Titre à changer sur chaque page
 require_once 'menu.php';
 ?>
 <html>
+<br/>
+<br/>
 <link rel="icon" type="image/png" href="favicon.png"/>
-</html>
 <table>
     <td>
         <center>
             <h2>Navigation</h2><br><br><br>
             <?php if (isset($_SESSION['id'])) { ?>
-                <a class="btn btn-primary btn-lg btn-block" href="form_deconnexion.php">Deconnexion</a>
+                <a class="btn btn-primary btn-lg btn-block" href="form_deconnexion.php">Déconnexion</a>
                 <a class="btn btn-primary btn-lg btn-block" href="MonCompte.php">Compte</a>
                 <a class="btn btn-primary btn-lg btn-block" href="form_afficher_article.php">Articles</a>
                 <a class="btn btn-primary btn-lg btn-block" href="mon_panier.php">Panier</a>
@@ -21,15 +22,15 @@ require_once 'menu.php';
                     <a class="btn btn-primary btn-lg btn-block" href="Note.php">Note</a>
                 <?php } ?>
                 <?php if (f_compte($bdd)=="admin") { ?>
-                    <a class="btn btn-primary btn-lg btn-block" href="gestion_compte.php">Gestion Compte</a>
-                    <a class="btn btn-primary btn-lg btn-block" href="afficher_message.php">Message</a>
+                    <a class="btn btn-primary btn-lg btn-block" href="gestion_compte.php">Gestion Comptes</a>
+                    <a class="btn btn-primary btn-lg btn-block" href="afficher_message.php">Messages</a>
                 <?php } ?>
             <?php } else { ?>
                 <a class="btn btn-primary btn-lg btn-block" href="form_inscription.php">S'incrire</a><br><br>
                 <a class="btn btn-primary btn-lg btn-block" href="form_connexion.php">Se Connecter</a><br><br>
                 <a class="btn btn-primary btn-lg btn-block" href="form_afficher_article.php">Afficher les Articles</a><br><br>
-                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_editeur.php.php">Afficher les Editeur</a><br><br>
-                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_auteur.php.php">Afficher les Auteur</a><br><br>
+                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_editeur.php.php">Afficher les Editeurs</a><br><br>
+                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_auteur.php.php">Afficher les Auteurs</a><br><br>
             <?php } ?>
         </center>
     </td><td>

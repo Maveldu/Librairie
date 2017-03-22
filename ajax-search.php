@@ -124,11 +124,13 @@ if (count($result) == 0) {
             </form>";
             }
             if (f_compte($bdd)=="client") {
-                echo "
-                <form  action='#'  method='post'>
-                	<input type='texte' name='add_nb_".$isbn."' style ='float: right' size='5' value='1'/>
-                	<input type='image' src='addart.png' name='add_isbn' alt='Submit' align='right' width='32' height='32' value='".$isbn."'/>
-                </form>";
+            	if ($post['QUANTITE_STOCK']>1){
+	                echo "
+	                <form  action='#'  method='post'>
+	                	<input type='texte' name='add_nb_".$isbn."' style ='float: right' size='5' value='1'/>
+	                	<input type='image' src='addart.png' name='add_isbn' alt='Submit' align='right' width='32' height='32' value='".$isbn."'/>
+	                </form>";
+            	}
             }
             ?>
             <p class="prixqte"><?php echo "<b> Prix :  </b>" . $post['PRIX'] . "<b> €";

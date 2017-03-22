@@ -5,14 +5,14 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Auteurs"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
 ?>
 
 <br/><br/>
 <br/><br/>
 <fieldset>
-    <p> Faire une recherche par: </p>
+    <p> Faire une recherche par : </p>
     <form class="ajax" action="ajax-search.php" method="post" autocomplete="off">
         <p>
             <label for="q">Rechercher un auteur</label><input type="text" name="q" id="q"/>
