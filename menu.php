@@ -399,9 +399,11 @@ require_once 'f_compte.php';
 							<?php } ?>
                         </ul>
                     </li>
+                    <?php if (f_compte($bdd)!="admin") { ?>
                     <li class="dropdown">
                         <a href="mon_panier.php">MON PANIER</a>
                     </li>
+                    <?php } ?>
                 <?php } else { ?>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">MON COMPTE
