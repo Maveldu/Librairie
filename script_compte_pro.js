@@ -5,9 +5,17 @@ function getname(elem){
   hidd.checked = true;
 }
 
+
 function getname2(elem){
-  var ann = elem.name;
-  var hidde = document.getElementById("hide");
-  hidde.setAttribute('value',ann);
-  hidde.checked = true;
+    var ann = elem.name;
+    var hidde = document.getElementById("hide");
+    hidde.setAttribute('value',ann);
+    hidde.checked = true;
+}
+
+function getnum(elem){
+    var ann = elem.name;
+    var hidde = document.getElementById("hide");
+    hidde.setAttribute('value',ann);
+    hidde.checked = true;
 }
