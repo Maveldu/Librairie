@@ -94,8 +94,12 @@ require_once 'menu.php';
 
 </table>
 <br><br>
+<table>
+    <td>
 <div id="googleMap"></div>
-
+    </td>
+</table>
+<br><br>
 <!-- Add Google Maps -->
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD-QWantOsGGvCL5ANHhc1mrst_yxFGZxE"></script>
 <script>
