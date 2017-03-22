@@ -46,9 +46,7 @@ if (count($result) == 0) {
     echo '<hr/>';
     while ($post = $result->fetch()) {
         $titre = $post['TITRE'];
-
         $isbn = $post['ISBN_ISSN'];
-
         $imgname = './couverture/' . $isbn . '.jpg';
 
         if (file_exists($imgname)) {
@@ -75,17 +73,17 @@ if (count($result) == 0) {
         <div class="article-result">
             <fieldset style="float:left; height:75px;width:75px;margin-right:20px;padding:0px;">
                 <a href='#' onclick='myFunction()' name="isbn"
-                   value=" <?php echo $isbn; ?>"><?php echo '<img src="./couverture/' . $img . '" style="width:75px;height:75px;padding:0px;border:1px;"/>'; ?></a>
-            </fieldset>
+                   value=" <?php echo $isbn; ?>"><?php echo '<img src="./couverture/' . $img . '" style="width:90px;height:90px;padding:0px;border:1px;"/>'; ?><br></a>
+            </fieldset><h5><b>
             <div style="position:relative">
                 </br>
 
                 <a href='#' onclick='myFunction()' name="isbn"
-                   value=" <?php echo $isbn; ?>"> <?php echo '<h3><p>' . ($titre) . '</p></h3>'; ?></a>
+                   value="<?php echo $isbn; ?>" <?php echo '<h4>'.($titre).'</h4>'; ?></a>
                 </form>
 
 
-                <p class="isbn"><b>ISBN/ISSN : </b><?php echo($isbn); ?></p>
+                <p class="isbn"></b></h5><br><b>ISBN/ISSN : </b><?php echo($isbn); ?></p>
             </div>
         </div></td><td>
             </div>
@@ -126,13 +124,11 @@ if (count($result) == 0) {
             </form>";
             }
             if (f_compte($bdd)=="client") {
-            	if ($post['QUANTITE_STOCK']>1){
-	                echo "
-	                <form  action='#'  method='post'>
-	                	<input type='texte' name='add_nb_".$isbn."' style ='float: right' size='5' value='1'/>
-	                	<input type='image' src='addart.png' name='add_isbn' alt='Submit' align='right' width='32' height='32' value='".$isbn."'/>
-	                </form>";
-            	}
+                echo "
+                <form  action='#'  method='post'>
+                	<input type='texte' name='add_nb_".$isbn."' style ='float: right' size='5' value='1'/>
+                	<input type='image' src='addart.png' name='add_isbn' alt='Submit' align='right' width='32' height='32' value='".$isbn."'/>
+                </form>";
             }
             ?>
             <p class="prixqte"><?php echo "<b> Prix :  </b>" . $post['PRIX'] . "<b> €";
@@ -156,6 +152,9 @@ if (count($result) == 0) {
                 } ?></p>
         </div>
         <hr/>
+    </td>
+</table>
+        <br>
         <?php
     }
 }
@@ -200,9 +199,6 @@ if(isset($_POST["add_isbn"])){
 		$res=ExecuterRequete($bdd, $req);
 	}
 }
-        ?>
-    </td>
-    <?php
 // <?php $post['TITRE'] ? >
 
 /*****
