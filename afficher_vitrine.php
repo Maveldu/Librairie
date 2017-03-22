@@ -5,7 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Articles dans la vitrine"; //Titre à changer sur chaque page
 require_once 'menu.php';
 ?>
 <html>
@@ -21,10 +21,10 @@ require_once 'menu.php';
 </div>
 <div id="popup1" class="overlay">
     <div class="popup">
-        <h2>Gestion compte Gérants </h2>
+        <h2>Gestion des articles de la Vitrine </h2>
         <a class="close" href="#">×</a>
         <div class="content">
-            Ici, c'est la page de gestion de la vitrine. Vous pouvez donc supprimez les images du caroussel qui est dans l'accueil.
+            Ici, c'est la page de gestion de la vitrine. Vous pouvez donc supprimer les images du caroussel qui est à l'accueil.
         </div>
     </div>
 </div>
@@ -39,7 +39,7 @@ require_once 'menu.php';
 
             $tab = $bdd->query($sql,PDO::FETCH_ASSOC);
             echo '<table border="1">';
-            echo '<h1>Article actuellement dans la vitrine :</h1>';
+            echo '<h1>Articles actuellement dans la vitrine :</h1>';
             echo '<tr> <td> ISBN_ISSN</td><td>NUM</td><td>TITRE</td><td>NOM_EDITEUR</td><td>SUPPRIMER</td></tr>';
             foreach($tab as $utilisateur){
 
@@ -71,7 +71,7 @@ require_once 'menu.php';
         ?>
     </form>
     <br><br>
-    <a class="btn btn-danger" href="index.php">Retour a l'accueil</a><br><br>
+    <a class="btn btn-primary" href="index.php">Retour à l'accueil</a><br><br>
 
 </center>
 </body>
