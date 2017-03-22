@@ -5,7 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Gestion gérants"; //Titre à changer sur chaque page
 require_once 'menu.php';
 ?>
 <html>
@@ -21,10 +21,10 @@ require_once 'menu.php';
 </div>
 <div id="popup1" class="overlay">
     <div class="popup">
-        <h2>Gestion compte Gérants </h2>
+        <h2>Gestion comptes Gérants </h2>
         <a class="close" href="#">×</a>
         <div class="content">
-            Ici, c'est la page de gestion des comptes Gérants. Vous pouvez donc supprimez n'importe quel gérants.
+            Ici, c'est la page de gestion des comptes Gérants. Vous pouvez donc supprimer n'importe quel gérant.
         </div>
     </div>
 </div>
@@ -39,7 +39,7 @@ require_once 'menu.php';
 
             $tab = $bdd->query($sql,PDO::FETCH_ASSOC);
             echo '<table border="1">';
-            echo '<h1>Compte en Attente :</h1>';
+            echo '<h1>Comptes en attente :</h1>';
             echo '<tr> <td> NUMERO COMPTE</td><td>IDENTIFIANT</td><td>SUPPRIMER</td></tr>';
             foreach($tab as $utilisateur){
 
@@ -69,7 +69,7 @@ require_once 'menu.php';
         ?>
     </form>
     <br><br>
-    <a class="btn btn-danger" href="gestion_compte.php">Retour au Menu Gestion de Compte</a><br><br>
+    <a class="btn btn-primary" href="gestion_compte.php">Retour au menu "Gestion des Comptes"</a><br><br>
 
 </center>
 </body>
