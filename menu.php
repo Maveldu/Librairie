@@ -1,12 +1,11 @@
-﻿<?php
+﻿<link rel="icon" type="image/png" href="favicon.png"/>
+<?php
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
 require_once 'f_compte.php';
 ?>
 <!DOCTYPE html>
 <html>
-
-
 <head>
     <title><?php echo $titre;?></title>
     <meta charset="utf-8">

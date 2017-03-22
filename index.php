@@ -5,10 +5,8 @@ $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Librairie"; //Titre à changer sur chaque page
 require_once 'menu.php';
 ?>
-<html>
 <br/>
 <br/>
-<link rel="icon" type="image/png" href="favicon.png"/>
 <table>
     <td>
         <center>

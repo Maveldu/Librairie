@@ -1,6 +1,3 @@
-<html>
-<link rel="icon" type="image/png" href="favicon.png"/>
-</html>
 <?php
 session_start();
 if (isset($_POST['valider'])) {
@@ -11,7 +8,7 @@ if (isset($_POST['valider'])) {
 }
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Déconnexion"; //Titre à changer sur chaque page
 require_once 'menu.php';
 ?>
 <html>
@@ -61,14 +58,14 @@ require_once 'menu.php';
             <form method="post">
                 <?php
                 if (isset($_SESSION['id'])) {
-                    echo "<p> Voulez vous vraiment vous déconnecter " . $_SESSION['id'] . " ? </p>";
+                    echo "<p> Voulez vous vraiment vous déconnecter ? </p>";
                     ?>
                     <input class="btn btn-default" type="submit" name="valider" value="Se déconnecter"/>
                     <input class="btn btn-default" type="button" name="Accueil" value="Accueil"
                            onclick="self.location.href='index.php'">
                     <?php
                 } else {
-                    echo "<p> Vous n'êtes pas connecté !</p>";
+                    echo "<p> Vous n'êtes pas connectés !</p>";
                 }
                 ?>
 

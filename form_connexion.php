@@ -6,7 +6,7 @@ session_start();
 
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Connexion"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
 $co=null;
 $motif="^('{0,1}((([[:alpha:]]{1,})|[àâçèéêîôùû]){1,}'{0,1}){1,}(-'{0,1}((([[:alpha:]]{1,})|[àâçèéêîôùû]){1,}'{0,1}){1,})*)([[:space:]]'{0,1}((([[:alpha:]]{1,})|[àâçèéêîôùû]){1,}'{0,1}){1,}(-'{0,1}((([[:alpha:]]{1,})|[àâçèéêîôùû]){1,}'{0,1}){1,})*)*$";
@@ -56,16 +56,16 @@ $motif="^('{0,1}((([[:alpha:]]{1,})|[àâçèéêîôùû]){1,}'{0,1}){1,}(-'{0,
 <fieldset>
     <div id="maincontent">
         <?php if (isset($_SESSION['id'])) {
-            echo "Vous êtes déjà connecté !";
+            echo "Vous êtes déjà connectés !";
         } else {
             ?>
 
             <form method="post">
                 <p>
                 <div>
-                    <label for="pseudo">Pseudonyme: </label><input type="text" name="pseudo" placeholder="Entrez votre pseudo"<?php if(isset($_POST['pseudo'])){echo ('value ="'.$_POST['pseudo'].'"') ;} ?>
+                    <label for="pseudo">Pseudonyme : </label><input type="text" name="pseudo" placeholder="Entrez votre pseudo"<?php if(isset($_POST['pseudo'])){echo ('value ="'.$_POST['pseudo'].'"') ;} ?>
                                                                    pattern="[a-zA-Z0-9]{4,}$"/><br/><br/>
-                    <label for="passe">Mot de passe: </label><input type="password" name="passe" placeholder="Entrez mot de passe"
+                    <label for="passe">Mot de passe : </label><input type="password" name="passe" placeholder="Entrez mot de passe"
                                                                     pattern="[a-zA-Z0-9]{4,}$"/><br/><br/>
                     <br/><br/>
                     <input class="btn btn-default" type="submit" name="valider" value="Se connecter"/>
@@ -98,7 +98,7 @@ if (isset($_POST['valider'])) {
                 $co = 1;
                 $_SESSION['id'] = $donnee['IDENTIFIANT'];
                 $_SESSION['mail'] = $donnee['ADRESSE_MAIL'];
-                $text = "Vous êtes bien connecté, bienvenue " . $_SESSION['id'] . ".
+                $text = "Vous êtes bien connectés, bienvenue " . $_SESSION['id'] . ".
 			    		<br /> Pour rappel, votre mail: " . $_SESSION['mail'] . "";
 
                 if (isset($_SESSION['id'])) {
@@ -112,7 +112,7 @@ if (isset($_POST['valider'])) {
             }
 
         } else if ($i == 0) {
-            $text = "Le compte n'existe pas";
+            $text = "Ce compte n'existe pas";
         }
 
     }
