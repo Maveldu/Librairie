@@ -5,14 +5,16 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
+$titre = "Librairie";
 require_once 'menu.php';
 ?>
 <html>
 <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="script_compte_pro.js"></script>
+    <script type="text/javascript" src="script_compte_pro.js"></script>*
 </head>
 <body>
+
 <br/><br/><br/>
 
 <div class="box">
@@ -46,8 +48,8 @@ require_once 'menu.php';
                   <td>",$utilisateur['IDENTIFIANT'],"</td>
                   <td>",$utilisateur['NUMERO_COMPTE'],"</td>
                   <td>",$utilisateur['DATE_NOTE'],"</td>
-                  <td>",$utilisateur['TEXT'],"</td>
-				  <td><input class='btn btn-default' type='submit' name='supprimer_",$utilisateur['NUM_NOTE'],"' value='Supprimer' id='suppr' onClick=\"getnum(this)\"/></td>
+                  <td width='500px' style='word-wrap: break-word'><p>",$utilisateur['TEXT'],"</></td>
+				  <td><input class='btn btn-default' type='submit' name='supprimer_",$utilisateur['NUM_NOTE'],"' value='Supprimer' id='suppr' onClick=\"getname(this)\"/></td>
                 </tr>";
             }
             echo '</table>';
@@ -58,10 +60,10 @@ require_once 'menu.php';
         <?php
         if(isset($_POST['hidd'])){
             $explode = explode("_",$_POST['hidd']);
-            $id_user = $explode[1];
-            echo $id_user;
+            $id_note = $explode[1];
+            echo $id_note;
             if($explode[0] == "supprimer"){
-                $sql1 = "DELETE FROM note WHERE NUMERO_COMPTE=".$id_user;
+                $sql1 = "DELETE FROM note WHERE NUM_NOTE=".$id_note;
                 $bdd->exec($sql1);
                 echo "<meta http-equiv='refresh' content='0; url='" . $_SERVER['PHP_SELF'] . "'>";
                 echo "supprimer";

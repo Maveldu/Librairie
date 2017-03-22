@@ -12,10 +12,3 @@ function getname2(elem){
     hidde.setAttribute('value',ann);
     hidde.checked = true;
 }
-
-function getnum(elem){
-    var ann = elem.name;
-    var hidde = document.getElementById("hide");
-    hidde.setAttribute('value',ann);
-    hidde.checked = true;
-}
