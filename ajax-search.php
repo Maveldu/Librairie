@@ -81,7 +81,7 @@ if (count($result) == 0) {
                 </br>
 
                 <a href='#' onclick='myFunction()' name="isbn"
-                   value="<?php echo $isbn; ?>" <?php echo '<h4>'.($titre).'</h4>'; ?></a>
+                   value="<?php echo $isbn; ?>" <?php echo '<h4 style="font-size:24px;">'.($titre).'</h4>'; ?></a>
                 </form>
 
 
