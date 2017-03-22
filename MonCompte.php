@@ -23,6 +23,7 @@ require_once 'menu.php';
 
 		<fieldset>
 			<legend>Coordonnées</legend>
+			<?php if (f_compte($bdd)!="admin") { ?>
 			<label class="text-base" for="rue">Nom :</label>
 			<?php
 			$count = $bdd->prepare("SELECT NOM FROM from compte join compte_client using (NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
@@ -44,7 +45,7 @@ require_once 'menu.php';
 			foreach ($req as $test) {
 				echo $test;
 			}
-			?><br/>
+			}?><br/>
 
 
 			<label class="text-base" for="rue">Adresse Mail : </label>
@@ -94,7 +95,7 @@ require_once 'menu.php';
 				echo $test;
 			}
 			?>	<br/>
-			<label class="text-base">Code Postale :</label>
+			<label class="text-base">Code Postal :</label>
 			<?php
 			$count = $bdd->prepare("SELECT CODE_POSTALE FROM compte WHERE IDENTIFIANT = '".$_SESSION['id']."'");
 			$count->execute(array($_SESSION['id']));
@@ -106,6 +107,7 @@ require_once 'menu.php';
 			?>
 		</fieldset>
 	</center>
+	<?php if (f_compte($bdd)!="admin") { ?>
 	<center>
 		<fieldset>
 			<legend>Mes commandes :</legend>
@@ -200,6 +202,7 @@ require_once 'menu.php';
 			?>
 		</fieldset>
 	</center>
+	<?php }?>
 </body>
 </html>
 

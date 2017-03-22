@@ -5,6 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
+$titre = "Commandes en attente";
 require_once 'menu.php';
 
 ?>
@@ -25,8 +26,8 @@ require_once 'menu.php';
             {
                 $tab = $bdd->query($sql, PDO::FETCH_ASSOC);
                 echo '<table border="1">';
-                echo '<h1>Commandes en attentes :</h1>';
-                echo '<tr> <td>NOM</td> <td>PRENOM</td><td>NUMERO_COMPTE</td> <td>NUMERO_COMMANDE</td> <td>DATE_COMMANDE</td><td>ETAT_COMMANDE</td><td>VALIDE</td><td>REFUSE</td></tr>';
+                echo '<h1>Commandes en attente :</h1>';
+                echo '<tr> <td>NOM</td> <td>PRENOM</td><td>NUMERO_COMPTE</td> <td>NUMERO_COMMANDE</td> <td>DATE_COMMANDE</td><td>ETAT_COMMANDE</td><td>VALIDER</td><td>REFUSER</td></tr>';
                 foreach ($tab as $utilisateur) {
                 $numcom=$utilisateur['NUMERO_COMMANDE'];
                     echo "<tr>
@@ -39,7 +40,7 @@ require_once 'menu.php';
                   <td>", $utilisateur['DATE_COMMANDE'], "</td>
                   <td>", $utilisateur['ETAT_COMMANDE'], "</td>
                   <td><input class='btn btn-default' type='submit' name='valider_", $utilisateur['NUMERO_COMMANDE'], "' value='Valider' id='val' onClick=\"getname(this)\"/></td>
-				  <td><input class='btn btn-default' type='submit' name='supprimer_", $utilisateur['NUMERO_COMMANDE'], "' value='Refusé' id='suppr' onClick=\"getname(this)\"/></td>
+				  <td><input class='btn btn-default' type='submit' name='supprimer_", $utilisateur['NUMERO_COMMANDE'], "' value='Refuser' id='suppr' onClick=\"getname(this)\"/></td>
                 </tr>";
                 }
                 echo '</table>';

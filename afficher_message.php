@@ -5,7 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie";
+$titre = "Messages";
 require_once 'menu.php';
 ?>
 <html>
@@ -22,10 +22,10 @@ require_once 'menu.php';
 </div>
 <div id="popup1" class="overlay">
     <div class="popup">
-        <h2>Message </h2>
+        <h2>Messages</h2>
         <a class="close" href="#"></a>
         <div class="content">
-            Ici, c'est votre boite de reception de message. Ce sont donc toutes les notes et questions que vous posent les gérants.
+            Ici, c'est votre boite de reception de messages. Ce sont donc toutes les notes et questions que vous envoient les gérants.
         </div>
     </div>
 </div>
@@ -40,8 +40,8 @@ require_once 'menu.php';
 
             $tab = $bdd->query($sql,PDO::FETCH_ASSOC);
             echo '<table border="1">';
-            echo '<h1>Message</h1>';
-            echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> DATE D\'ENVOIE</td> <td>MESSAGE</td><td>SUPPRIMER</td></tr>';
+            echo '<h1>Messages</h1>';
+            echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> DATE D\'ENVOI</td> <td>MESSAGE</td><td>SUPPRIMER</td></tr>';
             foreach($tab as $utilisateur){
 
                 echo "<tr>
