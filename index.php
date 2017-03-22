@@ -13,34 +13,36 @@ require_once 'menu.php';
             <h2>Navigation</h2><br><br>
             <?php if (isset($_SESSION['id'])) { ?>
                 <a class="btn btn-primary btn-lg btn-block" href="form_deconnexion.php">Se déconnecter</a>
-                <a class="btn btn-primary btn-lg btn-block" href="MonCompte.php">Voir les Informations de votre compte</a>
-                <a class="btn btn-primary btn-lg btn-block" href="form_afficher_article.php">Affichez les articles</a>
-                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_editeur.php">Afficher les Editeurs</a>
-                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_auteur.php">Afficher les Auteurs</a><br>
+                <a class="btn btn-primary btn-lg btn-block" href="MonCompte.php">Voir les informations de votre compte</a>
+                <a class="btn btn-primary btn-lg btn-block" href="form_afficher_article.php">Afficher les articles</a>
+                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_editeur.php">Afficher les éditeurs</a>
+                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_auteur.php">Afficher les auteurs</a>
                 <?php if (f_compte($bdd)!="admin") { ?>
-                <a class="btn btn-primary btn-lg btn-block" href="mon_panier.php">Affichez votre panier</a>
+                <a class="btn btn-primary btn-lg btn-block" href="mon_panier.php">Afficher mon panier</a>
                 <?php } ?>
 
 
                 <?php if (f_compte($bdd)=="gerant") { ?>
-                    <h4 align="center"> Fonction unique aux gérants :</h4>   <table><td>
-                                <a class="btn btn-primary btn-lg btn-block" href="Note.php">Envoyer une Note</a>
+                	<table><td>
+                    <h4 align="center"> Fonction unique aux gérants :</h4>
+                                <a class="btn btn-primary btn-lg btn-block" href="Note.php">Envoyer une note à l'administrateur</a>
                     </td></table>
                 <?php } ?>
-                <table><td>
-                <h4 align="center"> Fonctions uniques à l'administrateur :</h4>
                 <?php if (f_compte($bdd)=="admin") { ?>
+                	<table><td>
+                	<h4 align="center"> Fonctions uniques à l'administrateur :</h4>
                     <a class="btn btn-primary btn-lg btn-block" href="gestion_compte.php">Gestion des comptes</a>
                     <a class="btn btn-primary btn-lg btn-block" href="afficher_message.php">Messages</a>
                     <a class="btn btn-primary btn-lg btn-block" href="afficher_vitrine.php">Gérer la vitrine</a><br><br>
+                	</td></table>
                 <?php } ?>
-                    </td></table>
+                
             <?php } else { ?>
                 <a class="btn btn-primary btn-lg btn-block" href="form_inscription.php">S'incrire</a><br><br>
-                <a class="btn btn-primary btn-lg btn-block" href="form_connexion.php">Se Connecter</a><br><br>
-                <a class="btn btn-primary btn-lg btn-block" href="form_afficher_article.php">Afficher les Articles</a><br><br>
-                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_editeur.php">Afficher les Editeurs</a><br><br>
-                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_auteur.php">Afficher les Auteurs</a><br><br>
+                <a class="btn btn-primary btn-lg btn-block" href="form_connexion.php">Se connecter</a><br><br>
+                <a class="btn btn-primary btn-lg btn-block" href="form_afficher_article.php">Afficher les articles</a><br><br>
+                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_editeur.php">Afficher les éditeurs</a><br><br>
+                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_auteur.php">Afficher les auteurs</a><br><br>
             <?php } ?>
         </center>
     </td><td>
