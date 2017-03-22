@@ -5,7 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Ajout d'auteur"; //Titre à changer sur chaque page
 require_once 'menu.php';
 ?>
 
@@ -55,12 +55,12 @@ require_once 'menu.php';
         <form class="form-group" method="post">
             <p>
             <div class="form-group">
-                <label class="col-md-2 control-label" for="nomAuteur">Nom auteur:</label>
+                <label class="col-md-2 control-label" for="nomAuteur">Nom auteur :</label>
                 <input type="text" name="nomAuteur" placeholder="Nom" required size="25"/><br/>
             </div>
             <br/>
             <div class="form-group">
-                <label class="col-md-2 control-label" for="prenomAuteur">Prénom auteur:</label>
+                <label class="col-md-2 control-label" for="prenomAuteur">Prénom auteur :</label>
                 <input type="text" name="prenomAuteur" placeholder="Prénom" required size="25"/><br/>
             </div>
 

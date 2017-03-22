@@ -6,14 +6,14 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Contenu de la vitrine"; //Titre à changer sur chaque page
 require_once 'menu.php';
 ?>
 <br/><br/>
 <br/><br/>
 <fieldset>
-    <legend>Liste des articles</legend>
-    <p> Faire une recherche par: </p>
+    <legend>Liste des articles dans la vitrine</legend>
+    <p> Faire une recherche par : </p>
     <form method="post">
         <input id="radio" type="radio" name="radio" value="TITRE" checked> Titre
         <input id="radio" type="radio" name="radio" value="ISBN_ISSN"> ISBN/ISSN

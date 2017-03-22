@@ -5,6 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
+$titre = "Note à l'administrateur";
 require_once 'menu.php';
 ?>
 
@@ -40,7 +41,7 @@ require_once 'menu.php';
             $('txa').value=$('txa').value.substr(0,maxChr);
             len=maxChr
         }
-        $('cnt').innerHTML='<span style="color:rgb('+red(len)+',0,0)">'+len+' caractère'+(1<len?'s':'')+'</span> / '+maxChr;
+        $('cnt').innerHTML='<span style="color:rgb('+red(len)+',0,0)">'+len+' caractère(s)'+(1<len?'s':'')+'</span> / '+maxChr;
         if (len<maxChr)
             $('cnt').className="";
         else
