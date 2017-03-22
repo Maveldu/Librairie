@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 08 Février 2017 à 23:07
+-- Généré le :  Mer 22 Mars 2017 à 18:47
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -152,17 +152,18 @@ INSERT INTO `commande` (`NUMERO_COMMANDE`, `NUMERO_COMPTE`, `DATE_COMMANDE`, `ET
 (226, 17, '20-01-2017', 'EN ATTENTE DE VALIDATION'),
 (227, 17, '20-01-2017', 'EN ATTENTE DE VALIDATION'),
 (228, 17, '20-01-2017', 'EN ATTENTE DE VALIDATION'),
-(229, 17, '20-01-2017', 'EN ATTENTE DE VALIDATION'),
-(230, 17, '20-01-2017', 'EN ATTENTE DE VALIDATION'),
+(229, 17, '20-01-2017', 'ANNULE'),
+(230, 17, '20-01-2017', 'ANNULE'),
 (231, 17, '20-01-2017', 'ANNULE'),
-(232, 17, '30-01-2017', 'EN ATTENTE DE VALIDATION'),
-(233, 17, NULL, 'EN COURS'),
+(232, 17, '30-01-2017', 'ANNULE'),
+(233, 17, '16-02-2017', 'ANNULE'),
 (234, 22, NULL, 'EN COURS'),
 (235, 23, NULL, 'EN COURS'),
 (236, 24, NULL, 'EN COURS'),
 (237, 25, NULL, 'EN COURS'),
 (238, 26, NULL, 'EN COURS'),
-(239, 27, NULL, 'EN COURS');
+(239, 27, NULL, 'EN COURS'),
+(240, 17, NULL, 'EN COURS');
 
 -- --------------------------------------------------------
 
@@ -234,9 +235,9 @@ CREATE TABLE `compte_client_pro` (
 
 INSERT INTO `compte_client_pro` (`NUMERO_COMPTE`, `NUMERO_PRO`, `valide`) VALUES
 (5, 123456789, 0),
-(11, 12345678912346, 1),
-(13, 12345678985241, 0),
-(20, 12345678901234, 0);
+(11, 12345678912346, 0),
+(13, 12345678985241, 1),
+(20, 12345678901234, 1);
 
 -- --------------------------------------------------------
 
@@ -256,7 +257,7 @@ CREATE TABLE `compte_fournisseur` (
 --
 
 INSERT INTO `compte_fournisseur` (`NUMERO_COMPTE`, `ID_EDITEUR`, `NOM_EDITEUR`, `VALIDE`) VALUES
-(27, 654123, 'glout', 0),
+(27, 654123, 'glout', 1),
 (25, 666666, 'Glouton', 0),
 (23, 666667, 'Glouton', 0),
 (NULL, 917437, 'Éditions du Chameau', 1);
@@ -390,8 +391,7 @@ INSERT INTO `lig_cde` (`NUMERO_COMMANDE`, `ISBN_ISSN`, `QTE_CMDEE`, `PRIX_UNIT`)
 (217, 9782917437520, 1, '10.00'),
 (218, 9782917437520, 1, '10.00'),
 (219, 9782917437520, 1, '10.00'),
-(219, 9782917437605, 1, '15.00'),
-(232, 9782917437520, 4, '10.00');
+(219, 9782917437605, 1, '15.00');
 
 -- --------------------------------------------------------
 
@@ -402,10 +402,18 @@ INSERT INTO `lig_cde` (`NUMERO_COMMANDE`, `ISBN_ISSN`, `QTE_CMDEE`, `PRIX_UNIT`)
 CREATE TABLE `note` (
   `NUMERO_COMPTE` int(11) NOT NULL,
   `TEXT` varchar(255) NOT NULL,
-  `DATE` date NOT NULL,
+  `DATE_NOTE` varchar(15) NOT NULL,
   `SUPPR` tinyint(1) NOT NULL DEFAULT '0',
   `NUM_NOTE` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `note`
+--
+
+INSERT INTO `note` (`NUMERO_COMPTE`, `TEXT`, `DATE_NOTE`, `SUPPR`, `NUM_NOTE`) VALUES
+(0, 'Test', '22/3/2017', 0, 1),
+(0, 'TEst ', '22/3/2017', 0, 2);
 
 -- --------------------------------------------------------
 
