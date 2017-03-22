@@ -71,7 +71,7 @@ if (count($result) == 0) {
             ';
         /*echo $isbn;*/ ?>
 
-
+<table><td>
         <div class="article-result">
             <fieldset style="float:left; height:75px;width:75px;margin-right:20px;padding:0px;">
                 <a href='#' onclick='myFunction()' name="isbn"
@@ -86,6 +86,8 @@ if (count($result) == 0) {
 
 
                 <p class="isbn"><b>ISBN/ISSN : </b><?php echo($isbn); ?></p>
+            </div>
+        </div></td><td>
             </div>
             </br>
             <?php if (isset($post['DATE_PARUTION'])) {
@@ -198,7 +200,9 @@ if(isset($_POST["add_isbn"])){
 		$res=ExecuterRequete($bdd, $req);
 	}
 }
-
+        ?>
+    </td>
+    <?php
 // <?php $post['TITRE'] ? >
 
 /*****

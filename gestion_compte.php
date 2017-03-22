@@ -12,7 +12,11 @@ require_once 'menu.php';
 <body>
 <br><br><br><br>
 <center>
+<<<<<<< HEAD
     <h1>Menu d'administration des comptes</h1>
+=======
+    <h1>Panneau Administration des Comptes</h1><br><br>
+>>>>>>> origin/master
 <?php if (f_compte($bdd)=="admin") { ?>
     <a class="btn btn-primary" href="form_compte_admin.php">Créer un Compte "Gérant"</a><br><br>
     <a class="btn btn-primary" href="form_compte_client_pro.php">Gestion des comptes "Client Professionnel"</a><br><br>

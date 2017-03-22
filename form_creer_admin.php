@@ -103,19 +103,25 @@ if (isset($_POST['valider'])) {
 
     if ($i == 1) 
 	{
-
+        $identifiant = $_POST['pseudo'];
+        $mdp = $_POST['passe'];
         $nb = $bdd->query('SELECT max(NUMERO_COMPTE) as max FROM compte');
         $nb = $nb->fetch();
+
         $bdd->exec('INSERT INTO compte(NUMERO_COMPTE, IDENTIFIANT, MOT_DE_PASSE) 
 					VALUES(
-					 \'' . strip_tags($nb['max'] + 1) . '\',
-					 \'' . strip_tags($_POST['pseudo']) . '\',
-					 \'' . strip_tags(md5($_POST['passe'])) . '\')');
-	$bdd->exec('INSERT INTO compte_gerant(NUMERO_COMPTE) 
-				VALUES(
-				 \'' . strip_tags($nb['max'] + 1) . '\')');
+                     \'' . strip_tags($nb['max'] + 1) . '\',
+					 \'' . strip_tags($identifiant) . '\',
+                     \'' . strip_tags(md5($mdp)) . '\')');
+
+        $bdd->exec('INSERT INTO compte_gerant(NUMERO_COMPTE) 
+                    VALUES(
+                     \'' . strip_tags($nb['max'] + 1) . '\')');
 
         echo "<p> Le compte administrateur a bien était crée ! </p>";
+
+        echo "identifiant : $identifiant</br>";
+        echo "mot de passe : $mdp</br>";
 
     } 
 	else 

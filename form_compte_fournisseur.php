@@ -122,6 +122,8 @@ require_once 'menu.php';
         }
         ?>
     </form>
+    <br><br>
+    <a class="btn btn-danger" href="gestion_compte.php">Retour au Menu Gestion de Compte</a><br><br>
 </center>
 </body>
 </html>
