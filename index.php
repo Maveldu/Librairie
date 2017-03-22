@@ -20,6 +20,7 @@ require_once 'menu.php';
                 <?php if (f_compte($bdd)!="admin") { ?>
                 <a class="btn btn-primary btn-lg btn-block" href="mon_panier.php">Afficher mon panier</a>
                 <?php } ?>
+                <br/>
 
 
                 <?php if (f_compte($bdd)=="gerant") { ?>
