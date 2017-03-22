@@ -355,9 +355,6 @@ require_once 'f_compte.php';
                         <li><a href="form_afficher_article.php">Article</a></li>
                         <li><a href="afficher_editeur.php">Éditeur</a></li>
                         <li><a href="afficher_auteur.php">Auteur</a></li>
-						<?php if (f_compte($bdd)=="admin") { ?>
-						<li><a href="afficher_vitrine.php">Vitrine</a></li>
-						<?php } ?>
                     </ul>
                 </li>
 					<?php if (f_compte($bdd)=="admin") { ?>
@@ -396,6 +393,7 @@ require_once 'f_compte.php';
 							<li><a href="MonCompte.php">Mon Compte</a></li>
                             <li><a href="form_deconnexion.php">Se déconnecter</a></li>
 							<?php if (f_compte($bdd)=="admin") { ?>
+                                <li><a href="afficher_vitrine.php">Gestion Vitrine</a></li>
 							<li><a href="afficher_message.php">Message</a></li>
                                 <li><a href="form_commande.php">Gestion des commandes</a></li>
 							<?php } ?>
