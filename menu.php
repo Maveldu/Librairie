@@ -66,13 +66,6 @@ require_once 'f_compte.php';
 			center top no-repeat;
 			position: relative;
 		}
-		
-        h3, h4 {
-            margin: 10px 0 30px 0;
-            letter-spacing: 10px;
-            font-size: 20px;
-            color: #111;
-        }
 
         .container {
             padding: 80px 120px;
@@ -110,9 +103,6 @@ require_once 'f_compte.php';
             color: #bdbdbd;
         }
 
-        .bg-1 h3 {
-            color: #fff;
-        }
 
         .bg-1 p {
             font-style: italic;
@@ -153,7 +143,7 @@ require_once 'f_compte.php';
             color: #000;
         }
 
-        .modal-header, h4, .close {
+        .modal-header, .close {
             background-color: #333;
             color: #fff !important;
             text-align: center;

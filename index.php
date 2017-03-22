@@ -10,22 +10,31 @@ require_once 'menu.php';
 <table>
     <td>
         <center>
-            <h2>Navigation</h2><br><br><br>
+            <h2>Navigation</h2><br><br>
             <?php if (isset($_SESSION['id'])) { ?>
                 <a class="btn btn-primary btn-lg btn-block" href="form_deconnexion.php">Se déconnecter</a>
                 <a class="btn btn-primary btn-lg btn-block" href="MonCompte.php">Voir les Informations de votre compte</a>
                 <a class="btn btn-primary btn-lg btn-block" href="form_afficher_article.php">Affichez les articles</a>
+                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_editeur.php">Afficher les Editeurs</a>
+                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_auteur.php">Afficher les Auteurs</a><br>
                 <?php if (f_compte($bdd)!="admin") { ?>
                 <a class="btn btn-primary btn-lg btn-block" href="mon_panier.php">Affichez votre panier</a>
                 <?php } ?>
+
+
                 <?php if (f_compte($bdd)=="gerant") { ?>
-                    <a class="btn btn-primary btn-lg btn-block" href="Note.php">Envoyer une Note</a>
+                    <h4 align="center"> Fonction unique aux gérants :</h4>   <table><td>
+                            <a class="btn btn-primary btn-lg btn-block" href="Note.php">Envoyer une Note</a>
+                    </td></table>
                 <?php } ?>
+                <table><td>
+                <h4 align="center"> Fonctions uniques à l'administrateur :</h4>
                 <?php if (f_compte($bdd)=="admin") { ?>
                     <a class="btn btn-primary btn-lg btn-block" href="gestion_compte.php">Gestion des comptes</a>
                     <a class="btn btn-primary btn-lg btn-block" href="afficher_message.php">Messages</a>
                     <a class="btn btn-primary btn-lg btn-block" href="afficher_vitrine.php">Gérer la vitrine</a><br><br>
                 <?php } ?>
+                    </td></table>
             <?php } else { ?>
                 <a class="btn btn-primary btn-lg btn-block" href="form_inscription.php">S'incrire</a><br><br>
                 <a class="btn btn-primary btn-lg btn-block" href="form_connexion.php">Se Connecter</a><br><br>
