@@ -15,7 +15,9 @@ require_once 'menu.php';
                 <a class="btn btn-primary btn-lg btn-block" href="form_deconnexion.php">Se déconnecter</a>
                 <a class="btn btn-primary btn-lg btn-block" href="MonCompte.php">Voir les Informations de votre compte</a>
                 <a class="btn btn-primary btn-lg btn-block" href="form_afficher_article.php">Affichez les articles</a>
+                <?php if (f_compte($bdd)!="admin") { ?>
                 <a class="btn btn-primary btn-lg btn-block" href="mon_panier.php">Affichez votre panier</a>
+                <?php } ?>
                 <?php if (f_compte($bdd)=="gerant") { ?>
                     <a class="btn btn-primary btn-lg btn-block" href="Note.php">Envoyer une Note</a>
                 <?php } ?>
