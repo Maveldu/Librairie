@@ -4,7 +4,6 @@
 <?php
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
 
 if (isset($_POST['q'])) {
 
@@ -69,12 +68,15 @@ if (count($result) == 0) {
             ';
         /*echo $isbn;*/ ?>
 
-<table><td>
-        <div class="article-result">
-            <fieldset style="float:left; height:75px;width:75px;margin-right:20px;padding:0px;">
-                <a href='#' onclick='myFunction()' name="isbn"
-                   value=" <?php echo $isbn; ?>"><?php echo '<img src="./couverture/' . $img . '" style="width:90px;height:90px;padding:0px;border:1px;"/>'; ?><br></a>
-            </fieldset><h5><b>
+	<table>
+		<td>
+        <div style="text-align: center;">
+        	<div>
+	            <fieldset style="margin-left:auto;margin-right:auto;padding:0px;">
+	                <a href='#' onclick='myFunction()' name="isbn"
+	                   value=" <?php echo $isbn; ?>"><?php echo '<img src="./couverture/' . $img . '" style="width:270px;height:270px;padding:0px;border:1px;"/>'; ?><br></a>
+	            </fieldset><h5><b>
+            </div>
             <div style="position:relative">
                 </br>
 
