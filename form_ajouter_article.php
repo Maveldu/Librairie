@@ -147,7 +147,7 @@ if (isset($_POST['valider'])) {
 
     $editeur = $_POST['editeur'];
 
-    $editeurExist = $bdd->query('SELECT ID_EDITEUR FROM editeur WHERE NOM = "' . $editeur . '"');
+    $editeurExist = $bdd->query('SELECT ID_EDITEUR FROM compte_fournisseur WHERE NOM_EDITEUR = "' . $editeur . '"');
     $ligneResult = $editeurExist->rowCount();
 
     $isbnExist = $bdd->query('SELECT ISBN_ISSN FROM article WHERE ISBN_ISSN = "' . $isbn_issn . '"');
@@ -165,7 +165,7 @@ if (isset($_POST['valider'])) {
     } else $isbnEditeur = $isbnEditeur[2];
 
 
-    $rep = $bdd->query('SELECT ID_EDITEUR AS id FROM editeur WHERE NOM = "' . $editeur . '"');
+    $rep = $bdd->query('SELECT ID_EDITEUR AS id FROM compte_fournisseur WHERE NOM_EDITEUR = "' . $editeur . '"');
     $donnees = $rep->fetch();
 
     $idEditeur = ($donnees['id']);

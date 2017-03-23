@@ -193,7 +193,8 @@ if (isset($_POST['valider'])) {
 				$text = "Veuillez entrer votre identifiant d'éditeur";
 			}
 
-            $nbligne = $bdd->query('SELECT NOM_EDITEUR FROM compte_fournisseur WHERE N_COMPTE = NULL && ID_EDITEUR = \'' . $_POST['idEditeur'] . '\' ');
+            $nbligne = $bdd->prepare('SELECT NOM_EDITEUR FROM compte_fournisseur WHERE N_COMPTE = NULL && ID_EDITEUR = \'' . $_POST['idEditeur'] . '\' ');
+            $nbligne->execute();
             $nbligne = $nbligne->rowCount();
             if ($nbligne != 0) {
                 $i = 0;
@@ -256,18 +257,19 @@ if (isset($_POST['valider'])) {
         }
         if (isset($_POST['Editeur'])) {
 
-            $nbligne = $bdd->query('SELECT NOM_EDITEUR FROM compte_fournisseur WHERE N_COMPTE is NULL && ID_EDITEUR = \'' . $_POST['idEditeur'] . '\' ');
+            $nbligne = $bdd->prepare('SELECT NOM_EDITEUR FROM compte_fournisseur WHERE NUMERO_COMPTE is NULL && ID_EDITEUR = \'' . $_POST['idEditeur'] . '\' ');
+            $nbligne->execute();
             $nbligne = $nbligne->rowCount();
 
             if ($nbligne != 0) {
                 $bdd->exec('UPDATE compte_fournisseur
-					SET N_COMPTE = 
+					SET NUMERO_COMPTE = 
 					 \'' . strip_tags($nb['max'] + 1) . '\'
 					where ID_EDITEUR = 
 					 \'' . strip_tags($_POST['idEditeur']) . '\'');
             }
             else {
-                $bdd->exec('INSERT INTO compte_fournisseur(N_COMPTE, ID_EDITEUR, NOM_EDITEUR) 
+                $bdd->exec('INSERT INTO compte_fournisseur(NUMERO_COMPTE, ID_EDITEUR, NOM_EDITEUR) 
 					VALUES(
 					 \'' . strip_tags($nb['max'] + 1) . '\',
 					 \'' . strip_tags($_POST['idEditeur']) . '\',
