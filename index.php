@@ -46,8 +46,8 @@ require_once 'menu.php';
                 <a class="btn btn-primary btn-lg btn-block" href="form_inscription.php">S'incrire</a><br><br>
                 <a class="btn btn-primary btn-lg btn-block" href="form_connexion.php">Se connecter</a><br><br>
                 <a class="btn btn-primary btn-lg btn-block" href="form_afficher_article.php">Afficher les articles</a><br><br>
-                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_editeur.php">Afficher les éditeurs</a><br><br>
-                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_auteur.php">Afficher les auteurs</a><br><br>
+                <a class="btn btn-primary btn-lg btn-block" href="afficher_editeur.php">Afficher les éditeurs</a><br><br>
+                <a class="btn btn-primary btn-lg btn-block" href="afficher_auteur.php">Afficher les auteurs</a><br><br>
             <?php } ?>
         </center>
     </td><td>
