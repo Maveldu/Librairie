@@ -15,8 +15,8 @@ require_once 'menu.php';
                 <a class="btn btn-primary btn-lg btn-block" href="form_deconnexion.php">Se déconnecter</a>
                 <a class="btn btn-primary btn-lg btn-block" href="MonCompte.php">Voir les informations de votre compte</a>
                 <a class="btn btn-primary btn-lg btn-block" href="form_afficher_article.php">Afficher les articles</a>
-                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_editeur.php">Afficher les éditeurs</a>
-                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_auteur.php">Afficher les auteurs</a>
+                <a class="btn btn-primary btn-lg btn-block" href="afficher_editeur.php">Afficher les éditeurs</a>
+                <a class="btn btn-primary btn-lg btn-block" href="afficher_auteur.php">Afficher les auteurs</a>
                 <?php if (f_compte($bdd)!="admin") { ?>
                 <a class="btn btn-primary btn-lg btn-block" href="mon_panier.php">Afficher mon panier</a>
                 <?php } ?>
