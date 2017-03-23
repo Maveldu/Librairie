@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 22 Mars 2017 à 23:49
--- Version du serveur :  10.1.19-MariaDB
--- Version de PHP :  5.6.28
+-- Généré le :  Jeu 23 Mars 2017 à 09:56
+-- Version du serveur :  5.7.14
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -50,7 +50,7 @@ CREATE TABLE `article` (
 
 INSERT INTO `article` (`ISBN_ISSN`, `ID_EDITEUR`, `TITRE`, `QUANTITE_STOCK`, `NOM_EDITEUR`, `COLLECTION`, `DATE_PARUTION`, `NUMERO_COLLECTION`, `EDITION`, `PRIX`, `RESUME`, `NOTE_GERANT`, `SUPPORT`, `Couverture`, `MOTCLES`) VALUES
 (9782917437520, 917437, 'Ces cris gravés', 50, 'Éditions du Chameau', 'Éditions du Chameau', '2016-01-06', 1, 'Éditions du Chameau', '10.00', 'Dans le château de Thunder-ten-tronckh, Pangloss, le maître de Candide, lui enseigne que tout va pour le mieux dans le meilleur des mondes. Candide le croit, mais se fait chasser du château pour un baiser donné à sa cousine Cunégonde.', '', 'choix2', '', 'photographie, dessin,texte'),
-(9782917437605, 917437, 'Slams', 3, 'Éditions du Chameau', 'Éditions du Chameau', '2016-01-08', 1, 'Éditions du Chameau', '15.00', '1815. Alors que tous les aubergistes de la ville l''ont chassé, le bagnard Jean Valjean est hébergé par Mgr Myriel ( que les pauvres ont baptisé, d''après l''un de ses prénoms, Mgr Bienvenu). L''évêque de la ville de Digne, l''accueille avec bienveillance, le', 'Bon livre apprécié par notre équipe', 'papier', '', ''),
+(9782917437605, 917437, 'Slams', 3, 'Éditions du Chameau', 'Éditions du Chameau', '2016-01-08', 1, 'Éditions du Chameau', '15.00', '1815. Alors que tous les aubergistes de la ville l\'ont chassé, le bagnard Jean Valjean est hébergé par Mgr Myriel ( que les pauvres ont baptisé, d\'après l\'un de ses prénoms, Mgr Bienvenu). L\'évêque de la ville de Digne, l\'accueille avec bienveillance, le', 'Bon livre apprécié par notre équipe', 'papier', '', ''),
 (9782917437742, 917437, 'Pourquoi y a t-il...?', 42, 'Éditions du chameau', 'Éditions du chameau', '2016-12-01', 125, 'Éditions du chameau', '14.00', 'Une femme un peu étrange qui balaye un théâtre, mais pas trop, qui parle, beaucoup, qui s’interroge, se scandalise et s’émerveille de l’absurde logique qui semble régir les hommes...', NULL, 'papier', '', ''),
 (9782917437773, 917437, 'Le goût des hommes', 25, 'Éditions du chameau', 'Éditions du chameau', '2016-12-01', 125, 'Éditions du chameau', '15.00', '« Je ne savais pas que ce goût serait si difficile à vivre et encore plus difficile à assumer » écrit Janine Mesnildrey dès la première page de son roman.', NULL, 'papier', '', '');
 
@@ -111,7 +111,8 @@ INSERT INTO `client` (`NUMERO_COMPTE`, `NOM`, `PRENOM`) VALUES
 (24, 'glouto', 'glouto'),
 (25, 'glout', 'glout'),
 (26, 'testd', 'Glouton'),
-(27, 'Gabin', 'Glouton');
+(27, 'Gabin', 'Glouton'),
+(31, 'PEUSDO', 'Jeanclaude');
 
 -- --------------------------------------------------------
 
@@ -163,7 +164,8 @@ INSERT INTO `commande` (`NUMERO_COMMANDE`, `NUMERO_COMPTE`, `DATE_COMMANDE`, `ET
 (237, 25, NULL, 'EN COURS'),
 (238, 26, NULL, 'EN COURS'),
 (239, 27, NULL, 'EN COURS'),
-(240, 17, NULL, 'EN COURS');
+(240, 17, NULL, 'EN COURS'),
+(241, 31, NULL, 'EN COURS');
 
 -- --------------------------------------------------------
 
@@ -178,9 +180,9 @@ CREATE TABLE `compte` (
   `ADMIN` tinyint(1) DEFAULT NULL,
   `NUMERO_TELEPHONE` bigint(10) DEFAULT NULL,
   `IDENTIFIANT` char(255) DEFAULT NULL,
-  `ADRESSE` text NOT NULL COMMENT 'adresse',
-  `CODE_POSTALE` int(11) NOT NULL COMMENT 'code postale',
-  `VILLE` varchar(40) NOT NULL COMMENT 'ville'
+  `ADRESSE` text COMMENT 'adresse',
+  `CODE_POSTALE` int(11) DEFAULT NULL COMMENT 'code postale',
+  `VILLE` varchar(40) DEFAULT NULL COMMENT 'ville'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -217,7 +219,13 @@ INSERT INTO `compte` (`NUMERO_COMPTE`, `ADRESSE_MAIL`, `MOT_DE_PASSE`, `ADMIN`, 
 (27, 'leroiglouton@gmail.com', 'c275fb3307a3f36d9fbd249035e31c7c', NULL, 653241526, 'leroiglouton', 'monamis', 50430, 'gloutville'),
 (28, NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 'Testsousadmin', '', 0, ''),
 (29, NULL, '662be8a28444fe9b80595f92b8493fc4', NULL, NULL, 'ger1234', '', 0, ''),
-(30, NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 'Test12348', '', 0, '');
+(30, NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 'Test12348', '', 0, ''),
+(31, 'jcpeusdo@mel.com', '81dc9bdb52d04dc20036dbd8313ed055', NULL, 606060606, 'peusdo', 'addr', 0, 'ville'),
+(32, NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 'gerger', NULL, NULL, NULL),
+(33, NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 'GERANT1', NULL, NULL, NULL),
+(34, NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 'jeran', NULL, NULL, NULL),
+(35, NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 'jeran2', NULL, NULL, NULL),
+(36, NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 'jeran3', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -281,7 +289,13 @@ CREATE TABLE `compte_gerant` (
 INSERT INTO `compte_gerant` (`NUMERO_COMPTE`) VALUES
 (28),
 (29),
-(30);
+(30),
+(31),
+(32),
+(33),
+(34),
+(35),
+(36);
 
 -- --------------------------------------------------------
 

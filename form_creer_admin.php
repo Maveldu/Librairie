@@ -7,6 +7,7 @@ require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Créer gérant"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
+error_reporting(3);
 ?>
 
 <html>
@@ -108,20 +109,22 @@ if (isset($_POST['valider'])) {
         $nb = $bdd->query('SELECT max(NUMERO_COMPTE) as max FROM compte');
         $nb = $nb->fetch();
 
+
         $bdd->exec('INSERT INTO compte(NUMERO_COMPTE, IDENTIFIANT, MOT_DE_PASSE) 
 					VALUES(
                      \'' . strip_tags($nb['max'] + 1) . '\',
 					 \'' . strip_tags($identifiant) . '\',
-                     \'' . strip_tags(md5($mdp)) . '\')');
+                     \'' . strip_tags(md5($mdp)) . '\');');
+
 
         $bdd->exec('INSERT INTO compte_gerant(NUMERO_COMPTE) 
                     VALUES(
-                     \'' . strip_tags($nb['max'] + 1) . '\')');
+                     \'' . strip_tags($nb['max'] + 1) . '\');');
 
-        echo "<p> Le compte administrateur a bien été créé ! </p>";
+        echo "<center> Le compte gérant a bien été créé !<br/>";
 
-        echo "identifiant : $identifiant</br>";
-        echo "mot de passe : $mdp</br>";
+        echo "identifiant : $identifiant<br/>";
+        echo "mot de passe : $mdp<br/> </center>";
 
     } 
 	else 
