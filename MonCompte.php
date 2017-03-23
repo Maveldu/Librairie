@@ -124,8 +124,10 @@ require_once 'menu.php';
 					echo "<br/>____________________________";
 				}
 				foreach($tab as $utilisateur){
+					$numcom=$utilisateur['NUMERO_COMMANDE'];
 
-					if ($utilisateur['ETAT_COMMANDE']=="EN COURS"){
+
+			if ($utilisateur['ETAT_COMMANDE']=="EN COURS"){
 					}elseif ($utilisateur['ETAT_COMMANDE']=="EN ATTENTE DE VALIDATION" or $utilisateur['ETAT_COMMANDE']=="VALIDE" or $utilisateur['ETAT_COMMANDE']=="REFUSE") {
 						echo "<fieldset>";
 						echo "Numero : ";
@@ -154,6 +156,7 @@ require_once 'menu.php';
 							$cancel = 1;
 							echo "<input class=\"btn btn-default\" type=\"button\" name=\"Accueil\" value=\"Annuler la commande\"
                            onclick=\"self.location.href='supprimer_commande.php?com=$commande&amp;sup=$cancel'\">";
+							echo"<input class=\"btn btn -default\" type=\"button\" name=\"Accueil\" value=\"Voir\" onclick=\"self.location.href='voir_commandeclient.php?num=$numcom'\"/>";
 							echo "</br>";
 						} else if ($utilisateur['ETAT_COMMANDE'] == "VALIDE") {
 							echo "<font color =\"green\">";
@@ -166,6 +169,7 @@ require_once 'menu.php';
 							$cancel = 0;
 							echo "<input class=\"btn btn-default\" type=\"button\" name=\"Accueil\" value=\"Retirer de l'historique\"
                            onclick=\"self.location.href='supprimer_commande.php?com=$commande&amp;sup=$cancel'\">";
+							echo"<input class=\"btn btn -default\" type=\"button\" name=\"Accueil\" value=\"Voir\" onclick=\"self.location.href='voir_commandeclient.php?num=$numcom'\"/>";
 							echo "<br/>";
 
 						}
@@ -180,6 +184,7 @@ require_once 'menu.php';
 							$cancel = 0;
 							echo "<input class=\"btn btn-default\" type=\"button\" name=\"Accueil\" value=\"Retirer de l'historique\"
                            onclick=\"self.location.href='supprimer_commande.php?com=$commande&amp;sup=$cancel'\">";
+							echo"<input class=\"btn btn -default\" type=\"button\" name=\"Accueil\" value=\"Voir\" onclick=\"self.location.href='voir_commandeclient.php?num=$numcom'\"/>";
 							echo "<br/>";
 						}
 						echo "____________________________";
