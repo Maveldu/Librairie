@@ -1,12 +1,11 @@
-﻿<?php
+﻿<link rel="icon" type="image/png" href="favicon.png"/>
+<?php
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
 require_once 'f_compte.php';
 ?>
 <!DOCTYPE html>
 <html>
-
-
 <head>
     <title><?php echo $titre;?></title>
     <meta charset="utf-8">
@@ -25,22 +24,22 @@ require_once 'f_compte.php';
     <style>
 
         table {
-            border:3px solid #6495ed;
+            border:3px solid black;
             border-collapse:collapse;
             width:90%;
             margin:auto;
         }
         thead, tfoot {
             background-color:#D0E3FA;
-            border:1px solid #6495ed;
+            border:2px solid #6495ed;
         }
         tbody {
             background-color:#FFFFFF;
-            border:1px solid #6495ed;
+            border:2px solid #6495ed;
         }
         th {
             font-family:monospace;
-            border:1px dotted #6495ed;
+            border:2px dotted #6495ed;
             padding:5px;
             background-color:#EFF6FF;
             width:25%;
@@ -48,7 +47,7 @@ require_once 'f_compte.php';
         td {
             font-family:sans-serif;
             font-size:80%;
-            border:1px solid #6495ed;
+            border:2px solid #6495ed;
             padding:5px;
             text-align:left;
         }
@@ -67,13 +66,6 @@ require_once 'f_compte.php';
 			center top no-repeat;
 			position: relative;
 		}
-		
-        h3, h4 {
-            margin: 10px 0 30px 0;
-            letter-spacing: 10px;
-            font-size: 20px;
-            color: #111;
-        }
 
         .container {
             padding: 80px 120px;
@@ -111,9 +103,6 @@ require_once 'f_compte.php';
             color: #bdbdbd;
         }
 
-        .bg-1 h3 {
-            color: #fff;
-        }
 
         .bg-1 p {
             font-style: italic;
@@ -154,7 +143,7 @@ require_once 'f_compte.php';
             color: #000;
         }
 
-        .modal-header, h4, .close {
+        .modal-header, .close {
             background-color: #333;
             color: #fff !important;
             text-align: center;
@@ -356,9 +345,6 @@ require_once 'f_compte.php';
                         <li><a href="form_afficher_article.php">Article</a></li>
                         <li><a href="afficher_editeur.php">Éditeur</a></li>
                         <li><a href="afficher_auteur.php">Auteur</a></li>
-						<?php if (f_compte($bdd)=="admin") { ?>
-						<li><a href="afficher_vitrine.php">Vitrine</a></li>
-						<?php } ?>
                     </ul>
                 </li>
 					<?php if (f_compte($bdd)=="admin") { ?>
@@ -379,6 +365,7 @@ require_once 'f_compte.php';
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">GESTION DES COMPTES
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li><a href="gestion_compte.php">Gestion de compte</a></li>
                             <li><a href="form_creer_admin.php">Créer Gérant</a></li>
                             <li><a href="form_compte_admin.php">Gestion Gérant</a></li>
                             <li><a href="form_compte_client_pro.php">Gestion Client pro</a></li>
@@ -396,15 +383,17 @@ require_once 'f_compte.php';
 							<li><a href="MonCompte.php">Mon Compte</a></li>
                             <li><a href="form_deconnexion.php">Se déconnecter</a></li>
 							<?php if (f_compte($bdd)=="admin") { ?>
-							<li><a href="afficher_vitrine.php">Message</a></li>
-							<li><a href="afficher_vitrine.php">Gestion de compte</a></li>
+                                <li><a href="afficher_vitrine.php">Gestion Vitrine</a></li>
+							<li><a href="afficher_message.php">Messages</a></li>
                                 <li><a href="form_commande.php">Gestion des commandes</a></li>
 							<?php } ?>
                         </ul>
                     </li>
+                    <?php if (f_compte($bdd)!="admin") { ?>
                     <li class="dropdown">
                         <a href="mon_panier.php">MON PANIER</a>
                     </li>
+                    <?php } ?>
                 <?php } else { ?>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">MON COMPTE

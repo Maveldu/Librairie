@@ -5,7 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Ajout par CSV"; //Titre à changer sur chaque page
 require_once 'menu.php';
 ?>
     <style>
@@ -25,7 +25,7 @@ require_once 'menu.php';
             <p>
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="fichier">Votre fichier:</label>
+                    <label class="col-md-2 control-label" for="fichier">Votre fichier :</label>
                     <input type="file" name="fichier"/><br/><br/>
             <p align="center"><input class="btn btn-default" type="submit" name="valider" value="Envoyer"/></p>
 

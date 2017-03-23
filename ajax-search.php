@@ -4,7 +4,6 @@
 <?php
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
 
 if (isset($_POST['q'])) {
 
@@ -46,9 +45,7 @@ if (count($result) == 0) {
     echo '<hr/>';
     while ($post = $result->fetch()) {
         $titre = $post['TITRE'];
-
         $isbn = $post['ISBN_ISSN'];
-
         $imgname = './couverture/' . $isbn . '.jpg';
 
         if (file_exists($imgname)) {
@@ -71,21 +68,26 @@ if (count($result) == 0) {
             ';
         /*echo $isbn;*/ ?>
 
-
-        <div class="article-result">
-            <fieldset style="float:left; height:75px;width:75px;margin-right:20px;padding:0px;">
-                <a href='#' onclick='myFunction()' name="isbn"
-                   value=" <?php echo $isbn; ?>"><?php echo '<img src="./couverture/' . $img . '" style="width:75px;height:75px;padding:0px;border:1px;"/>'; ?></a>
-            </fieldset>
+	<table>
+		<td>
+        <div style="text-align: center;">
+        	<div>
+	            <fieldset style="margin-left:auto;margin-right:auto;padding:0px;">
+	                <a href='#' onclick='myFunction()' name="isbn"
+	                   value=" <?php echo $isbn; ?>"><?php echo '<img src="./couverture/' . $img . '" style="width:270px;height:270px;padding:0px;border:1px;"/>'; ?><br></a>
+	            </fieldset><h5><b>
+            </div>
             <div style="position:relative">
                 </br>
 
                 <a href='#' onclick='myFunction()' name="isbn"
-                   value=" <?php echo $isbn; ?>"> <?php echo '<h3><p>' . ($titre) . '</p></h3>'; ?></a>
+                   value="<?php echo $isbn; ?>" <?php echo '<h4 style="font-size:24px;">'.($titre).'</h4>'; ?></a>
                 </form>
 
 
-                <p class="isbn"><b>ISBN/ISSN : </b><?php echo($isbn); ?></p>
+                <p class="isbn"></b></h5><br><b>ISBN/ISSN : </b><?php echo($isbn); ?></p>
+            </div>
+        </div></td><td>
             </div>
             </br>
             <?php if (isset($post['DATE_PARUTION'])) {
@@ -124,11 +126,13 @@ if (count($result) == 0) {
             </form>";
             }
             if (f_compte($bdd)=="client") {
-                echo "
-                <form  action='#'  method='post'>
-                	<input type='texte' name='add_nb_".$isbn."' style ='float: right' size='5' value='1'/>
-                	<input type='image' src='addart.png' name='add_isbn' alt='Submit' align='right' width='32' height='32' value='".$isbn."'/>
-                </form>";
+            	if ($post['QUANTITE_STOCK']>1){
+                	echo "
+                	<form  action='#'  method='post'>
+            	    	<input type='texte' name='add_nb_".$isbn."' style ='float: right' size='5' value='1'/>
+               	 		<input type='image' src='addart.png' name='add_isbn' alt='Submit' align='right' width='32' height='32' value='".$isbn."'/>
+                	</form>";
+            	}
             }
             ?>
             <p class="prixqte"><?php echo "<b> Prix :  </b>" . $post['PRIX'] . "<b> €";
@@ -152,6 +156,9 @@ if (count($result) == 0) {
                 } ?></p>
         </div>
         <hr/>
+    </td>
+</table>
+        <br>
         <?php
     }
 }
@@ -196,7 +203,6 @@ if(isset($_POST["add_isbn"])){
 		$res=ExecuterRequete($bdd, $req);
 	}
 }
-
 // <?php $post['TITRE'] ? >
 
 /*****

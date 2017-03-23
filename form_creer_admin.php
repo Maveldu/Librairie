@@ -5,7 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Créer gérant"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
 ?>
 
@@ -52,16 +52,16 @@ require_once 'menu.php';
                 <p>
                 <fieldset>
                     <legend> Identifiants :</legend>
-                    <label class="text-base" for="pseudo">Pseudonyme: *</label>
+                    <label class="text-base" for="pseudo">Pseudonyme : *</label>
                     <input type="text" name="pseudo" pattern="[a-zA-Z0-9]{4,}$"/><br/><br/>
-                    <label for="passe">Mot de passe: *</label>
+                    <label for="passe">Mot de passe : *</label>
                     <input type="password" name="passe" pattern="[a-zA-Z0-9]{4,}$"/><br/><br/>
-                    <label>Confirmation du mot de passe: *</label>
+                    <label>Confirmation du mot de passe : *</label>
                     <input type="password" name="passe2"/><br/><br/>
                 </fieldset>
 
                 <input class="btn btn-default" type="submit" name="valider" value="Créer"/>
-				<input class="btn btn-default" type="submit" name="compte_aleatoire" value="Compte Aleatoire"/>
+				<input class="btn btn-default" type="submit" name="compte_aleatoire" value="Compte aléatoire"/>
                 <input class="btn btn-default" type="button" name="Retour" value="Retour"
                        onclick="self.location.href='index.php'">
                 </p>
@@ -93,7 +93,7 @@ if (isset($_POST['valider'])) {
         if ($_POST['passe'] != $_POST['passe2']) {
 
             $i = 0;
-            $text = "Les mots de passes ne correspondent pas";
+            $text = "Les mots de passe ne correspondent pas";
         }
     } else if ($i == 1) {
         $i = 0;
@@ -103,19 +103,25 @@ if (isset($_POST['valider'])) {
 
     if ($i == 1) 
 	{
-
+        $identifiant = $_POST['pseudo'];
+        $mdp = $_POST['passe'];
         $nb = $bdd->query('SELECT max(NUMERO_COMPTE) as max FROM compte');
         $nb = $nb->fetch();
+
         $bdd->exec('INSERT INTO compte(NUMERO_COMPTE, IDENTIFIANT, MOT_DE_PASSE) 
 					VALUES(
-					 \'' . strip_tags($nb['max'] + 1) . '\',
-					 \'' . strip_tags($_POST['pseudo']) . '\',
-					 \'' . strip_tags(md5($_POST['passe'])) . '\')');
-	$bdd->exec('INSERT INTO compte_gerant(NUMERO_COMPTE) 
-				VALUES(
-				 \'' . strip_tags($nb['max'] + 1) . '\')');
+                     \'' . strip_tags($nb['max'] + 1) . '\',
+					 \'' . strip_tags($identifiant) . '\',
+                     \'' . strip_tags(md5($mdp)) . '\')');
 
-        echo "<p> Le compte administrateur a bien était crée ! </p>";
+        $bdd->exec('INSERT INTO compte_gerant(NUMERO_COMPTE) 
+                    VALUES(
+                     \'' . strip_tags($nb['max'] + 1) . '\')');
+
+        echo "<p> Le compte administrateur a bien été créé ! </p>";
+
+        echo "identifiant : $identifiant</br>";
+        echo "mot de passe : $mdp</br>";
 
     } 
 	else 
@@ -136,7 +142,7 @@ if (isset($_POST['compte_aleatoire']))
 	$nb = $bdd->query('SELECT count(NUMERO_COMPTE) as max FROM compte_gerant');
     $nb = $nb->fetch();
 	
-	$identifiant = "admin_".strip_tags($nb['max'] + 1) ;
+	$identifiant = "gerant_".strip_tags($nb['max'] + 1) ;
 		
 		
 		
@@ -156,7 +162,7 @@ if (isset($_POST['compte_aleatoire']))
 				 \'' . strip_tags($nb['max'] + 1) . '\')');
 		
 
-	echo "<p> Le compte administrateur a bien était crée ! </p></br>";
+	echo "<p> Le compte gérant a bien été créé ! </p></br>";
 	
 		echo "identifiant : $identifiant</br>";
 	echo "mot de passe : $mdp</br>";

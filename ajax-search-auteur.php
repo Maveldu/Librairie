@@ -34,6 +34,7 @@ if (count($result) == 0) {
     while ($post = $result->fetch()) {
         $id_auteur = $post['ID_AUTEUR'];
         ?>
+<table><td>
         <div class="article-result">
 
             <h3><p><?php echo($post['NOM_AUTEUR'] . " " . $post['PRENOM_AUTEUR']); ?></p>
@@ -47,6 +48,8 @@ if (count($result) == 0) {
             } ?>
             <p class="id">IDENTIFIANT:<?php echo $id_auteur; ?></p>
         </div>
+        </td>
+</table>
         <hr/>
         <?php
     }

@@ -5,7 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Ajout d'éditeur"; //Titre à changer sur chaque page
 require_once 'menu.php';
 ?>
 
@@ -52,13 +52,13 @@ require_once 'menu.php';
         <form class="form-group" method="post">
             <p>
             <div class="form-group">
-                <label class="col-md-2 control-label" for="idEditeur">Id éditeur:</label>
+                <label class="col-md-2 control-label" for="idEditeur">Id éditeur :</label>
                 <input required type="text" name="idEditeur" placeholder="Identifiant" pattern="[0-9]{4,6}"><br/>
             </div>
 
 
             <div class="form-group">
-                <label class="col-md-2 control-label" for="nomEditeur">Nom éditeur:</label>
+                <label class="col-md-2 control-label" for="nomEditeur">Nom éditeur :</label>
                 <input required type="text" name="nomEditeur" placeholder="Nom" pattern="[A-Za-z ]{1,}"><br/>
             </div>
 
@@ -81,7 +81,7 @@ if (isset($_POST['valider'])) {
 
 
     if ($ligneResult == 1) {
-        echo 'L\'éditeur que vous essayez de rentrer exise déjà';
+        echo 'L\'éditeur que vous essayez de rentrer existe déjà';
     } else {
         $req = $bdd->prepare('INSERT INTO compte_fournisseur (ID_EDITEUR, NOM_EDITEUR) VALUES(:idEditeur, :nomEditeur)');
         $req->execute(array(

@@ -5,6 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
+$titre = "Note à l'administrateur";
 require_once 'menu.php';
 ?>
 
@@ -19,11 +20,13 @@ require_once 'menu.php';
     <br/>
     <h2>Note pour l'administrateur</h2>
     <fieldset>
+        <form class="form-group" method="post">
         <p id="cnt"></p>
-        <textarea type="text" id="txa" ng-model="myName" placeholder="Ecrire une note à envoyer à l'administrateur" maxlength=255 cols="60" rows="5"  autofocus onkeyup="reste(this.value); " required></textarea>
+        <textarea required name="note" id="txa" ng-model="myName" placeholder="Ecrire une note à envoyer à l'administrateur" maxlength=255 cols="60" rows="5"  autofocus onkeyup="reste(this.value); "></textarea>
         <br />
             <input class="btn btn-primary" type="submit" value="Envoyer" name="envoyer" id="envoyer">
             <input class="btn btn-primary" type="button" value ="Effacer" onclick="effacer()">
+            </form>
     </fieldset>
 </div>
 <script type="text/javascript">
@@ -38,7 +41,7 @@ require_once 'menu.php';
             $('txa').value=$('txa').value.substr(0,maxChr);
             len=maxChr
         }
-        $('cnt').innerHTML='<span style="color:rgb('+red(len)+',0,0)">'+len+' caractère'+(1<len?'s':'')+'</span> / '+maxChr;
+        $('cnt').innerHTML='<span style="color:rgb('+red(len)+',0,0)">'+len+' caractère(s)'+(1<len?'s':'')+'</span> / '+maxChr;
         if (len<maxChr)
             $('cnt').className="";
         else
@@ -62,10 +65,31 @@ require_once 'menu.php';
 </body>
 <?php
 if (isset($_POST['envoyer'])) {
-    $req = "SELECT NUM_NOTE FROM note WHERE NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT ='" . $_SESSION['id'] . "')";
+    $req = $bdd->query('SELECT max(NUM_NOTE) as max FROM note');
+    $Num_note = $req->fetch();
+    $Num_note =  $Num_note['max'] + 1;
+
+    $req = "SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '" . $_SESSION['id'] . "'";
     $TabNumNote = LireDonneesPDO1($bdd, $req);
-    $Num_note = $TabNumNote['0']['NUM_NOTE'];
-    $req = "INSERT INTO note VALUES(" . $Num_note . "," . $_POST['note'] . ",sysdate,0," . $Num_note . ",);";
-    $res = ExecuterRequete($bdd, $req);
+    $Num_compte = $TabNumNote['0']['NUMERO_COMPTE'];
+    $Datee = getdate();
+    //echo($Datee['mday'].'/'.$Datee['mon'].'/'.$Datee['year']);
+    $Note =  $_POST['note'];
+    $req = 'INSERT INTO note (NUM_NOTE, NUMERO_COMPTE,TEXT, DATE_NOTE)
+					VALUES(
+					 \'' . strip_tags($Num_note) . '\',
+					 \'' . strip_tags($Num_compte) . '\',
+					 \'' . strip_tags($Note) . '\',
+					 \'' . strip_tags($Datee['mday'].'/'.$Datee['mon'].'/'.$Datee['year']) . '\')';
+
+
+    $bdd->exec('INSERT INTO note (NUM_NOTE, NUMERO_COMPTE,TEXT, DATE_NOTE)
+					VALUES(
+					 \'' . strip_tags($Num_note) . '\',
+					 \'' . strip_tags($Num_compte) . '\',
+					 \'' . strip_tags($Note) . '\',
+					 \'' . strip_tags($Datee['mday'].'/'.$Datee['mon'].'/'.$Datee['year']) . '\')');
+
+
 }
 ?>

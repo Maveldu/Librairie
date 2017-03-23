@@ -6,7 +6,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Ajout d'article"; //Titre à changer sur chaque page
 require_once 'menu.php';
 
 $auteurs = $bdd->query('SELECT NOM_AUTEUR, PRENOM_AUTEUR, ID_AUTEUR FROM auteur');
@@ -35,24 +35,24 @@ $editeurs = $bdd->query('SELECT NOM_EDITEUR, ID_EDITEUR FROM compte_fournisseur'
             <div id="gauche" class="form-group">
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="ISBN">ISBN:</label>
+                    <label class="col-md-2 control-label" for="ISBN">ISBN :</label>
                     <input required type="text" name="isbn" placeholder="ISBN"
                            pattern="(?:(?=.{17}$)97[89][ -](?:[0-9]+[ -]){2}[0-9]+[ -][0-9]|97[89][0-9]{10}|(?=.{13}$)(?:[0-9]+[ -]){2}[0-9]+[ -][0-9Xx]|[0-9]{9}[0-9Xx])"/><br/>
                     <br/>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="Titre">Titre:</label>
+                    <label class="col-md-2 control-label" for="Titre">Titre :</label>
                     <input required type="text" name="titre" placeholder="Titre" pattern="/^[\p{L}-. ]*$/u"/><br/><br/>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="Quantité en stock">Quantité en stock:</label>
+                    <label class="col-md-2 control-label" for="Quantité en stock">Quantité en stock :</label>
                     <input required type="text" name="quantiteStock" placeholder="Quantité" pattern="[1-9][0-9]{0,10}"/><br/><br/>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="Editeur">Editeur:</label>
+                    <label class="col-md-2 control-label" for="Editeur">Éditeur :</label>
                     <input required name="editeur" placeholder="Editeur" type="text" pattern="/^[\p{L}-. ]*$/u"
                            list="editeur" autocomplete="off"/><br/><br/>
                     <datalist id="editeur">
@@ -65,17 +65,17 @@ $editeurs = $bdd->query('SELECT NOM_EDITEUR, ID_EDITEUR FROM compte_fournisseur'
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="Collection">Collection:</label>
+                    <label class="col-md-2 control-label" for="Collection">Collection :</label>
                     <input type="text" name="collection" placeholder="Collection" pattern="/^[\p{L}-. ]*$/u"/><br/><br/>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="Date de parution">Date de parution:</label>
+                    <label class="col-md-2 control-label" for="Date de parution">Date de parution :</label>
                     <input required type="date" name="dateParution"/><br/><br/>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="Numero de collection">Numéro de collection:</label>
+                    <label class="col-md-2 control-label" for="Numero de collection">Numéro de collection :</label>
                     <input type="text" name="numeroCollection" placeholder="N°collection"
                            pattern="[0-9]{0,10}"/><br/><br/>
                 </div>
@@ -91,12 +91,12 @@ $editeurs = $bdd->query('SELECT NOM_EDITEUR, ID_EDITEUR FROM compte_fournisseur'
             <div id="droite" class="form-group">
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="Edition">Édition:</label>
+                    <label class="col-md-2 control-label" for="Edition">Édition :</label>
                     <input type="text" name="edition" placeholder="Edition" pattern="[a-Z]"/><br/><br/>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="Auteur">Nom de l'auteur:</label>
+                    <label class="col-md-2 control-label" for="Auteur">Nom de l'auteur :</label>
                     <input required name="auteur" placeholder="Nom auteur" type="text" list="auteur"
                            autocomplete="off"/><br/><br/>
                     <datalist id="auteur">
@@ -107,24 +107,24 @@ $editeurs = $bdd->query('SELECT NOM_EDITEUR, ID_EDITEUR FROM compte_fournisseur'
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="Prix">Prix:</label>
+                    <label class="col-md-2 control-label" for="Prix">Prix :</label>
                     <input type="text" name="prix" placeholder="Prix" pattern="[0-9]{1,}[.,]{0,1}[0-9]{0,2}"/>
                     <br/><br/>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="Resume">Résumé:</label>
+                    <label class="col-md-2 control-label" for="Resume">Résumé :</label>
                     <textarea name="resume" placeholder="Résumé" rows="8" cols="45"></textarea><br/><br/>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="Note du gérant">Note du gérant:</label>
+                    <label class="col-md-2 control-label" for="Note du gérant">Note du gérant :</label>
                     <input type="text" name="noteGerant" placeholder="Note" pattern="[a-Z]"/><br/><br/>
                 </div>
 
 			
                 <div class="form-group">
-                    <label class="col-md-2 control-label" for="Support">Support:</label>
+                    <label class="col-md-2 control-label" for="Support">Support :</label>
                     <select name="support">
                         <option value="papier">papier</option>
                         <option value="choix2">numerique</option>
@@ -284,14 +284,14 @@ if (isset($_POST['valider'])) {
 
 							// Si c'est OK, on teste l'upload
 							if (move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET . $_FILES['fichier']['name'])) {
-								$message = 'Upload réussi !';
+								$message = 'Ajout de l\'image réussi !';
 							} else {
 								echo '7';
 								// Sinon on affiche une erreur systeme
-								$message = 'Problème lors de l\'upload !';
+								$message = 'Problème lors de l\'ajout d\'image !';
 							}
 							if (rename(TARGET.$_FILES['fichier']['name'], TARGET.$isbn.".jpg")) {
-								$message = 'renommage réussi !';
+								$message = 'Article renommé !';
 							} else {
 								echo $_FILES['fichier']['name'];           
 								echo $isbn;
@@ -299,7 +299,7 @@ if (isset($_POST['valider'])) {
 								$message = 'Problème lors du renommage !';
 							}
 						} else {
-							$message = 'Une erreur interne a empêché l\'uplaod de l\'image';
+							$message = 'Une erreur interne a empêché l\'ajout de l\'image';
 						}
 					} else {
 						// Sinon erreur sur les dimensions et taille de l'image
@@ -307,7 +307,7 @@ if (isset($_POST['valider'])) {
 					}
 				} else {
 					// Sinon erreur sur le type de l'image
-					$message = 'Le fichier à uploader n\'est pas une image !';
+					$message = 'Le fichier sélectionné n\'est pas une image !';
 				}
 			} else {
 				// Sinon on affiche une erreur pour l'extension

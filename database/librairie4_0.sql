@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 08 Février 2017 à 23:07
+-- Généré le :  Mer 22 Mars 2017 à 23:49
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.28
 
@@ -152,17 +152,18 @@ INSERT INTO `commande` (`NUMERO_COMMANDE`, `NUMERO_COMPTE`, `DATE_COMMANDE`, `ET
 (226, 17, '20-01-2017', 'EN ATTENTE DE VALIDATION'),
 (227, 17, '20-01-2017', 'EN ATTENTE DE VALIDATION'),
 (228, 17, '20-01-2017', 'EN ATTENTE DE VALIDATION'),
-(229, 17, '20-01-2017', 'EN ATTENTE DE VALIDATION'),
-(230, 17, '20-01-2017', 'EN ATTENTE DE VALIDATION'),
+(229, 17, '20-01-2017', 'ANNULE'),
+(230, 17, '20-01-2017', 'ANNULE'),
 (231, 17, '20-01-2017', 'ANNULE'),
-(232, 17, '30-01-2017', 'EN ATTENTE DE VALIDATION'),
-(233, 17, NULL, 'EN COURS'),
+(232, 17, '30-01-2017', 'ANNULE'),
+(233, 17, '16-02-2017', 'ANNULE'),
 (234, 22, NULL, 'EN COURS'),
 (235, 23, NULL, 'EN COURS'),
 (236, 24, NULL, 'EN COURS'),
 (237, 25, NULL, 'EN COURS'),
 (238, 26, NULL, 'EN COURS'),
-(239, 27, NULL, 'EN COURS');
+(239, 27, NULL, 'EN COURS'),
+(240, 17, NULL, 'EN COURS');
 
 -- --------------------------------------------------------
 
@@ -214,7 +215,9 @@ INSERT INTO `compte` (`NUMERO_COMPTE`, `ADRESSE_MAIL`, `MOT_DE_PASSE`, `ADMIN`, 
 (25, 'glouty@gmail.com', '7d2e67351b1fac82968f09e85d672374', NULL, 865327412, 'glouton4', 'glouty', 25361, 'gloutville'),
 (26, 'glout@gmail.com', '0cff9905497743137ed5c2aeb6189cac', NULL, 321456789, 'testd', 'testd', 12356, 'gloutville'),
 (27, 'leroiglouton@gmail.com', 'c275fb3307a3f36d9fbd249035e31c7c', NULL, 653241526, 'leroiglouton', 'monamis', 50430, 'gloutville'),
-(28, NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 'Testsousadmin', '', 0, '');
+(28, NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 'Testsousadmin', '', 0, ''),
+(29, NULL, '662be8a28444fe9b80595f92b8493fc4', NULL, NULL, 'ger1234', '', 0, ''),
+(30, NULL, '81dc9bdb52d04dc20036dbd8313ed055', NULL, NULL, 'Test12348', '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -234,9 +237,9 @@ CREATE TABLE `compte_client_pro` (
 
 INSERT INTO `compte_client_pro` (`NUMERO_COMPTE`, `NUMERO_PRO`, `valide`) VALUES
 (5, 123456789, 0),
-(11, 12345678912346, 1),
-(13, 12345678985241, 0),
-(20, 12345678901234, 0);
+(11, 12345678912346, 0),
+(13, 12345678985241, 1),
+(20, 12345678901234, 1);
 
 -- --------------------------------------------------------
 
@@ -256,7 +259,7 @@ CREATE TABLE `compte_fournisseur` (
 --
 
 INSERT INTO `compte_fournisseur` (`NUMERO_COMPTE`, `ID_EDITEUR`, `NOM_EDITEUR`, `VALIDE`) VALUES
-(27, 654123, 'glout', 0),
+(27, 654123, 'glout', 1),
 (25, 666666, 'Glouton', 0),
 (23, 666667, 'Glouton', 0),
 (NULL, 917437, 'Éditions du Chameau', 1);
@@ -276,8 +279,9 @@ CREATE TABLE `compte_gerant` (
 --
 
 INSERT INTO `compte_gerant` (`NUMERO_COMPTE`) VALUES
-(3),
-(28);
+(28),
+(29),
+(30);
 
 -- --------------------------------------------------------
 
@@ -390,8 +394,7 @@ INSERT INTO `lig_cde` (`NUMERO_COMMANDE`, `ISBN_ISSN`, `QTE_CMDEE`, `PRIX_UNIT`)
 (217, 9782917437520, 1, '10.00'),
 (218, 9782917437520, 1, '10.00'),
 (219, 9782917437520, 1, '10.00'),
-(219, 9782917437605, 1, '15.00'),
-(232, 9782917437520, 4, '10.00');
+(219, 9782917437605, 1, '15.00');
 
 -- --------------------------------------------------------
 
@@ -402,10 +405,18 @@ INSERT INTO `lig_cde` (`NUMERO_COMMANDE`, `ISBN_ISSN`, `QTE_CMDEE`, `PRIX_UNIT`)
 CREATE TABLE `note` (
   `NUMERO_COMPTE` int(11) NOT NULL,
   `TEXT` varchar(255) NOT NULL,
-  `DATE` date NOT NULL,
+  `DATE_NOTE` varchar(15) NOT NULL,
   `SUPPR` tinyint(1) NOT NULL DEFAULT '0',
   `NUM_NOTE` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `note`
+--
+
+INSERT INTO `note` (`NUMERO_COMPTE`, `TEXT`, `DATE_NOTE`, `SUPPR`, `NUM_NOTE`) VALUES
+(0, 'Test', '22/3/2017', 0, 1),
+(0, 'TEst ', '22/3/2017', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -425,13 +436,8 @@ CREATE TABLE `vitrine` (
 INSERT INTO `vitrine` (`ISBN_ISSN`, `NUM`) VALUES
 (9782917437520, 1),
 (9782917437605, 2),
-(9782917437773, 3),
-(9782917437742, 4),
-(9782917437520, 5),
-(9782917437520, 6),
-(9782917437520, 7),
-(9782917437520, 8),
-(9782917437520, 9);
+(9782917437742, 3),
+(9782917437773, 4);
 
 --
 -- Index pour les tables exportées
@@ -524,66 +530,6 @@ ALTER TABLE `note`
   ADD UNIQUE KEY `NUM_NOTE` (`NUM_NOTE`),
   ADD KEY `NUM_NOTE_2` (`NUM_NOTE`),
   ADD KEY `NUMERO_COMPTE` (`NUMERO_COMPTE`);
-
---
--- Contraintes pour les tables exportées
---
-
---
--- Contraintes pour la table `article`
---
-ALTER TABLE `article`
-  ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`ID_EDITEUR`) REFERENCES `editeur` (`ID_EDITEUR`);
-
---
--- Contraintes pour la table `client`
---
-ALTER TABLE `client`
-  ADD CONSTRAINT `client_ibfk_1` FOREIGN KEY (`NUMERO_COMPTE`) REFERENCES `compte` (`NUMERO_COMPTE`);
-
---
--- Contraintes pour la table `commande`
---
-ALTER TABLE `commande`
-  ADD CONSTRAINT `fk_commande` FOREIGN KEY (`NUMERO_COMPTE`) REFERENCES `compte` (`NUMERO_COMPTE`);
-
---
--- Contraintes pour la table `compte_client_pro`
---
-ALTER TABLE `compte_client_pro`
-  ADD CONSTRAINT `compte_client_pro_ibfk_1` FOREIGN KEY (`NUMERO_COMPTE`) REFERENCES `client` (`NUMERO_COMPTE`);
-
---
--- Contraintes pour la table `compte_gerant`
---
-ALTER TABLE `compte_gerant`
-  ADD CONSTRAINT `compte_gerant_ibfk_1` FOREIGN KEY (`NUMERO_COMPTE`) REFERENCES `compte` (`NUMERO_COMPTE`),
-  ADD CONSTRAINT `compte_gÃ©rant_ibfk_1` FOREIGN KEY (`NUMERO_COMPTE`) REFERENCES `compte` (`NUMERO_COMPTE`);
-
---
--- Contraintes pour la table `compte_gerantp`
---
-ALTER TABLE `compte_gerantp`
-  ADD CONSTRAINT `compte_gerant++` FOREIGN KEY (`NUMERO_COMPTE`) REFERENCES `compte` (`NUMERO_COMPTE`);
-
---
--- Contraintes pour la table `ecrire`
---
-ALTER TABLE `ecrire`
-  ADD CONSTRAINT `ecrire_ibfk_1` FOREIGN KEY (`ID_AUTEUR`) REFERENCES `auteur` (`ID_AUTEUR`),
-  ADD CONSTRAINT `ecrire_ibfk_2` FOREIGN KEY (`ISBN_ISSN`) REFERENCES `article` (`ISBN_ISSN`);
-
---
--- Contraintes pour la table `facture`
---
-ALTER TABLE `facture`
-  ADD CONSTRAINT `C_N_commande` FOREIGN KEY (`NUMERO_COMMANDE`) REFERENCES `commande` (`NUMERO_COMMANDE`);
-
---
--- Contraintes pour la table `lig_cde`
---
-ALTER TABLE `lig_cde`
-  ADD CONSTRAINT `lig_cde_ibfk_2` FOREIGN KEY (`ISBN_ISSN`) REFERENCES `article` (`ISBN_ISSN`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

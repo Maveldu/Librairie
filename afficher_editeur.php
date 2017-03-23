@@ -5,7 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Editeurs"; //Titre à changer sur chaque page
 require_once 'menu.php';
 ?>
 
@@ -15,17 +15,17 @@ require_once 'menu.php';
     <legend class="center-block text-center"><h2>Liste des éditeurs</h2></legend>
     <div class="mon_centre">
         <p class="center-block text-center">
-        <h1>Faire une recherche par:</h1> </p>
+        <h1>Faire une recherche par :</h1></p>
         <form method="post">
             <input id="radio" type="radio" name="radio" value="NOM" checked> Nom
-            <input id="radio" type="radio" name="radio" value="ID_EDITEUR"> Numero
+            <input id="radio" type="radio" name="radio" value="ID_EDITEUR"> Numéro
         </form>
     </div>
 
     <form class="ajax" method="post" autocomplete="off">
 
         <p>
-            <label for="q">Rechercher un editeur</label><input type="text" name="q" id="q"/>
+            <label for="q">Rechercher un éditeur</label><input type="text" name="q" id="q"/>
         </p>
     </form>
     <div id="results"><?php include 'ajax-search-editeur.php' ?></div>

@@ -5,7 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Photo vitrine"; //Titre à changer sur chaque page
 require_once 'menu.php';
 ?>
 
@@ -24,7 +24,7 @@ require_once 'menu.php';
                 <input type="submit" name="submit" value="Uploader"/>
             </div>
 			<div class="form-group">
-				<label class="col-md-2 control-label" for="ISBN">ISBN:</label>
+				<label class="col-md-2 control-label" for="ISBN">ISBN :</label>
 				<input required type="text" name="isbn" placeholder="ISBN"/><br/>
 				<br/>
 			</div>

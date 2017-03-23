@@ -2,12 +2,51 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Librairie"; //Titre à changer sur chaque page
 require_once 'menu.php';
 ?>
-<html>
-<link rel="icon" type="image/png" href="favicon.png"/>
-</html>
+<br/>
+<br/>
+<table>
+    <td>
+        <center>
+            <h2>Navigation</h2><br><br>
+            <?php if (isset($_SESSION['id'])) { ?>
+                <a class="btn btn-primary btn-lg btn-block" href="form_deconnexion.php">Se déconnecter</a>
+                <a class="btn btn-primary btn-lg btn-block" href="MonCompte.php">Voir les informations de votre compte</a>
+                <a class="btn btn-primary btn-lg btn-block" href="form_afficher_article.php">Afficher les articles</a>
+                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_editeur.php">Afficher les éditeurs</a>
+                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_auteur.php">Afficher les auteurs</a>
+                <?php if (f_compte($bdd)!="admin") { ?>
+                <a class="btn btn-primary btn-lg btn-block" href="mon_panier.php">Afficher mon panier</a>
+                <?php } ?>
+                <br/>
+
+
+                <?php if (f_compte($bdd)=="gerant") { ?>
+                	<table><td>
+                    <h4 align="center"> Fonction unique aux gérants :</h4>
+                                <a class="btn btn-primary btn-lg btn-block" href="Note.php">Envoyer une note à l'administrateur</a>
+                    </td></table>
+                <?php } ?>
+                <?php if (f_compte($bdd)=="admin") { ?>
+                	<table><td>
+                	<h4 align="center"> Fonctions uniques à l'administrateur :</h4>
+                    <a class="btn btn-primary btn-lg btn-block" href="gestion_compte.php">Gestion des comptes</a>
+                    <a class="btn btn-primary btn-lg btn-block" href="afficher_message.php">Messages</a>
+                    <a class="btn btn-primary btn-lg btn-block" href="afficher_vitrine.php">Gérer la vitrine</a><br><br>
+                	</td></table>
+                <?php } ?>
+                
+            <?php } else { ?>
+                <a class="btn btn-primary btn-lg btn-block" href="form_inscription.php">S'incrire</a><br><br>
+                <a class="btn btn-primary btn-lg btn-block" href="form_connexion.php">Se connecter</a><br><br>
+                <a class="btn btn-primary btn-lg btn-block" href="form_afficher_article.php">Afficher les articles</a><br><br>
+                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_editeur.php">Afficher les éditeurs</a><br><br>
+                <a class="btn btn-primary btn-lg btn-block" href="form_ajouter_auteur.php">Afficher les auteurs</a><br><br>
+            <?php } ?>
+        </center>
+    </td><td>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <br/><br/><br/>
     <div class="carousel-inner" role="listbox">
@@ -52,11 +91,16 @@ require_once 'menu.php';
         <span class="sr-only">Next</span>
     </a>
 </div>
-<?php
-include('band.html');
-?>
-<div id="googleMap"></div>
+    </td>
 
+</table>
+<br><br>
+<table>
+    <td>
+<div id="googleMap"></div>
+    </td>
+</table>
+<br><br>
 <!-- Add Google Maps -->
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD-QWantOsGGvCL5ANHhc1mrst_yxFGZxE"></script>
 <script>

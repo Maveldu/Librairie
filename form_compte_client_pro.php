@@ -5,7 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Gestion Clients Pros"; //Titre à changer sur chaque page
 require_once 'menu.php';
 ?>
 <html>
@@ -17,14 +17,14 @@ require_once 'menu.php';
 <br/><br/><br/>
 
 <div class="box">
-	<a class="button" href="#popup1">Information sur la page</a>
+	<a class="button" href="#popup1"> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
 </div> 
 <div id="popup1" class="overlay">
 	<div class="popup">
-		<h2>Gestion compte client pro </h2>
+		<h2>Gestion compte client pro</h2>
 		<a class="close" href="#">×</a>
 		<div class="content">
-			Ici, c'est la page de validation des compte client pro. En validant, le compte client pro sera acitf.
+			Ici, c'est la page de validation des comptes "Client Pro". En validant, le compte client pro sera actif.
 		</div>
 	</div>
 </div>
@@ -39,8 +39,8 @@ $tab = AfficherTabCompte($sql, $bdd);
 	 
     $tab = $bdd->query($sql,PDO::FETCH_ASSOC);
 	echo '<table border="1">';
-	echo '<h1>Compte en Attente :</h1>';
-	echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTALE</td><td>VILLE</td><td>NUMERO_PRO</td><td>VALIDE</td><td>SUPPRIMER</td></tr>';
+	echo '<h1>Comptes en attente :</h1>';
+	echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTAL</td><td>VILLE</td><td>NUMERO_PRO</td><td>VALIDER</td><td>SUPPRIMER</td></tr>';
 	foreach($tab as $utilisateur){
 		
           echo "<tr>
@@ -90,8 +90,8 @@ function AfficherTabCompte2($sq2, $bdd){
 	 
     $tab = $bdd->query($sq2,PDO::FETCH_ASSOC);
 	echo '<table border="1">';
-	echo'<h1> Compte Validé : <h1>';
-	echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTALE</td><td>VILLE</td><td>NUMERO_PRO</td><td>VALIDE</td><td>ANNULE</td></tr>';
+	echo'<h1> Comptes validés : <h1>';
+	echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTAL</td><td>VILLE</td><td>NUMERO_PRO</td><td>VALIDE</td><td>ANNULER</td></tr>';
 	foreach($tab as $utilisateur){
 		
           echo "<tr>
@@ -123,6 +123,8 @@ if(isset($_POST['hidde'])){
 	}
 ?>
 </form>
+    <br><br>
+    <a class="btn btn-primary" href="gestion_compte.php">Retour au menu "Gestion des Comptes"</a><br><br>
 </center>
 </body>
 </html>

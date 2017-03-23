@@ -5,6 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
+$titre = "Gestion Fournisseurs"; //Titre à changer sur chaque page
 require_once 'menu.php';
 ?>
 <html>
@@ -16,14 +17,14 @@ require_once 'menu.php';
 <br/><br/><br/>
 
 <div class="box">
-    <a class="button" href="#popup1">Information sur la page</a>
+    <a class="button" href="#popup1"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
 </div>
 <div id="popup1" class="overlay">
     <div class="popup">
         <h2>Gestion compte fournisseur </h2>
         <a class="close" href="#">×</a>
         <div class="content">
-            Ici, c'est la page de validation des comptes fournisseur. En validant, le compte fournisseur sera acitf.
+            Ici, c'est la page de validation des comptes "Fournisseur". En validant, le compte fournisseur sera actif.
         </div>
     </div>
 </div>
@@ -38,8 +39,8 @@ require_once 'menu.php';
 
             $tab = $bdd->query($sql,PDO::FETCH_ASSOC);
             echo '<table border="1">';
-            echo '<h1>Compte en Attente :</h1>';
-            echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTALE</td><td>VILLE</td><td>ID_EDITEUR</td><td>VALIDE</td><td>SUPPRIMER</td></tr>';
+            echo '<h1>Comptse en attente :</h1>';
+            echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTAL</td><td>VILLE</td><td>ID_EDITEUR</td><td>VALIDER</td><td>SUPPRIMER</td></tr>';
             foreach($tab as $utilisateur){
 
                 echo "<tr>
@@ -89,8 +90,8 @@ require_once 'menu.php';
 
             $tab = $bdd->query($sq2,PDO::FETCH_ASSOC);
             echo '<table border="1">';
-            echo'<h1> Compte Valider : <h1>';
-            echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTALE</td><td>VILLE</td><td>ID_EDITEUR</td><td>VALIDE</td><td>ANNULE</td></tr>';
+            echo'<h1> Comptes validés : <h1>';
+            echo '<tr> <td> IDENTIFIANT</td> <td> NUMERO_COMPTE</td> <td> ADRESSE</td><td>CODE_POSTAL</td><td>VILLE</td><td>ID_EDITEUR</td><td>VALIDE</td><td>ANNULER</td></tr>';
             foreach($tab as $utilisateur){
 
                 echo "<tr>
@@ -122,6 +123,8 @@ require_once 'menu.php';
         }
         ?>
     </form>
+    <br><br>
+    <a class="btn btn-primary" href="gestion_compte.php">Retour au menu "Gestion des Comptes"</a><br><br>
 </center>
 </body>
 </html>

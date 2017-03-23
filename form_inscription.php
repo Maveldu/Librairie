@@ -5,7 +5,7 @@
 session_start();
 require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
-$titre = "Librairie"; //Titre ‡ changer sur chaque page
+$titre = "Inscription"; //Titre ‡ changer sur chaque page
 require_once 'menu.php';
 ?>
 
@@ -52,39 +52,39 @@ require_once 'menu.php';
         if (isset($_SESSION['id'])) {
             echo "<p> Vous êtes connecté, vous ne pouvez pas vous inscrire ! </p>";
         } else { ?>
-            <h3>INSCRIPTION:</h3>
-            <p>Les champs accompagnés d'une étoile sont obligatoire</p>
+            <h3>INSCRIPTION :</h3>
+            <p>Les champs accompagnés d'une étoile sont obligatoires</p>
             <form method="post">
                 <p>
                 <fieldset>
                     <legend> Identifiants :</legend>
-                    <label class="text-base" for="pseudo">Pseudonyme: *</label>
+                    <label class="text-base" for="pseudo">Pseudonyme : *</label>
                     <input type="text" name="pseudo" placeholder="Entrez un pseudo" pattern="[a-zA-Z0-9]{4,}$"/><p>Pseudo qui sera visible par les autres Utilisateurs</p>
-                    <label for="passe">Mot de passe: *</label>
+                    <label for="passe">Mot de passe : *</label>
                     <input type="password" name="passe" placeholder="Entrez un mot de passe" pattern="[a-zA-Z0-9]{4,}$"/><br/><br/>
-                    <label>Confirmation du mot de passe: *</label>
+                    <label>Confirmation du mot de passe : *</label>
                     <input type="password" name="passe2" placeholder="Confirmez mot de passe" /><br/><br/>
                 </fieldset>
 
                 <fieldset>
-                    <legend>Adresse Postale:</legend>
-                    <label class="text-base" for="rue">Adresse: *</label>
+                    <legend>Adresse Postale :</legend>
+                    <label class="text-base" for="rue">Adresse : *</label>
                     <input type="text" name="adresse" placeholder="Entrez votre adresse" pattern="([a-zA-Z0-9](\s){,1}){4,}$"/><br/><br/>
-                    <label class="text-base" for="postale">Code Postale: *</label>
+                    <label class="text-base" for="postale">Code Postal : *</label>
                     <input type="text" name="postale" placeholder="Entrez code postale" pattern="[0-9]{5,5}$"/><br/><br/>
-                    <label class="text-base" for="ville">Ville: *</label>
+                    <label class="text-base" for="ville">Ville : *</label>
                     <input type="text" name="ville" placeholder="Entrez votre ville" pattern="[a-zA-Z]{2,}$"/><br/><br/>
                 </fieldset>
 
                 <fieldset>
                     <legend>Coordonnées</legend>
-                    <label class="text-base" for="nom">Nom: *</label>
+                    <label class="text-base" for="nom">Nom : *</label>
                     <input type="text" name="nom" placeholder="Entrez votre nom" pattern="[a-zA-Z]{2,}$"/><br/><br/>
-                    <label class="text-base" for="prenom">Prenom: *</label>
+                    <label class="text-base" for="prenom">Prénom : *</label>
                     <input type="text" name="prenom" placeholder="Entrez votre prenom" pattern="[a-zA-Z]{2,}$"/><br/><br/>
-                    <label>Adresse e-mail: *</label>
+                    <label>Adresse e-mail : *</label>
                     <input type="text" name="email" placeholder="Entrez adresse mail" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/><br/><br/>
-                    <label class="text-base" for="numero">Numero de téléphone: *</label>
+                    <label class="text-base" for="numero">Numéro de téléphone : *</label>
                     <input type="text" name="numero" placeholder="Entrez numéro de tél" pattern="[0-9]{10,12}"/><br/><br/>
                 </fieldset>
 
@@ -96,9 +96,9 @@ require_once 'menu.php';
 						<br/>	<br/>
 
 					<div id="formcache_Editeur" style="display: none">
-					<label class="col-md-2 control-label" for="idEditeur">Id éditeur:</label>
+					<label class="col-md-2 control-label" for="idEditeur">Id éditeur :</label>
 					<input  type="text" name="idEditeur" placeholder="Identifiant" pattern="[0-9]{4,6}"/><br/><br/>
-					<label class="col-md-2 control-label" for="nomEditeur">Nom éditeur:</label>
+					<label class="col-md-2 control-label" for="nomEditeur">Nom éditeur :</label>
 					<input  type="text" name="nomEditeur" placeholder="Nom" pattern="[A-Za-z]{1,}"/><br/><br/>
 					</div>
 
@@ -177,7 +177,7 @@ if (isset($_POST['valider'])) {
         if ($_POST['passe'] != $_POST['passe2']) {
 
             $i = 0;
-            $text = "Les mots de passes ne correspondent pas";
+            $text = "Les mots de passe ne correspondent pas";
         }
     } else if ($i == 1) {
         $i = 0;
@@ -197,7 +197,7 @@ if (isset($_POST['valider'])) {
             $nbligne = $nbligne->rowCount();
             if ($nbligne != 0) {
                 $i = 0;
-                $text = "Un compte a déjà étais crée avec cette identifiant";
+                $text = "Un compte a déjà été créé avec cette identifiant";
             }
 
 	      if (empty($_POST['nomEditeur']))

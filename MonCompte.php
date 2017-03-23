@@ -1,6 +1,3 @@
-<html>
-<link rel="icon" type="image/png" href="favicon.png"/>
-</html>
 <?php
 session_start();
 require_once 'fonc_bdd.php';
@@ -8,10 +5,6 @@ $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = 'Mon compte';
 require_once 'menu.php';
 ?>
-
-<html>
-
-
 <br/><br/>
 <br/>
 
@@ -30,6 +23,7 @@ require_once 'menu.php';
 
 		<fieldset>
 			<legend>Coordonnées</legend>
+			<?php if (f_compte($bdd)!="admin") { ?>
 			<label class="text-base" for="rue">Nom :</label>
 			<?php
 			$count = $bdd->prepare("SELECT NOM FROM from compte join compte_client using (NUMERO_COMPTE) WHERE IDENTIFIANT = '".$_SESSION['id']."'");
@@ -51,7 +45,7 @@ require_once 'menu.php';
 			foreach ($req as $test) {
 				echo $test;
 			}
-			?><br/>
+			}?><br/>
 
 
 			<label class="text-base" for="rue">Adresse Mail : </label>
@@ -65,7 +59,7 @@ require_once 'menu.php';
 			}
 			?><br/>
 
-			<label class="text-base" for="rue">Numéro de télephone :</label>
+			<label class="text-base" for="rue">Numéro de téléphone :</label>
 			<?php
 			$count = $bdd->prepare("SELECT NUMERO_TELEPHONE FROM compte WHERE IDENTIFIANT = '".$_SESSION['id']."'");
 			$count->execute(array($_SESSION['id']));
@@ -101,7 +95,7 @@ require_once 'menu.php';
 				echo $test;
 			}
 			?>	<br/>
-			<label class="text-base">Code Postale :</label>
+			<label class="text-base">Code Postal :</label>
 			<?php
 			$count = $bdd->prepare("SELECT CODE_POSTALE FROM compte WHERE IDENTIFIANT = '".$_SESSION['id']."'");
 			$count->execute(array($_SESSION['id']));
@@ -113,6 +107,7 @@ require_once 'menu.php';
 			?>
 		</fieldset>
 	</center>
+	<?php if (f_compte($bdd)!="admin") { ?>
 	<center>
 		<fieldset>
 			<legend>Mes commandes :</legend>
@@ -128,7 +123,10 @@ require_once 'menu.php';
 
 
 				foreach($tab as $utilisateur){
-					if ($utilisateur['ETAT_COMMANDE']=="EN COURS" or $utilisateur['ETAT_COMMANDE']=="EN ATTENTE DE VALIDATION" or $utilisateur['ETAT_COMMANDE']=="VALIDE" or $utilisateur['ETAT_COMMANDE']=="REFUSE") {
+					if ($utilisateur['ETAT_COMMANDE']=="EN COURS"){
+						echo "<font color =\"blue\">Vous pouvez ajouter de nouveaux articles à votre panier.</font>";
+						echo "<br/>____________________________";
+					}elseif ($utilisateur['ETAT_COMMANDE']=="EN ATTENTE DE VALIDATION" or $utilisateur['ETAT_COMMANDE']=="VALIDE" or $utilisateur['ETAT_COMMANDE']=="REFUSE") {
 						echo "<fieldset>";
 						echo "Numero : ";
 						echo "<b>";
@@ -146,17 +144,10 @@ require_once 'menu.php';
 							echo "</b>";
 						}
 						echo "<br/>";
-						echo "Etat : ";
-
-						if ($utilisateur['ETAT_COMMANDE'] == "EN COURS") {
-							echo "<font color =\"blue\">";
-							echo "Prêt à ajouter des articles";
-							echo "</font>";
-							echo "<br/>";
-						}
+						echo "État : ";
 						if ($utilisateur['ETAT_COMMANDE'] == "EN ATTENTE DE VALIDATION") {
 							echo "<font color =\"orange\">";
-							echo "En attente de validation";
+							echo "En attente de validation par un administrateur";
 							echo "</font>";
 							echo "<br/>";
 							$commande = $utilisateur['NUMERO_COMMANDE'];
@@ -166,9 +157,9 @@ require_once 'menu.php';
 							echo "</br>";
 						} else if ($utilisateur['ETAT_COMMANDE'] == "VALIDE") {
 							echo "<font color =\"green\">";
-							echo "Validé";
+							echo "Validée";
 							echo "<br/>";
-							echo "Votre commande est prête à être enlevée.";
+							echo "Votre commande est prête à être récupérée à la librairie.";
 							echo "</font>";
 							echo "<br/>";
 							$commande = $utilisateur['NUMERO_COMMANDE'];
@@ -180,7 +171,7 @@ require_once 'menu.php';
 						}
 						if ($utilisateur['ETAT_COMMANDE'] == "REFUSE") {
 							echo "<font color =\"red\">";
-							echo "Refusé";
+							echo "Refusée";
 							echo "<br/>";
 							echo "Votre commande a été refusée. Allez voir votre boîte mail pour plus d'informations.";
 							echo "</font>";
@@ -211,6 +202,7 @@ require_once 'menu.php';
 			?>
 		</fieldset>
 	</center>
+	<?php }?>
 </body>
 </html>
 

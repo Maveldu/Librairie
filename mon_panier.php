@@ -9,6 +9,7 @@ require_once 'fonc_bdd.php';
 $bdd = OuvrirConnexion($session, $usr, $mdp);
 $titre = "Mon Panier"; //Titre à changer sur chaque page
 require_once 'menu.php';
+error_reporting(0);
 if(isset($_POST["valider"])){
 
 	//Bloque le rechargement de la page
@@ -57,9 +58,9 @@ if(isset($_POST["valider"])){
 	else {
 		//Commande validé
 		echo "<br/><br/>&nbsp&nbsp&nbsp";
-		echo "Votre commande a été validée par nos services. Vous pourrez récuperer vos articles à la librairie une fois celle-ci accepté.";
+		echo "Votre commande a été validée par nos services. Vous pourrez récuperer vos articles à la librairie une fois celle-ci acceptée.";
 		echo "<br/><br/><b>&nbsp&nbsp&nbsp";
-		echo "Pour plus d'informations rendez-vous dans la page \"Mon Compte\" pour voir son statut.";
+		echo "Pour plus d'informations, rendez-vous dans la page \"Mon Compte\" pour voir son statut.";
 		echo "</b>";
 		$date = date("d-m-Y");
 		$req = "UPDATE commande SET etat_commande='EN ATTENTE DE VALIDATION', date_commande = '" . $date . "' WHERE etat_commande='EN COURS' and NUMERO_COMPTE=(SELECT NUMERO_COMPTE from compte where IDENTIFIANT = '" . $_SESSION['id'] . "')";
@@ -253,7 +254,7 @@ else{
 	<div class="panel-body">
 	<?php
 	if(!$ElemCmde){
-		echo "Vous n'avez pas d'atricle dans votre panier";
+		echo "Vous n'avez pas d'article dans votre panier";
 		echo "</div></div>";
 	}else{
 		?>
