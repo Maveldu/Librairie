@@ -347,6 +347,19 @@ require_once 'f_compte.php';
                         <li><a href="afficher_auteur.php">Auteur</a></li>
                     </ul>
                 </li>
+                <?php if (f_compte($bdd)=="gerant") { ?>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">ADMINISTRATION
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="gestion_compte.php">Gestion de compte</a></li>
+                        <li><a href="form_compte_client_pro.php">Gestion Client pro</a></li>
+                        <li><a href="form_compte_fournisseur.php">Gestion Fournisseur</a></li>
+                        <li><a href="afficher_vitrine.php">Modifier la vitrine</a></li>
+                        <li><a href="Note.php">Envoyez une Note</a></li>
+                    </ul>
+                </li>
+                <?php } ?>
 					<?php if (f_compte($bdd)=="admin") { ?>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">AJOUTER

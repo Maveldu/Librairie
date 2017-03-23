@@ -27,6 +27,9 @@ require_once 'menu.php';
                 	<table><td>
                     <h4 align="center"> Fonction unique aux gérants :</h4>
                                 <a class="btn btn-primary btn-lg btn-block" href="Note.php">Envoyer une note à l'administrateur</a>
+                                <a class="btn btn-primary btn-lg btn-block" href="form_commande.php">Valider des commandes</a>
+                                <a class="btn btn-primary btn-lg btn-block" href="gestion_compte.php">Gestion des comptes</a>
+                            <a class="btn btn-primary btn-lg btn-block" href="afficher_vitrine.php">Gérer la vitrine</a>
                     </td></table>
                 <?php } ?>
                 <?php if (f_compte($bdd)=="admin") { ?>
@@ -34,6 +37,7 @@ require_once 'menu.php';
                 	<h4 align="center"> Fonctions uniques à l'administrateur :</h4>
                     <a class="btn btn-primary btn-lg btn-block" href="gestion_compte.php">Gestion des comptes</a>
                     <a class="btn btn-primary btn-lg btn-block" href="afficher_message.php">Messages</a>
+                    <a class="btn btn-primary btn-lg btn-block" href="form_commande.php">Valider des commandes</a>
                     <a class="btn btn-primary btn-lg btn-block" href="afficher_vitrine.php">Gérer la vitrine</a><br><br>
                 	</td></table>
                 <?php } ?>

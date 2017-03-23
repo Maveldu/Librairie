@@ -20,6 +20,10 @@ require_once 'menu.php';
     <a class="btn btn-primary" href="form_compte_fournisseur.php">Gestion des comptes "Fournisseur"</a><br><br>
     <a class="btn btn-primary" href="form_compte_admin.php">Gestion des comptes "Gérant"</a><br><br>
 <?php } ?>
+    <?php if (f_compte($bdd)=="gerant") { ?>
+    <a class="btn btn-primary" href="form_compte_client_pro.php">Gestion des comptes "Client Professionnel"</a><br><br>
+    <a class="btn btn-primary" href="form_compte_fournisseur.php">Gestion des comptes "Fournisseur"</a><br><br>
+    <?php } ?>
 </center>
 </body>
 </html>
