@@ -107,7 +107,6 @@ require_once 'menu.php';
 			?>
 		</fieldset>
 	</center>
-	<?php if (f_compte($bdd)!="admin") { ?>
 	<center>
 		<fieldset>
 			<legend>Mes commandes :</legend>
@@ -120,12 +119,13 @@ require_once 'menu.php';
 
 				$tab = $bdd->query($sql,PDO::FETCH_ASSOC);
 
-
-
+				if (f_compte($bdd)!="admin") {
+					echo "<font color =\"blue\">Vous pouvez ajouter de nouveaux articles à votre panier.</font>";
+					echo "<br/>____________________________";
+				}
 				foreach($tab as $utilisateur){
+
 					if ($utilisateur['ETAT_COMMANDE']=="EN COURS"){
-						echo "<font color =\"blue\">Vous pouvez ajouter de nouveaux articles à votre panier.</font>";
-						echo "<br/>____________________________";
 					}elseif ($utilisateur['ETAT_COMMANDE']=="EN ATTENTE DE VALIDATION" or $utilisateur['ETAT_COMMANDE']=="VALIDE" or $utilisateur['ETAT_COMMANDE']=="REFUSE") {
 						echo "<fieldset>";
 						echo "Numero : ";
@@ -202,7 +202,6 @@ require_once 'menu.php';
 			?>
 		</fieldset>
 	</center>
-	<?php }?>
 </body>
 </html>
 
