@@ -36,7 +36,8 @@ require_once 'menu.php';
                 	<table><td>
                 	<h4 align="center"> Fonctions uniques à l'administrateur :</h4>
                     <a class="btn btn-primary btn-lg btn-block" href="gestion_compte.php">Gestion des comptes</a>
-                    <a class="btn btn-primary btn-lg btn-block" href="afficher_message.php">Messages</a>
+                            <a class="btn btn-primary btn-lg btn-block" href="ajout_librairie.php">Ajouter à la librairie</a>
+                            <a class="btn btn-primary btn-lg btn-block" href="afficher_message.php">Messages</a>
                     <a class="btn btn-primary btn-lg btn-block" href="form_commande.php">Valider des commandes</a>
                     <a class="btn btn-primary btn-lg btn-block" href="afficher_vitrine.php">Gérer la vitrine</a><br><br>
                 	</td></table>
